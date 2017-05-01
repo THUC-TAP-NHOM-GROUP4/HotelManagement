@@ -6,7 +6,13 @@ using System.Threading.Tasks;
 
 namespace HotelManagement.Models
 {
-    class Phong
+    public class Phong
     {
+        public String Ma { get; set; }
+        public String SoPhong { get; set; }
+        public String LoaiPhong { get; set; }
+        public Double DonGia { get; set; }
+        public int TrangThai { get; set; }
+
     }
 }

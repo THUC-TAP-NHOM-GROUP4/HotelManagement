@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace HotelManagement.Models
 {
-    class VatDung
+    public class VatDung
     {
+
     }
 }

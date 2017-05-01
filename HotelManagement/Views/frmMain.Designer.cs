@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            DevExpress.XtraBars.Ribbon.GalleryItemGroup galleryItemGroup1 = new DevExpress.XtraBars.Ribbon.GalleryItemGroup();
             this.panel1 = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.btnThoat = new System.Windows.Forms.Button();
@@ -42,9 +43,14 @@
             this.tabPageDatPhongNhanh = new System.Windows.Forms.TabPage();
             this.tabPageTinhTrangPhong = new System.Windows.Forms.TabPage();
             this.tabPageThongKe = new System.Windows.Forms.TabPage();
+            this.galleryControl_TrangChu = new DevExpress.XtraBars.Ribbon.GalleryControl();
+            this.galleryControlClient1 = new DevExpress.XtraBars.Ribbon.GalleryControlClient();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.tabControlMain.SuspendLayout();
+            this.tabPageTrangChu.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.galleryControl_TrangChu)).BeginInit();
+            this.galleryControl_TrangChu.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -152,6 +158,7 @@
             // 
             // tabPageTrangChu
             // 
+            this.tabPageTrangChu.Controls.Add(this.galleryControl_TrangChu);
             this.tabPageTrangChu.Location = new System.Drawing.Point(4, 24);
             this.tabPageTrangChu.Name = "tabPageTrangChu";
             this.tabPageTrangChu.Padding = new System.Windows.Forms.Padding(3);
@@ -196,6 +203,36 @@
             this.tabPageThongKe.Text = "Thống kê";
             this.tabPageThongKe.UseVisualStyleBackColor = true;
             // 
+            // galleryControl_TrangChu
+            // 
+            this.galleryControl_TrangChu.Controls.Add(this.galleryControlClient1);
+            this.galleryControl_TrangChu.DesignGalleryGroupIndex = 0;
+            this.galleryControl_TrangChu.DesignGalleryItemIndex = 0;
+            this.galleryControl_TrangChu.Dock = System.Windows.Forms.DockStyle.Fill;
+            // 
+            // 
+            // 
+            this.galleryControl_TrangChu.Gallery.AllowHoverImages = true;
+            this.galleryControl_TrangChu.Gallery.BackColor = System.Drawing.Color.White;
+            galleryItemGroup1.Caption = "Danh sách phòng";
+            this.galleryControl_TrangChu.Gallery.Groups.AddRange(new DevExpress.XtraBars.Ribbon.GalleryItemGroup[] {
+            galleryItemGroup1});
+            this.galleryControl_TrangChu.Gallery.HoverImageSize = new System.Drawing.Size(60, 60);
+            this.galleryControl_TrangChu.Gallery.ImageSize = new System.Drawing.Size(100, 100);
+            this.galleryControl_TrangChu.Gallery.ShowItemText = true;
+            this.galleryControl_TrangChu.Gallery.ItemDoubleClick += new DevExpress.XtraBars.Ribbon.GalleryItemClickEventHandler(this.galleryControl1_Gallery_ItemDoubleClick);
+            this.galleryControl_TrangChu.Location = new System.Drawing.Point(3, 3);
+            this.galleryControl_TrangChu.Name = "galleryControl_TrangChu";
+            this.galleryControl_TrangChu.Size = new System.Drawing.Size(980, 579);
+            this.galleryControl_TrangChu.TabIndex = 0;
+            this.galleryControl_TrangChu.Text = "galleryControl1";
+            // 
+            // galleryControlClient1
+            // 
+            this.galleryControlClient1.GalleryControl = this.galleryControl_TrangChu;
+            this.galleryControlClient1.Location = new System.Drawing.Point(2, 2);
+            this.galleryControlClient1.Size = new System.Drawing.Size(959, 575);
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -214,6 +251,9 @@
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.tabControlMain.ResumeLayout(false);
+            this.tabPageTrangChu.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.galleryControl_TrangChu)).EndInit();
+            this.galleryControl_TrangChu.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -234,5 +274,7 @@
         private System.Windows.Forms.TabPage tabPageTinhTrangPhong;
         private System.Windows.Forms.TabPage tabPageThongKe;
         private System.Windows.Forms.Button btnThoat;
+        private DevExpress.XtraBars.Ribbon.GalleryControl galleryControl_TrangChu;
+        private DevExpress.XtraBars.Ribbon.GalleryControlClient galleryControlClient1;
     }
 }
