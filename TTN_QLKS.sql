@@ -71,15 +71,18 @@ gioden time not null,
 ngaydi date not null,
 giodi time not null,
 phongma  varchar(20) not null foreign key(phongma) references Phong(ma),
-tiendatcoc float not null
+tiendatcoc float not null,
+nhanvienma varchar(20) not null foreign key(nhanvienma) references NhanVien(ma)
 )
+
 create table HuyDangKy
 (
 ma varchar(20) primary key not null,
 dangkyma varchar(20) not null foreign key(dangkyma) references DangKy(ma),
 khachma varchar(20) not null foreign key(khachma) references Khach(ma),
 ngayhuy date not null,
-giohuy time not null
+giohuy time not null,
+nhanvienma varchar(20) not null foreign key(nhanvienma) references NhanVien(ma)
 )
 create table NhanPhong
 (
@@ -87,7 +90,8 @@ ma varchar(20) primary  key  not null,
 khachma varchar(20) not null foreign key(khachma) references Khach(ma),
 phongma varchar(20) not null foreign key(phongma) references Phong(ma),
 ngaynhan date not null,
-gionhan time not null
+gionhan time not null,
+nhanvienma varchar(20) not null foreign key(nhanvienma) references NhanVien(ma)
 )
 create table TraPhong
 (
@@ -95,7 +99,8 @@ ma varchar(20) primary key not null,
 khachma varchar(20) not null foreign key(khachma) references Khach(ma),
 dangkyma varchar(20) not null foreign key(dangkyma) references DangKy(ma),
 ngaytra date not null,
-giotra time not null
+giotra time not null,
+nhanvienma varchar(20) not null foreign key(nhanvienma) references NhanVien(ma)
 )
 create table ThanhToan
 (
@@ -107,7 +112,8 @@ ngaythanhtoan date  not null,
 giothanhtoan time not null,
 tienphong float not  null,
 tiendichvu float not null,
-tongtien float not null
+tongtien float not null,
+nhanvienma varchar(20) not null foreign key(nhanvienma) references NhanVien(ma)
 )
 create table SuDungDichVu
 (
