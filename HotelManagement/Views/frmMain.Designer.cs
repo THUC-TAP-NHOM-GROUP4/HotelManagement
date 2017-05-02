@@ -28,42 +28,44 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DevExpress.XtraBars.Ribbon.GalleryItemGroup galleryItemGroup5 = new DevExpress.XtraBars.Ribbon.GalleryItemGroup();
-            DevExpress.XtraBars.Ribbon.GalleryItemGroup galleryItemGroup6 = new DevExpress.XtraBars.Ribbon.GalleryItemGroup();
+            this.components = new System.ComponentModel.Container();
+            DevExpress.XtraBars.Ribbon.GalleryItemGroup galleryItemGroup11 = new DevExpress.XtraBars.Ribbon.GalleryItemGroup();
+            DevExpress.XtraBars.Ribbon.GalleryItemGroup galleryItemGroup12 = new DevExpress.XtraBars.Ribbon.GalleryItemGroup();
             this.tabControlMain = new System.Windows.Forms.TabControl();
             this.tabPageTrangChu = new System.Windows.Forms.TabPage();
             this.galleryControl_TrangChu = new DevExpress.XtraBars.Ribbon.GalleryControl();
             this.galleryControlClient1 = new DevExpress.XtraBars.Ribbon.GalleryControlClient();
-            this.tabPageQLKhach = new System.Windows.Forms.TabPage();
-            this.tabPageDatPhong = new System.Windows.Forms.TabPage();
             this.tabPageQLPhong = new System.Windows.Forms.TabPage();
+            this.tabPageDatPhong = new System.Windows.Forms.TabPage();
+            this.galleryControl_DatPhong = new DevExpress.XtraBars.Ribbon.GalleryControl();
+            this.galleryControlClient2 = new DevExpress.XtraBars.Ribbon.GalleryControlClient();
+            this.tabPageQLKhach = new System.Windows.Forms.TabPage();
             this.tabPageThongKe = new System.Windows.Forms.TabPage();
-            this.dockManager1 = new DevExpress.XtraBars.Docking.DockManager();
+            this.dockManager1 = new DevExpress.XtraBars.Docking.DockManager(this.components);
             this.nbgMain_TrangChu = new DevExpress.XtraNavBar.NavBarGroup();
-            this.nbgMain_Khach = new DevExpress.XtraNavBar.NavBarGroup();
-            this.nbgMain_DatPhong = new DevExpress.XtraNavBar.NavBarGroup();
-            this.nbgMain_Phong = new DevExpress.XtraNavBar.NavBarGroup();
-            this.nbgMain_ThongKe = new DevExpress.XtraNavBar.NavBarGroup();
-            this.nbgMain_Thoat = new DevExpress.XtraNavBar.NavBarGroup();
-            this.dockPanel1_Container = new DevExpress.XtraBars.Docking.ControlContainer();
-            this.navBarControl1 = new DevExpress.XtraNavBar.NavBarControl();
-            this.dockPanel1 = new DevExpress.XtraBars.Docking.DockPanel();
             this.nbiMain_PhongTrong = new DevExpress.XtraNavBar.NavBarItem();
             this.nbiMain_PhongCoKhach = new DevExpress.XtraNavBar.NavBarItem();
             this.nbiMain_PhongKhac = new DevExpress.XtraNavBar.NavBarItem();
-            this.galleryControl_DatPhong = new DevExpress.XtraBars.Ribbon.GalleryControl();
-            this.galleryControlClient2 = new DevExpress.XtraBars.Ribbon.GalleryControlClient();
+            this.dockPanel1_Container = new DevExpress.XtraBars.Docking.ControlContainer();
+            this.navBarControl1 = new DevExpress.XtraNavBar.NavBarControl();
+            this.dockPanel1 = new DevExpress.XtraBars.Docking.DockPanel();
+            this.nbiMain_TrangChu = new DevExpress.XtraNavBar.NavBarItem();
+            this.nbiMain_QLPhong = new DevExpress.XtraNavBar.NavBarItem();
+            this.nbiMain_DatPhong = new DevExpress.XtraNavBar.NavBarItem();
+            this.nbiMain_QLKhach = new DevExpress.XtraNavBar.NavBarItem();
+            this.nbiMain_ThongKe = new DevExpress.XtraNavBar.NavBarItem();
+            this.nbiMain_Thoat = new DevExpress.XtraNavBar.NavBarItem();
             this.tabControlMain.SuspendLayout();
             this.tabPageTrangChu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.galleryControl_TrangChu)).BeginInit();
             this.galleryControl_TrangChu.SuspendLayout();
             this.tabPageDatPhong.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.galleryControl_DatPhong)).BeginInit();
+            this.galleryControl_DatPhong.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dockManager1)).BeginInit();
             this.dockPanel1_Container.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.navBarControl1)).BeginInit();
             this.dockPanel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.galleryControl_DatPhong)).BeginInit();
-            this.galleryControl_DatPhong.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControlMain
@@ -101,9 +103,9 @@
             // 
             this.galleryControl_TrangChu.Gallery.AllowHoverImages = true;
             this.galleryControl_TrangChu.Gallery.BackColor = System.Drawing.Color.White;
-            galleryItemGroup5.Caption = "Danh sách phòng";
+            galleryItemGroup11.Caption = "Danh sách phòng";
             this.galleryControl_TrangChu.Gallery.Groups.AddRange(new DevExpress.XtraBars.Ribbon.GalleryItemGroup[] {
-            galleryItemGroup5});
+            galleryItemGroup11});
             this.galleryControl_TrangChu.Gallery.HoverImageSize = new System.Drawing.Size(60, 60);
             this.galleryControl_TrangChu.Gallery.ImageSize = new System.Drawing.Size(100, 100);
             this.galleryControl_TrangChu.Gallery.ShowItemText = true;
@@ -120,14 +122,14 @@
             this.galleryControlClient1.Location = new System.Drawing.Point(2, 2);
             this.galleryControlClient1.Size = new System.Drawing.Size(959, 575);
             // 
-            // tabPageQLKhach
+            // tabPageQLPhong
             // 
-            this.tabPageQLKhach.Location = new System.Drawing.Point(4, 24);
-            this.tabPageQLKhach.Name = "tabPageQLKhach";
-            this.tabPageQLKhach.Size = new System.Drawing.Size(986, 585);
-            this.tabPageQLKhach.TabIndex = 2;
-            this.tabPageQLKhach.Text = "Quản Lý Khách";
-            this.tabPageQLKhach.UseVisualStyleBackColor = true;
+            this.tabPageQLPhong.Location = new System.Drawing.Point(4, 24);
+            this.tabPageQLPhong.Name = "tabPageQLPhong";
+            this.tabPageQLPhong.Size = new System.Drawing.Size(986, 585);
+            this.tabPageQLPhong.TabIndex = 4;
+            this.tabPageQLPhong.Text = "Quản Lý Phòng";
+            this.tabPageQLPhong.UseVisualStyleBackColor = true;
             // 
             // tabPageDatPhong
             // 
@@ -139,14 +141,41 @@
             this.tabPageDatPhong.Text = "Đặt Phòng";
             this.tabPageDatPhong.UseVisualStyleBackColor = true;
             // 
-            // tabPageQLPhong
+            // galleryControl_DatPhong
             // 
-            this.tabPageQLPhong.Location = new System.Drawing.Point(4, 24);
-            this.tabPageQLPhong.Name = "tabPageQLPhong";
-            this.tabPageQLPhong.Size = new System.Drawing.Size(986, 585);
-            this.tabPageQLPhong.TabIndex = 4;
-            this.tabPageQLPhong.Text = "Quản Lý Phòng";
-            this.tabPageQLPhong.UseVisualStyleBackColor = true;
+            this.galleryControl_DatPhong.Controls.Add(this.galleryControlClient2);
+            this.galleryControl_DatPhong.DesignGalleryGroupIndex = 0;
+            this.galleryControl_DatPhong.DesignGalleryItemIndex = 0;
+            // 
+            // 
+            // 
+            galleryItemGroup12.Caption = "Phòng";
+            this.galleryControl_DatPhong.Gallery.Groups.AddRange(new DevExpress.XtraBars.Ribbon.GalleryItemGroup[] {
+            galleryItemGroup12});
+            this.galleryControl_DatPhong.Gallery.HoverImageSize = new System.Drawing.Size(30, 30);
+            this.galleryControl_DatPhong.Gallery.ImageSize = new System.Drawing.Size(70, 70);
+            this.galleryControl_DatPhong.Gallery.ShowItemText = true;
+            this.galleryControl_DatPhong.Gallery.ItemClick += new DevExpress.XtraBars.Ribbon.GalleryItemClickEventHandler(this.galleryControl1_Gallery_ItemClick);
+            this.galleryControl_DatPhong.Location = new System.Drawing.Point(4, 4);
+            this.galleryControl_DatPhong.Name = "galleryControl_DatPhong";
+            this.galleryControl_DatPhong.Size = new System.Drawing.Size(111, 581);
+            this.galleryControl_DatPhong.TabIndex = 0;
+            this.galleryControl_DatPhong.Text = "galleryControl_DatPhong";
+            // 
+            // galleryControlClient2
+            // 
+            this.galleryControlClient2.GalleryControl = this.galleryControl_DatPhong;
+            this.galleryControlClient2.Location = new System.Drawing.Point(2, 2);
+            this.galleryControlClient2.Size = new System.Drawing.Size(90, 577);
+            // 
+            // tabPageQLKhach
+            // 
+            this.tabPageQLKhach.Location = new System.Drawing.Point(4, 24);
+            this.tabPageQLKhach.Name = "tabPageQLKhach";
+            this.tabPageQLKhach.Size = new System.Drawing.Size(986, 585);
+            this.tabPageQLKhach.TabIndex = 2;
+            this.tabPageQLKhach.Text = "Quản Lý Khách";
+            this.tabPageQLKhach.UseVisualStyleBackColor = true;
             // 
             // tabPageThongKe
             // 
@@ -176,39 +205,31 @@
             // 
             this.nbgMain_TrangChu.Caption = "Trang chủ";
             this.nbgMain_TrangChu.Expanded = true;
+            this.nbgMain_TrangChu.ImageUri.Uri = "ListBullets";
+            this.nbgMain_TrangChu.ItemLinks.AddRange(new DevExpress.XtraNavBar.NavBarItemLink[] {
+            new DevExpress.XtraNavBar.NavBarItemLink(this.nbiMain_TrangChu),
+            new DevExpress.XtraNavBar.NavBarItemLink(this.nbiMain_QLPhong),
+            new DevExpress.XtraNavBar.NavBarItemLink(this.nbiMain_DatPhong),
+            new DevExpress.XtraNavBar.NavBarItemLink(this.nbiMain_QLKhach),
+            new DevExpress.XtraNavBar.NavBarItemLink(this.nbiMain_ThongKe),
+            new DevExpress.XtraNavBar.NavBarItemLink(this.nbiMain_Thoat)});
             this.nbgMain_TrangChu.Name = "nbgMain_TrangChu";
             // 
-            // nbgMain_Khach
+            // nbiMain_PhongTrong
             // 
-            this.nbgMain_Khach.Caption = "Quản lý khách";
-            this.nbgMain_Khach.Expanded = true;
-            this.nbgMain_Khach.Name = "nbgMain_Khach";
+            this.nbiMain_PhongTrong.Caption = "Phòng trống";
+            this.nbiMain_PhongTrong.Name = "nbiMain_PhongTrong";
+            this.nbiMain_PhongTrong.LinkPressed += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.nbiMain_PhongTrong_LinkPressed);
             // 
-            // nbgMain_DatPhong
+            // nbiMain_PhongCoKhach
             // 
-            this.nbgMain_DatPhong.Caption = "Đặt phòng";
-            this.nbgMain_DatPhong.Expanded = true;
-            this.nbgMain_DatPhong.Name = "nbgMain_DatPhong";
+            this.nbiMain_PhongCoKhach.Caption = "Có khách";
+            this.nbiMain_PhongCoKhach.Name = "nbiMain_PhongCoKhach";
             // 
-            // nbgMain_Phong
+            // nbiMain_PhongKhac
             // 
-            this.nbgMain_Phong.Caption = "Quản lý phòng";
-            this.nbgMain_Phong.Expanded = true;
-            this.nbgMain_Phong.ItemLinks.AddRange(new DevExpress.XtraNavBar.NavBarItemLink[] {
-            new DevExpress.XtraNavBar.NavBarItemLink(this.nbiMain_PhongTrong),
-            new DevExpress.XtraNavBar.NavBarItemLink(this.nbiMain_PhongCoKhach),
-            new DevExpress.XtraNavBar.NavBarItemLink(this.nbiMain_PhongKhac)});
-            this.nbgMain_Phong.Name = "nbgMain_Phong";
-            // 
-            // nbgMain_ThongKe
-            // 
-            this.nbgMain_ThongKe.Caption = "Thống kê";
-            this.nbgMain_ThongKe.Name = "nbgMain_ThongKe";
-            // 
-            // nbgMain_Thoat
-            // 
-            this.nbgMain_Thoat.Caption = "Thoát";
-            this.nbgMain_Thoat.Name = "nbgMain_Thoat";
+            this.nbiMain_PhongKhac.Caption = "Khác";
+            this.nbiMain_PhongKhac.Name = "nbiMain_PhongKhac";
             // 
             // dockPanel1_Container
             // 
@@ -223,16 +244,17 @@
             this.navBarControl1.ActiveGroup = this.nbgMain_TrangChu;
             this.navBarControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.navBarControl1.Groups.AddRange(new DevExpress.XtraNavBar.NavBarGroup[] {
-            this.nbgMain_TrangChu,
-            this.nbgMain_Khach,
-            this.nbgMain_DatPhong,
-            this.nbgMain_Phong,
-            this.nbgMain_ThongKe,
-            this.nbgMain_Thoat});
+            this.nbgMain_TrangChu});
             this.navBarControl1.Items.AddRange(new DevExpress.XtraNavBar.NavBarItem[] {
             this.nbiMain_PhongTrong,
             this.nbiMain_PhongCoKhach,
-            this.nbiMain_PhongKhac});
+            this.nbiMain_PhongKhac,
+            this.nbiMain_TrangChu,
+            this.nbiMain_QLPhong,
+            this.nbiMain_DatPhong,
+            this.nbiMain_QLKhach,
+            this.nbiMain_ThongKe,
+            this.nbiMain_Thoat});
             this.navBarControl1.Location = new System.Drawing.Point(0, 0);
             this.navBarControl1.Name = "navBarControl1";
             this.navBarControl1.OptionsNavPane.ExpandedWidth = 191;
@@ -252,48 +274,47 @@
             this.dockPanel1.Size = new System.Drawing.Size(200, 600);
             this.dockPanel1.Text = "dockPanel1";
             // 
-            // nbiMain_PhongTrong
+            // nbiMain_TrangChu
             // 
-            this.nbiMain_PhongTrong.Caption = "Phòng trống";
-            this.nbiMain_PhongTrong.Name = "nbiMain_PhongTrong";
-            this.nbiMain_PhongTrong.LinkPressed += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.nbiMain_PhongTrong_LinkPressed);
+            this.nbiMain_TrangChu.Caption = "Trang Chủ";
+            this.nbiMain_TrangChu.ImageUri.Uri = "AlignVerticalRight";
+            this.nbiMain_TrangChu.Name = "nbiMain_TrangChu";
+            this.nbiMain_TrangChu.LinkPressed += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.nbiMain_TrangChu_LinkPressed);
             // 
-            // nbiMain_PhongCoKhach
+            // nbiMain_QLPhong
             // 
-            this.nbiMain_PhongCoKhach.Caption = "Có khách";
-            this.nbiMain_PhongCoKhach.Name = "nbiMain_PhongCoKhach";
+            this.nbiMain_QLPhong.Caption = "QL Phòng";
+            this.nbiMain_QLPhong.ImageUri.Uri = "Home";
+            this.nbiMain_QLPhong.Name = "nbiMain_QLPhong";
+            this.nbiMain_QLPhong.LinkPressed += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.nbiMain_QLPhong_LinkPressed);
             // 
-            // nbiMain_PhongKhac
+            // nbiMain_DatPhong
             // 
-            this.nbiMain_PhongKhac.Caption = "Khác";
-            this.nbiMain_PhongKhac.Name = "nbiMain_PhongKhac";
+            this.nbiMain_DatPhong.Caption = "Đặt phòng";
+            this.nbiMain_DatPhong.ImageUri.Uri = "Apply";
+            this.nbiMain_DatPhong.Name = "nbiMain_DatPhong";
+            this.nbiMain_DatPhong.LinkPressed += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.nbiMain_DatPhong_LinkPressed);
             // 
-            // galleryControl_DatPhong
+            // nbiMain_QLKhach
             // 
-            this.galleryControl_DatPhong.Controls.Add(this.galleryControlClient2);
-            this.galleryControl_DatPhong.DesignGalleryGroupIndex = 0;
-            this.galleryControl_DatPhong.DesignGalleryItemIndex = 0;
+            this.nbiMain_QLKhach.Caption = "QL Khách";
+            this.nbiMain_QLKhach.ImageUri.Uri = "Edit";
+            this.nbiMain_QLKhach.Name = "nbiMain_QLKhach";
+            this.nbiMain_QLKhach.LinkPressed += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.nbiMain_QLKhach_LinkPressed);
             // 
+            // nbiMain_ThongKe
             // 
+            this.nbiMain_ThongKe.Caption = "Thống kê";
+            this.nbiMain_ThongKe.ImageUri.Uri = "Chart";
+            this.nbiMain_ThongKe.Name = "nbiMain_ThongKe";
+            this.nbiMain_ThongKe.LinkPressed += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.nbiMain_ThongKe_LinkPressed);
             // 
-            galleryItemGroup6.Caption = "Phòng";
-            this.galleryControl_DatPhong.Gallery.Groups.AddRange(new DevExpress.XtraBars.Ribbon.GalleryItemGroup[] {
-            galleryItemGroup6});
-            this.galleryControl_DatPhong.Gallery.HoverImageSize = new System.Drawing.Size(30, 30);
-            this.galleryControl_DatPhong.Gallery.ImageSize = new System.Drawing.Size(70, 70);
-            this.galleryControl_DatPhong.Gallery.ShowItemText = true;
-            this.galleryControl_DatPhong.Gallery.ItemClick += new DevExpress.XtraBars.Ribbon.GalleryItemClickEventHandler(this.galleryControl1_Gallery_ItemClick);
-            this.galleryControl_DatPhong.Location = new System.Drawing.Point(4, 4);
-            this.galleryControl_DatPhong.Name = "galleryControl_DatPhong";
-            this.galleryControl_DatPhong.Size = new System.Drawing.Size(111, 581);
-            this.galleryControl_DatPhong.TabIndex = 0;
-            this.galleryControl_DatPhong.Text = "galleryControl_DatPhong";
+            // nbiMain_Thoat
             // 
-            // galleryControlClient2
-            // 
-            this.galleryControlClient2.GalleryControl = this.galleryControl_DatPhong;
-            this.galleryControlClient2.Location = new System.Drawing.Point(2, 2);
-            this.galleryControlClient2.Size = new System.Drawing.Size(90, 577);
+            this.nbiMain_Thoat.Caption = "Thoát";
+            this.nbiMain_Thoat.ImageUri.Uri = "Delete";
+            this.nbiMain_Thoat.Name = "nbiMain_Thoat";
+            this.nbiMain_Thoat.LinkPressed += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.nbiMain_Thoat_LinkPressed);
             // 
             // frmMain
             // 
@@ -315,12 +336,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.galleryControl_TrangChu)).EndInit();
             this.galleryControl_TrangChu.ResumeLayout(false);
             this.tabPageDatPhong.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.galleryControl_DatPhong)).EndInit();
+            this.galleryControl_DatPhong.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dockManager1)).EndInit();
             this.dockPanel1_Container.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.navBarControl1)).EndInit();
             this.dockPanel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.galleryControl_DatPhong)).EndInit();
-            this.galleryControl_DatPhong.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -336,11 +357,6 @@
         private DevExpress.XtraBars.Ribbon.GalleryControlClient galleryControlClient1;
         private DevExpress.XtraBars.Docking.DockManager dockManager1;
         private DevExpress.XtraNavBar.NavBarGroup nbgMain_TrangChu;
-        private DevExpress.XtraNavBar.NavBarGroup nbgMain_Khach;
-        private DevExpress.XtraNavBar.NavBarGroup nbgMain_DatPhong;
-        private DevExpress.XtraNavBar.NavBarGroup nbgMain_Phong;
-        private DevExpress.XtraNavBar.NavBarGroup nbgMain_ThongKe;
-        private DevExpress.XtraNavBar.NavBarGroup nbgMain_Thoat;
         private DevExpress.XtraBars.Docking.DockPanel dockPanel1;
         private DevExpress.XtraBars.Docking.ControlContainer dockPanel1_Container;
         private DevExpress.XtraNavBar.NavBarControl navBarControl1;
@@ -349,5 +365,11 @@
         private DevExpress.XtraNavBar.NavBarItem nbiMain_PhongKhac;
         private DevExpress.XtraBars.Ribbon.GalleryControl galleryControl_DatPhong;
         private DevExpress.XtraBars.Ribbon.GalleryControlClient galleryControlClient2;
+        private DevExpress.XtraNavBar.NavBarItem nbiMain_TrangChu;
+        private DevExpress.XtraNavBar.NavBarItem nbiMain_QLPhong;
+        private DevExpress.XtraNavBar.NavBarItem nbiMain_DatPhong;
+        private DevExpress.XtraNavBar.NavBarItem nbiMain_QLKhach;
+        private DevExpress.XtraNavBar.NavBarItem nbiMain_ThongKe;
+        private DevExpress.XtraNavBar.NavBarItem nbiMain_Thoat;
     }
 }

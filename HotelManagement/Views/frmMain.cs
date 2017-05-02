@@ -158,5 +158,35 @@ namespace HotelManagement
         {
             
         }
+
+        private void nbiMain_TrangChu_LinkPressed(object sender, DevExpress.XtraNavBar.NavBarLinkEventArgs e)
+        {
+            tabControlMain.SelectTab(tabPageTrangChu);
+        }
+
+        private void nbiMain_QLPhong_LinkPressed(object sender, DevExpress.XtraNavBar.NavBarLinkEventArgs e)
+        {
+            tabControlMain.SelectTab(tabPageQLPhong);
+        }
+
+        private void nbiMain_DatPhong_LinkPressed(object sender, DevExpress.XtraNavBar.NavBarLinkEventArgs e)
+        {
+            tabControlMain.SelectTab(tabPageDatPhong);
+        }
+
+        private void nbiMain_QLKhach_LinkPressed(object sender, DevExpress.XtraNavBar.NavBarLinkEventArgs e)
+        {
+            tabControlMain.SelectTab(tabPageQLKhach);
+        }
+
+        private void nbiMain_ThongKe_LinkPressed(object sender, DevExpress.XtraNavBar.NavBarLinkEventArgs e)
+        {
+            tabControlMain.SelectTab(tabPageThongKe);
+        }
+
+        private void nbiMain_Thoat_LinkPressed(object sender, DevExpress.XtraNavBar.NavBarLinkEventArgs e)
+        {
+            this.Close();
+        }
     }
 }
