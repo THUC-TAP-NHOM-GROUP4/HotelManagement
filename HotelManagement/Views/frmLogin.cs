@@ -1,4 +1,6 @@
-﻿using System;
+﻿using HotelManagement.Controllers;
+using HotelManagement.Models;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -11,7 +13,9 @@ namespace HotelManagement
 {
     public partial class frmLogin : Form
     {
+        private Controller control = new Controller();
         private frmMain frmMain;
+        private NhanVien nhanvien = new NhanVien();
         public frmLogin()
         {
             InitializeComponent();
@@ -22,9 +26,13 @@ namespace HotelManagement
         {
             if (isCheckedTrue())
             {
-                frmMain = new frmMain(this);
+                nhanvien = control.getNhanVien(login_textbox_username.Text.ToString().Trim(), 
+                    login_textbox_password.Text.ToString().Trim());
+                frmMain = new frmMain(this, nhanvien);
                 frmMain.Visible = true;
                 this.Visible = false;
+                login_erp_username.Clear();
+                login_erp_password.Clear();
             }
             else
             {
@@ -34,7 +42,13 @@ namespace HotelManagement
         }
         private bool isCheckedTrue()
         {
-            return true;
+            String username = login_textbox_username.Text.ToString().Trim();
+            String password = login_textbox_password.Text.ToString().Trim();
+            if (username.Equals("")) return false;
+            else if (password.Equals("")) return false;
+            else if (control.checkLogin(username, password))
+                return true;
+            return false;
         }
     }
 }

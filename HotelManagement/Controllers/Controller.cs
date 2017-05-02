@@ -114,6 +114,30 @@ namespace HotelManagement.Controllers
             da.Query("proc_insert_DatPhong", para);
             return true;
         }
+        public bool checkLogin( String username, String password)
+        {
+            DataTable table = da.Query("select ma from NhanVien where NhanVien.taikhoan  = '" + username + "' and NhanVien.matkhau = '" + password + "'");
+            int n = table.Rows.Count;
+            if (n == 1)
+                return true;
+            return false;
+        }
+        public NhanVien getNhanVien(String username, String password)
+        {
+            NhanVien nv = new NhanVien();
+            DataTable table = da.Query("select *from NhanVien where NhanVien.taikhoan  = '" + username + "' and NhanVien.matkhau = '" + password + "'");
+            int n = table.Rows.Count;
+            int i;
+            if (n == 1)
+            {
+                nv.Ma = table.Rows[0]["ma"].ToString().Trim();
+                nv.Ten = table.Rows[0]["ten"].ToString().Trim();
+                nv.TaiKhoan = username;
+                nv.MatKhau = password;
+            }
+            return nv;
+        }
+        
     }
 }
 

@@ -18,30 +18,46 @@ namespace HotelManagement
         Controller controller = new Controller();
         private frmLogin frmLogin;
         private frmChiTietPhong frmChiTietPhong;
+        private NhanVien nhanvien;
         public frmMain()
         {
             InitializeComponent();
         }
-        public frmMain(frmLogin frmLogin)
+        public frmMain(frmLogin frmLogin, NhanVien nv)
         {
             InitializeComponent();
             this.frmLogin = frmLogin;
+            this.nhanvien = nv;
         }
         public frmMain(int key)
         {
             InitializeComponent();
-            tabControlMain.SelectTab(tabPageDatPhong);
+            Load_();
+            tabControlMain.SelectedIndex = 2;//tabpage DatPhong
         }
         private void frmMain_Load(object sender, EventArgs e)
         {
+            //loaded tabpage Trang chu
+            Load_tabpage_trangchu();
+            //loaded tabpage DatPhong
+            Load_tabpage_datphong();
+            
+        }
+        private void Load_()
+        {
+            Load_tabpage_trangchu();
+            Load_tabpage_datphong();
+        }
+        private void Load_tabpage_trangchu()
+        {
             //loaded tabpage TrangChu
             Phong[] lsPhong = controller.getList_Phong();
-            int i= 0;
+            int i = 0;
             String src_image = "";
             String trangthai = "";
             IEnumerable<Phong> ls_phong_sort = from phong in lsPhong
-                                                orderby phong.SoPhong.Substring(0, 1)
-                                          select phong;
+                                               orderby phong.SoPhong.Substring(0, 1)
+                                               select phong;
 
             foreach (Phong phong in ls_phong_sort)
             {
@@ -69,9 +85,6 @@ namespace HotelManagement
                     galleryControl_TrangChu.Gallery.Groups[0].Items[i].Image;
                 i++;
             }
-            //loaded tabpage DatPhong
-            Load_tabpage_datphong();
-            
         }
         private void Load_tabpage_datphong()
         {
@@ -134,6 +147,7 @@ namespace HotelManagement
             tbDatPhong_GioDi.Text = "";
 
         }
+
         private void frmMain_FormClosed(object sender, FormClosedEventArgs e)
         {
             this.frmLogin.Visible = true;
@@ -259,7 +273,8 @@ namespace HotelManagement
                 giodi = gio;
             }
             
-            controller.DatPhong( khach.Ma, phong.Ma, ngayden, gioden, ngaydi,giodi, double.Parse(tbDatPhong_TienDatCoc.ToString().Trim()), "NV0001");
+            controller.DatPhong( khach.Ma, phong.Ma, ngayden, gioden, ngaydi,giodi, 
+                double.Parse(tbDatPhong_TienDatCoc.ToString().Trim()), nhanvien.Ma);
             /*String khachMa, String phongMa, DateTime ngayDen, int gioDen, DateTime ngayDi, int gioDi, double tienDatCoc,
             String nhanVienMa)*/
         }
