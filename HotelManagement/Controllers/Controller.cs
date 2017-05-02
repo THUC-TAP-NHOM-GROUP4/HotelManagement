@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -28,6 +29,33 @@ namespace HotelManagement.Controllers
             }
             return list;
         }
+        public String[] getList_Phong_byKey(String key)
+        {
+            DataTable table = da.Query("select *from phong");
+            int n = table.Rows.Count;
+            int i;
+            if (n == 0) return null;
+            String[] list = new String[n];
+            for (i = 0; i < n; i++)
+            {
+                switch (key)
+                {
+                    case "sophong":
+                        list[i] = get_Phong(table.Rows[i]).SoPhong;
+                        break;
+                    case "loaiphong":
+                        list[i] = get_Phong(table.Rows[i]).LoaiPhong;
+                        break;
+                    case "dongia":
+                        list[i] = get_Phong(table.Rows[i]).DonGia.ToString() ;
+                        break;
+                    default:
+                        break;
+                }
+                
+            }
+            return list;
+        }
         private Phong get_Phong(DataRow row)
         {
             Phong phong = new Phong();
@@ -41,7 +69,7 @@ namespace HotelManagement.Controllers
             int trangthai = 0;
             if (int.TryParse(row["trangthai"].ToString().Trim(), out trangthai))
                 phong.TrangThai = trangthai;
-
+            phong.LoaiPhong = row["loaiphongma"].ToString().Trim();
             return phong;
         }
         public Phong get_Phong(String sophong)
@@ -59,6 +87,32 @@ namespace HotelManagement.Controllers
                 phong.TrangThai = int.Parse(table.Rows[0]["trangthai"].ToString().Trim());
             }
             return phong;
+        }
+
+        public void ThemKhachHang(Khach khach)
+        {
+
+        }
+
+        public bool DatPhong(String khachMa, String phongMa, DateTime ngayDen, int gioDen, DateTime ngayDi, int gioDi, double tienDatCoc,
+            String nhanVienMa)
+        {
+            /*proc_insert_DatPhong](@khachma varchar(20), @phongma varchar(20),@ngaydangky date, @ngayden date, @gioden int, 
+@ngaydi date, @giodi int, @tiendatcoc money , @nhanvienma varchar(20)*/
+            SqlParameter[] para =
+            {
+                new SqlParameter("khachma", khachMa),
+                new SqlParameter("phongma", phongMa),
+                new SqlParameter("ngaydangky", DateTime.Now.ToShortDateString()),
+                new SqlParameter("ngayden", ngayDen),
+                new SqlParameter("gioden", gioDen),
+                new SqlParameter("ngaydi", ngayDi),
+                new SqlParameter("giodi", gioDi),
+                new SqlParameter("tiendatcoc", tienDatCoc),
+                new SqlParameter("nhanvienma", nhanVienMa)
+            };
+            da.Query("proc_insert_DatPhong", para);
+            return true;
         }
     }
 }

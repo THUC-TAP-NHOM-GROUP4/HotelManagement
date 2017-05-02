@@ -70,6 +70,18 @@ namespace HotelManagement
                 i++;
             }
             //loaded tabpage DatPhong
+            Load_tabpage_datphong();
+            
+        }
+        private void Load_tabpage_datphong()
+        {
+            int i;
+            Phong[] lsPhong = controller.getList_Phong();
+            String src_image = "";
+            String trangthai = "";
+            IEnumerable<Phong> ls_phong_sort = from phong in lsPhong
+                                               orderby phong.SoPhong.Substring(0, 1)
+                                               select phong;
             i = 0;
             foreach (Phong phong in ls_phong_sort)
             {
@@ -97,8 +109,31 @@ namespace HotelManagement
                     galleryControl_DatPhong.Gallery.Groups[0].Items[i].Image;
                 i++;
             }
-        }
 
+            tbDatPhong_HoTen.Text = "";
+            dtpDatPhong_NgaySinh.Text = DateTime.Now.ToShortDateString().ToString();
+            cbDatPhong_Nam.Checked = true;
+            cbDatPhong_Nu.Checked = false;
+            tbDatPhong_CMND.Text = "";
+            tbDatPhong_DiaChi.Text = "";
+            tbDatPhong_QuocTich.Text = "Việt Nam";
+            tbDatPhong_SoDienThoai.Text = "";
+            tbDatPhong_SoLuong.Text = "";
+            cbbDatPhong_SoPhong.DataSource = controller.getList_Phong_byKey("sophong");
+            cbbDatPhong_SoPhong.Text = "";
+            cbbDatPhong_LoaiPhong.Text = "";
+            cbbDatPhong_LoaiPhong.DataSource = controller.getList_Phong_byKey("loaiphong");
+            cbbDatPhong_DonGia.Text = "";
+            cbbDatPhong_DonGia.DataSource = controller.getList_Phong_byKey("dongia");
+            tbDatPhong_TrangThai.Text = "";
+            cbbDatPhong_TrangThietBi.Text = "";
+            cbbDatPhong_TrangThietBi.DataSource = controller.getList_Phong_byKey("trangthietbi");
+            dtpDatPhong_NgayDen.Text = DateTime.Now.ToShortDateString().ToString();
+            dtpDatPhong_NgayDi.Text = DateTime.Now.ToShortDateString().ToString();
+            tbDatPhong_GioDen.Text = "";
+            tbDatPhong_GioDi.Text = "";
+
+        }
         private void frmMain_FormClosed(object sender, FormClosedEventArgs e)
         {
             this.frmLogin.Visible = true;
@@ -156,7 +191,16 @@ namespace HotelManagement
         /// <param name="e"></param>
         private void galleryControl1_Gallery_ItemClick(object sender, DevExpress.XtraBars.Ribbon.GalleryItemClickEventArgs e)
         {
-            
+            Phong phong = new Phong();
+            phong = controller.get_Phong(e.Item.Caption);
+            cbbDatPhong_SoPhong.Text = phong.SoPhong;
+            cbbDatPhong_LoaiPhong.Text = phong.LoaiPhong;
+            cbbDatPhong_DonGia.Text = phong.DonGia.ToString() ;
+            if (phong.TrangThai == 0) tbDatPhong_TrangThai.Text = "Phòng trống";
+            else if (phong.TrangThai == 1)
+                tbDatPhong_TrangThai.Text = "Phòng có khách";
+            else tbDatPhong_TrangThai.Text = "Khác";
+
         }
 
         private void nbiMain_TrangChu_LinkPressed(object sender, DevExpress.XtraNavBar.NavBarLinkEventArgs e)
@@ -187,6 +231,47 @@ namespace HotelManagement
         private void nbiMain_Thoat_LinkPressed(object sender, DevExpress.XtraNavBar.NavBarLinkEventArgs e)
         {
             this.Close();
+        }
+
+        private void btnDatPhong_DatPhong_Click(object sender, EventArgs e)
+        {
+            Khach khach = new Khach();
+            khach.Ten = tbDatPhong_HoTen.Text;
+            khach.NgaySinh = DateTime.Parse(dtpDatPhong_NgaySinh.Value.ToShortDateString());
+            if (cbDatPhong_Nam.Checked) khach.GioiTinh = 1;
+            else khach.GioiTinh = 0;
+            khach.DiaChi = tbDatPhong_DiaChi.Text;
+            khach.QuocTich = tbDatPhong_QuocTich.Text;
+            khach.SoDienThoai = tbDatPhong_SoDienThoai.Text;
+            khach.ChungMinhThu = tbDatPhong_CMND.Text;
+            controller.ThemKhachHang(khach);
+
+            Phong phong = new Phong();
+            phong = controller.get_Phong(cbbDatPhong_SoPhong.SelectedValue.ToString().Trim());
+            DateTime ngayden = DateTime.Parse(dtpDatPhong_NgayDen.Value.ToShortDateString());
+            DateTime ngaydi = DateTime.Parse(dtpDatPhong_NgayDi.Value.ToShortDateString());
+            int gio = 8;
+            int gioden= 8, giodi= 8;
+            if(int.TryParse(tbDatPhong_GioDen.ToString().Trim(), out gio)){
+                gioden = gio;
+            }
+            if (int.TryParse(tbDatPhong_GioDi.ToString().Trim(), out gio)){
+                giodi = gio;
+            }
+            
+            controller.DatPhong( khach.Ma, phong.Ma, ngayden, gioden, ngaydi,giodi, double.Parse(tbDatPhong_TienDatCoc.ToString().Trim()), "NV0001");
+            /*String khachMa, String phongMa, DateTime ngayDen, int gioDen, DateTime ngayDi, int gioDi, double tienDatCoc,
+            String nhanVienMa)*/
+        }
+
+        private void btnDatPhong_Huy_Click(object sender, EventArgs e)
+        {
+            Load_tabpage_datphong();
+        }
+
+        private void btnDatPhong_Thoat_Click(object sender, EventArgs e)
+        {
+            tabControlMain.SelectTab(tabPageTrangChu);
         }
     }
 }
