@@ -1,5 +1,6 @@
 ﻿using HotelManagement.Controllers;
 using HotelManagement.Models;
+using HotelManagement.Views;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -16,6 +17,7 @@ namespace HotelManagement
     {
         Controller controller = new Controller();
         private frmLogin frmLogin;
+        private frmChiTietPhong frmChiTietPhong;
         public frmMain()
         {
             InitializeComponent();
@@ -25,21 +27,30 @@ namespace HotelManagement
             InitializeComponent();
             this.frmLogin = frmLogin;
         }
+        public frmMain(int key)
+        {
+            InitializeComponent();
+            tabControlMain.SelectTab(tabPageDatPhongNhanh);
+        }
         private void frmMain_Load(object sender, EventArgs e)
         {
             Phong[] lsPhong = controller.getList_Phong();
-            int i;
+            int i= 0;
             String src_image = "";
             String trangthai = "";
-            for (i = 0; i < lsPhong.Length; i++)
+            IEnumerable<Phong> ls_phong_sort = from phong in lsPhong
+                                                orderby phong.SoPhong.Substring(0, 1)
+                                          select phong;
+
+            foreach (Phong phong in ls_phong_sort)
             {
                 src_image = "E:\\HOC_KY_6\\ThucTapNhom\\PROJECT\\HotelManagement\\HotelManagement\\Images\\";
-                if (lsPhong[i].TrangThai == 0)
+                if (phong.TrangThai == 0)
                 {
                     trangthai = "Phòng trống";
                     src_image += "no.png";
                 }
-                else if (lsPhong[i].TrangThai == 1)
+                else if (phong.TrangThai == 1)
                 {
                     src_image += "yes.png";
                     trangthai = "Có khách";
@@ -49,13 +60,15 @@ namespace HotelManagement
                     src_image += "none.jpg";
                     trangthai = "khác";
                 }
-                galleryControl_TrangChu.Gallery.Groups[0].Items.Add(new DevExpress.XtraBars.Ribbon.GalleryItem(
-                        new Bitmap(src_image),lsPhong[i].SoPhong, trangthai));
+                galleryControl_TrangChu.Gallery.Groups[0].Items.Add(
+                    new DevExpress.XtraBars.Ribbon.GalleryItem(
+                        new Bitmap(src_image), phong.SoPhong, trangthai));
 
                 galleryControl_TrangChu.Gallery.Groups[0].Items[i].HoverImage =
                     galleryControl_TrangChu.Gallery.Groups[0].Items[i].Image;
-
+                i++;
             }
+
         }
 
         private void frmMain_FormClosed(object sender, FormClosedEventArgs e)
@@ -100,7 +113,8 @@ namespace HotelManagement
         /// <param name="e"></param>
         private void galleryControl1_Gallery_ItemDoubleClick(object sender, DevExpress.XtraBars.Ribbon.GalleryItemClickEventArgs e)
         {
-
+            frmChiTietPhong = new frmChiTietPhong(e.Item.Caption, this);
+            frmChiTietPhong.ShowDialog();
         }
     }
 }

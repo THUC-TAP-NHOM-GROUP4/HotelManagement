@@ -55,6 +55,12 @@
     <Compile Include="Models\Khach.cs" />
     <Compile Include="Models\Phong.cs" />
     <Compile Include="Models\VatDung.cs" />
+    <Compile Include="Views\frmChiTietPhong.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\frmChiTietPhong.Designer.cs">
+      <DependentUpon>frmChiTietPhong.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\frmMain.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -71,6 +77,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Views\room_item.cs" />
     <EmbeddedResource Include="Properties\licenses.licx" />
+    <EmbeddedResource Include="Views\frmChiTietPhong.resx">
+      <DependentUpon>frmChiTietPhong.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\frmMain.resx">
       <DependentUpon>frmMain.cs</DependentUpon>
     </EmbeddedResource>

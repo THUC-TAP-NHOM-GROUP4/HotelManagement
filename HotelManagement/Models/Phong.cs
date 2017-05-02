@@ -8,6 +8,10 @@ namespace HotelManagement.Models
 {
     public class Phong
     {
+        public Phong()
+        {
+           
+        }
         public String Ma { get; set; }
         public String SoPhong { get; set; }
         public String LoaiPhong { get; set; }

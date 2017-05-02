@@ -44,6 +44,22 @@ namespace HotelManagement.Controllers
 
             return phong;
         }
+        public Phong get_Phong(String sophong)
+        {
+            Phong phong = new Phong();
+            DataTable table = da.Query("select *from Phong where phong.sophong = N'" + sophong + "'");
+            int n = table.Rows.Count;
+            int i;
+            if(n== 1)
+            {
+                phong.Ma = table.Rows[0]["ma"].ToString().Trim();
+                phong.SoPhong = table.Rows[0]["sophong"].ToString().Trim();
+                phong.DonGia = double.Parse(table.Rows[0]["dongia"].ToString().Trim());
+                phong.LoaiPhong = table.Rows[0]["loaiphongma"].ToString().Trim();
+                phong.TrangThai = int.Parse(table.Rows[0]["trangthai"].ToString().Trim());
+            }
+            return phong;
+        }
     }
 }
 
