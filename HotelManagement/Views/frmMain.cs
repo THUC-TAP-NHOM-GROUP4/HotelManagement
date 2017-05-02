@@ -30,10 +30,11 @@ namespace HotelManagement
         public frmMain(int key)
         {
             InitializeComponent();
-            tabControlMain.SelectTab(tabPageDatPhongNhanh);
+            tabControlMain.SelectTab(tabPageDatPhong);
         }
         private void frmMain_Load(object sender, EventArgs e)
         {
+            //loaded tabpage TrangChu
             Phong[] lsPhong = controller.getList_Phong();
             int i= 0;
             String src_image = "";
@@ -68,7 +69,34 @@ namespace HotelManagement
                     galleryControl_TrangChu.Gallery.Groups[0].Items[i].Image;
                 i++;
             }
+            //loaded tabpage DatPhong
+            i = 0;
+            foreach (Phong phong in ls_phong_sort)
+            {
+                src_image = "E:\\HOC_KY_6\\ThucTapNhom\\PROJECT\\HotelManagement\\HotelManagement\\Images\\";
+                if (phong.TrangThai == 0)
+                {
+                    trangthai = "Phòng trống";
+                    src_image += "no.png";
+                }
+                else if (phong.TrangThai == 1)
+                {
+                    src_image += "yes.png";
+                    trangthai = "Có khách";
+                }
+                else
+                {
+                    src_image += "none.jpg";
+                    trangthai = "khác";
+                }
+                galleryControl_DatPhong.Gallery.Groups[0].Items.Add(
+                    new DevExpress.XtraBars.Ribbon.GalleryItem(
+                        new Bitmap(src_image), phong.SoPhong, trangthai));
 
+                galleryControl_DatPhong.Gallery.Groups[0].Items[i].HoverImage =
+                    galleryControl_DatPhong.Gallery.Groups[0].Items[i].Image;
+                i++;
+            }
         }
 
         private void frmMain_FormClosed(object sender, FormClosedEventArgs e)
@@ -84,12 +112,12 @@ namespace HotelManagement
 
         private void btnDatPhongNhanh_Click(object sender, EventArgs e)
         {
-            tabControlMain.SelectTab(tabPageDatPhongNhanh);
+            tabControlMain.SelectTab(tabPageDatPhong);
         }
 
         private void btnTinhTrangPhong_Click(object sender, EventArgs e)
         {
-            tabControlMain.SelectTab(tabPageTinhTrangPhong);
+            tabControlMain.SelectTab(tabPageQLPhong);
         }
 
         private void btnThongKe_Click(object sender, EventArgs e)
@@ -115,6 +143,20 @@ namespace HotelManagement
         {
             frmChiTietPhong = new frmChiTietPhong(e.Item.Caption, this);
             frmChiTietPhong.ShowDialog();
+        }
+
+        private void nbiMain_PhongTrong_LinkPressed(object sender, DevExpress.XtraNavBar.NavBarLinkEventArgs e)
+        {
+            MessageBox.Show("press");
+        }
+        /// <summary>
+        /// đặt phòng: click chọn phòng
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void galleryControl1_Gallery_ItemClick(object sender, DevExpress.XtraBars.Ribbon.GalleryItemClickEventArgs e)
+        {
+            
         }
     }
 }

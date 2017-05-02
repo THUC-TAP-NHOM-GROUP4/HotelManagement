@@ -50,6 +50,7 @@ namespace HotelManagement.Views
             } 
             lblTang.Text = phong.SoPhong.Substring(0, 1);
             cbbTrangThietBi.DataSource = new String[1] { "" };
+            lblSoLuong.Text = "0";
 
         }
         private void btnThoat_Click(object sender, EventArgs e)
