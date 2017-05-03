@@ -302,6 +302,7 @@
             this.cbbDatPhong_SoPhong.Name = "cbbDatPhong_SoPhong";
             this.cbbDatPhong_SoPhong.Size = new System.Drawing.Size(235, 23);
             this.cbbDatPhong_SoPhong.TabIndex = 0;
+            this.cbbDatPhong_SoPhong.SelectedValueChanged += new System.EventHandler(this.cbbDatPhong_SoPhong_SelectedValueChanged);
             // 
             // label13
             // 

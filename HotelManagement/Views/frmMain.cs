@@ -140,7 +140,7 @@ namespace HotelManagement
             cbbDatPhong_DonGia.DataSource = controller.getList_Phong_byKey("dongia");
             tbDatPhong_TrangThai.Text = "";
             cbbDatPhong_TrangThietBi.Text = "";
-            cbbDatPhong_TrangThietBi.DataSource = controller.getList_Phong_byKey("trangthietbi");
+            cbbDatPhong_TrangThietBi.DataSource = controller.getList_TrangThietBi("");
             dtpDatPhong_NgayDen.Text = DateTime.Now.ToShortDateString().ToString();
             dtpDatPhong_NgayDi.Text = DateTime.Now.ToShortDateString().ToString();
             tbDatPhong_GioDen.Text = "";
@@ -287,6 +287,12 @@ namespace HotelManagement
         private void btnDatPhong_Thoat_Click(object sender, EventArgs e)
         {
             tabControlMain.SelectTab(tabPageTrangChu);
+        }
+
+        private void cbbDatPhong_SoPhong_SelectedValueChanged(object sender, EventArgs e)
+        {
+            cbbDatPhong_TrangThietBi.DataSource = controller.getList_TrangThietBi(cbbDatPhong_SoPhong.SelectedValue.ToString().Trim());
+
         }
     }
 }

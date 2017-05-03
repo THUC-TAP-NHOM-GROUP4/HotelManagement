@@ -47,12 +47,32 @@ namespace HotelManagement.Controllers
                         list[i] = get_Phong(table.Rows[i]).LoaiPhong;
                         break;
                     case "dongia":
-                        list[i] = get_Phong(table.Rows[i]).DonGia.ToString() ;
+                        list[i] = get_Phong(table.Rows[i]).DonGia.ToString();
                         break;
                     default:
                         break;
                 }
-                
+
+            }
+            return list;
+        }
+        public String[] getList_TrangThietBi(String sophong)
+        {
+            if (sophong == "")
+                return new String[0];
+            DataTable table = da.Query("select *from ThietBiPhong where " 
+                + "thietbiphong.phongma = (select ma from phong where phong.sophong = '" + sophong+ "')");
+            int n = table.Rows.Count;
+            int i;
+            if (n == 0) return null;
+            String[] list = new String[n];
+            String ten = "";
+            int soluong = 0;
+            for (i = 0; i < n; i++)
+            {
+                ten = table.Rows[i]["ten"].ToString().Trim();
+                soluong = int.Parse(table.Rows[i]["soluong"].ToString().Trim());
+                list[i] = ten + "(" + soluong + ")";
             }
             return list;
         }
@@ -62,7 +82,7 @@ namespace HotelManagement.Controllers
             phong.Ma = row["ma"].ToString().Trim();
             phong.SoPhong = row["sophong"].ToString().Trim();
             double dongia = 0;
-            if( Double.TryParse(row["dongia"].ToString().Trim(), out dongia))
+            if (Double.TryParse(row["dongia"].ToString().Trim(), out dongia))
             {
                 phong.DonGia = dongia;
             }
@@ -78,7 +98,7 @@ namespace HotelManagement.Controllers
             DataTable table = da.Query("select *from Phong where phong.sophong = N'" + sophong + "'");
             int n = table.Rows.Count;
             int i;
-            if(n== 1)
+            if (n == 1)
             {
                 phong.Ma = table.Rows[0]["ma"].ToString().Trim();
                 phong.SoPhong = table.Rows[0]["sophong"].ToString().Trim();
@@ -114,7 +134,7 @@ namespace HotelManagement.Controllers
             da.Query("proc_insert_DatPhong", para);
             return true;
         }
-        public bool checkLogin( String username, String password)
+        public bool checkLogin(String username, String password)
         {
             DataTable table = da.Query("select ma from NhanVien where NhanVien.taikhoan  = '" + username + "' and NhanVien.matkhau = '" + password + "'");
             int n = table.Rows.Count;
@@ -137,7 +157,7 @@ namespace HotelManagement.Controllers
             }
             return nv;
         }
-        
+
     }
 }
 
