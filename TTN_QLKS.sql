@@ -28,7 +28,7 @@ sophong int not null,
 loaiphongma varchar(20) not null,
 foreign key(loaiphongma) references LoaiPhong(ma),
 dongia float  not null,
-trangthai varchar(10) not null
+trangthai int not null
 )
 create table DichVu
 (
@@ -67,9 +67,9 @@ ma varchar(20) primary key not null,
 ngaydangky date not null,
 khachma varchar(20) not null foreign key(khachma) references Khach(ma),
 ngayden date not null,
-gioden time not null,
+gioden int not null,
 ngaydi date not null,
-giodi time not null,
+giodi int not null,
 phongma  varchar(20) not null foreign key(phongma) references Phong(ma),
 tiendatcoc float not null,
 nhanvienma varchar(20) not null foreign key(nhanvienma) references NhanVien(ma)
@@ -190,3 +190,86 @@ insert into DichVu values('DV0003',N'giải trí',1000000)
 insert into DichVu values('DV0004',N'thức ăn',600000)
 
 select *from SuDungDichVu
+
+
+create function [dbo].[auto_ma_DangKy]() returns varchar(6)
+as
+begin
+declare @ma varchar(50)
+if(select count(ma) from DangKy)=0
+set @ma='0'
+else 
+select @ma=max(right(ma,4)) from DangKy
+set @ma=case
+when
+@ma>=0 and @ma<9 then 'NV000'+CONVERT(char,CONVERT(int,@ma)+1)
+when @ma>=9 and @ma<99then 'NV00'+CONVERT(char,CONVERT(int,@ma)+1)
+when @ma>=99 and @ma<999then 'NV0'+CONVERT(char,CONVERT(int,@ma)+1)
+end
+return @ma
+end
+
+create function [dbo].[auto_ma_DichVu]() returns varchar(6)
+as
+begin
+declare @ma varchar(50)
+if(select count(ma) from DichVu)=0
+set @ma='0'
+else 
+select @ma=max(right(ma,4)) from DichVu
+set @ma=case
+when
+@ma>=0 and @ma<9 then 'NV000'+CONVERT(char,CONVERT(int,@ma)+1)
+when @ma>=9 and @ma<99then 'NV00'+CONVERT(char,CONVERT(int,@ma)+1)
+when @ma>=99 and @ma<999then 'NV0'+CONVERT(char,CONVERT(int,@ma)+1)
+end
+return @ma
+end
+create function [dbo].[auto_ma_Khach]() returns varchar(6)
+as
+begin
+declare @ma varchar(50)
+if(select count(ma) from Khach)=0
+set @ma='0'
+else 
+select @ma=max(right(ma,4)) from Khach
+set @ma=case
+when
+@ma>=0 and @ma<9 then 'NV000'+CONVERT(char,CONVERT(int,@ma)+1)
+when @ma>=9 and @ma<99then 'NV00'+CONVERT(char,CONVERT(int,@ma)+1)
+when @ma>=99 and @ma<999then 'NV0'+CONVERT(char,CONVERT(int,@ma)+1)
+end
+return @ma
+end
+create function [dbo].[auto_ma_NhanVien]() returns varchar(6)
+as
+begin
+declare @ma varchar(50)
+if(select count(ma) from NhanVien)=0
+set @ma='0'
+else 
+select @ma=max(right(ma,4)) from NhanVien
+set @ma=case
+when
+@ma>=0 and @ma<9 then 'NV000'+CONVERT(char,CONVERT(int,@ma)+1)
+when @ma>=9 and @ma<99then 'NV00'+CONVERT(char,CONVERT(int,@ma)+1)
+when @ma>=99 and @ma<999then 'NV0'+CONVERT(char,CONVERT(int,@ma)+1)
+end
+return @ma
+end
+create function [dbo].[auto_ma_phong]() returns varchar(6)
+as
+begin
+declare @ma varchar(50)
+if(select count(ma) from Phong)=0
+set @ma='0'
+else 
+select @ma=max(right(ma,4)) from Phong
+set @ma=case
+when
+@ma>=0 and @ma<9 then 'NV000'+CONVERT(char,CONVERT(int,@ma)+1)
+when @ma>=9 and @ma<99then 'NV00'+CONVERT(char,CONVERT(int,@ma)+1)
+when @ma>=99 and @ma<999then 'NV0'+CONVERT(char,CONVERT(int,@ma)+1)
+end
+return @ma
+end
