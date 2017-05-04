@@ -44,7 +44,9 @@ ngaysinh date not null,
 gioitinh bit not null,
 chucvu nvarchar(20) not null,
 diachi nvarchar(50)  not null,
-dienthoai varchar(12) not null
+dienthoai varchar(12) not null,
+taikhoan varchar(20) not null,
+matkhau varchar(20) not null
 )
 create table ChitietThietBi
 (
