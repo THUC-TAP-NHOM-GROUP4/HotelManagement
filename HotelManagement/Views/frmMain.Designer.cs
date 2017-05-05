@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            DevExpress.XtraBars.Ribbon.GalleryItemGroup galleryItemGroup1 = new DevExpress.XtraBars.Ribbon.GalleryItemGroup();
-            DevExpress.XtraBars.Ribbon.GalleryItemGroup galleryItemGroup2 = new DevExpress.XtraBars.Ribbon.GalleryItemGroup();
+            DevExpress.XtraBars.Ribbon.GalleryItemGroup galleryItemGroup4 = new DevExpress.XtraBars.Ribbon.GalleryItemGroup();
+            DevExpress.XtraBars.Ribbon.GalleryItemGroup galleryItemGroup3 = new DevExpress.XtraBars.Ribbon.GalleryItemGroup();
             this.tabControlMain = new System.Windows.Forms.TabControl();
             this.tabPageTrangChu = new System.Windows.Forms.TabPage();
             this.galleryControl_TrangChu = new DevExpress.XtraBars.Ribbon.GalleryControl();
@@ -40,7 +40,7 @@
             this.btnDatPhong_DatPhong = new System.Windows.Forms.Button();
             this.btnDatPhong_Huy = new System.Windows.Forms.Button();
             this.btnDatPhong_Thoat = new System.Windows.Forms.Button();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.grbDatPhong_Phong = new System.Windows.Forms.GroupBox();
             this.dtpDatPhong_NgayDi = new System.Windows.Forms.DateTimePicker();
             this.dtpDatPhong_NgayDen = new System.Windows.Forms.DateTimePicker();
             this.cbbDatPhong_TrangThietBi = new System.Windows.Forms.ComboBox();
@@ -61,7 +61,7 @@
             this.tbDatPhong_GioDen = new System.Windows.Forms.TextBox();
             this.tbDatPhong_GioDi = new System.Windows.Forms.TextBox();
             this.tbDatPhong_TrangThai = new System.Windows.Forms.TextBox();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.grbDatPhong_Khach = new System.Windows.Forms.GroupBox();
             this.dtpDatPhong_NgaySinh = new System.Windows.Forms.DateTimePicker();
             this.cbDatPhong_Nam = new System.Windows.Forms.CheckBox();
             this.cbDatPhong_Nu = new System.Windows.Forms.CheckBox();
@@ -83,6 +83,7 @@
             this.galleryControlClient2 = new DevExpress.XtraBars.Ribbon.GalleryControlClient();
             this.tabPageQLKhach = new System.Windows.Forms.TabPage();
             this.tabPageThongKe = new System.Windows.Forms.TabPage();
+            this.tabPageHuongDan = new System.Windows.Forms.TabPage();
             this.dockManager1 = new DevExpress.XtraBars.Docking.DockManager(this.components);
             this.nbgMain_TrangChu = new DevExpress.XtraNavBar.NavBarGroup();
             this.nbiMain_TrangChu = new DevExpress.XtraNavBar.NavBarItem();
@@ -90,26 +91,30 @@
             this.nbiMain_DatPhong = new DevExpress.XtraNavBar.NavBarItem();
             this.nbiMain_QLKhach = new DevExpress.XtraNavBar.NavBarItem();
             this.nbiMain_ThongKe = new DevExpress.XtraNavBar.NavBarItem();
-            this.nbiMain_Thoat = new DevExpress.XtraNavBar.NavBarItem();
+            this.nbiMain_HuongDan = new DevExpress.XtraNavBar.NavBarItem();
+            this.nbiMain_Thoát = new DevExpress.XtraNavBar.NavBarItem();
             this.nbiMain_PhongTrong = new DevExpress.XtraNavBar.NavBarItem();
             this.nbiMain_PhongCoKhach = new DevExpress.XtraNavBar.NavBarItem();
             this.nbiMain_PhongKhac = new DevExpress.XtraNavBar.NavBarItem();
             this.dockPanel1_Container = new DevExpress.XtraBars.Docking.ControlContainer();
             this.navBarControl1 = new DevExpress.XtraNavBar.NavBarControl();
             this.dockPanel1 = new DevExpress.XtraBars.Docking.DockPanel();
+            this.btnDatPhong_DanhSach = new System.Windows.Forms.Button();
+            this.dgv_DatPhong_DanhSach = new System.Windows.Forms.DataGridView();
             this.tabControlMain.SuspendLayout();
             this.tabPageTrangChu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.galleryControl_TrangChu)).BeginInit();
             this.galleryControl_TrangChu.SuspendLayout();
             this.tabPageDatPhong.SuspendLayout();
-            this.groupBox2.SuspendLayout();
-            this.groupBox1.SuspendLayout();
+            this.grbDatPhong_Phong.SuspendLayout();
+            this.grbDatPhong_Khach.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.galleryControl_DatPhong)).BeginInit();
             this.galleryControl_DatPhong.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dockManager1)).BeginInit();
             this.dockPanel1_Container.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.navBarControl1)).BeginInit();
             this.dockPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_DatPhong_DanhSach)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControlMain
@@ -119,6 +124,7 @@
             this.tabControlMain.Controls.Add(this.tabPageDatPhong);
             this.tabControlMain.Controls.Add(this.tabPageQLKhach);
             this.tabControlMain.Controls.Add(this.tabPageThongKe);
+            this.tabControlMain.Controls.Add(this.tabPageHuongDan);
             this.tabControlMain.Location = new System.Drawing.Point(190, 1);
             this.tabControlMain.Name = "tabControlMain";
             this.tabControlMain.SelectedIndex = 0;
@@ -147,9 +153,9 @@
             // 
             this.galleryControl_TrangChu.Gallery.AllowHoverImages = true;
             this.galleryControl_TrangChu.Gallery.BackColor = System.Drawing.Color.White;
-            galleryItemGroup1.Caption = "Danh sách phòng";
+            galleryItemGroup4.Caption = "Danh sách phòng";
             this.galleryControl_TrangChu.Gallery.Groups.AddRange(new DevExpress.XtraBars.Ribbon.GalleryItemGroup[] {
-            galleryItemGroup1});
+            galleryItemGroup4});
             this.galleryControl_TrangChu.Gallery.HoverImageSize = new System.Drawing.Size(60, 60);
             this.galleryControl_TrangChu.Gallery.ImageSize = new System.Drawing.Size(100, 100);
             this.galleryControl_TrangChu.Gallery.ShowItemText = true;
@@ -178,11 +184,13 @@
             // tabPageDatPhong
             // 
             this.tabPageDatPhong.BackColor = System.Drawing.Color.Transparent;
+            this.tabPageDatPhong.Controls.Add(this.dgv_DatPhong_DanhSach);
+            this.tabPageDatPhong.Controls.Add(this.btnDatPhong_DanhSach);
             this.tabPageDatPhong.Controls.Add(this.btnDatPhong_DatPhong);
             this.tabPageDatPhong.Controls.Add(this.btnDatPhong_Huy);
             this.tabPageDatPhong.Controls.Add(this.btnDatPhong_Thoat);
-            this.tabPageDatPhong.Controls.Add(this.groupBox2);
-            this.tabPageDatPhong.Controls.Add(this.groupBox1);
+            this.tabPageDatPhong.Controls.Add(this.grbDatPhong_Phong);
+            this.tabPageDatPhong.Controls.Add(this.grbDatPhong_Khach);
             this.tabPageDatPhong.Controls.Add(this.galleryControl_DatPhong);
             this.tabPageDatPhong.Location = new System.Drawing.Point(4, 24);
             this.tabPageDatPhong.Name = "tabPageDatPhong";
@@ -226,36 +234,36 @@
             this.btnDatPhong_Thoat.UseVisualStyleBackColor = false;
             this.btnDatPhong_Thoat.Click += new System.EventHandler(this.btnDatPhong_Thoat_Click);
             // 
-            // groupBox2
+            // grbDatPhong_Phong
             // 
-            this.groupBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
-            this.groupBox2.Controls.Add(this.dtpDatPhong_NgayDi);
-            this.groupBox2.Controls.Add(this.dtpDatPhong_NgayDen);
-            this.groupBox2.Controls.Add(this.cbbDatPhong_TrangThietBi);
-            this.groupBox2.Controls.Add(this.cbbDatPhong_DonGia);
-            this.groupBox2.Controls.Add(this.cbbDatPhong_LoaiPhong);
-            this.groupBox2.Controls.Add(this.cbbDatPhong_SoPhong);
-            this.groupBox2.Controls.Add(this.label13);
-            this.groupBox2.Controls.Add(this.label12);
-            this.groupBox2.Controls.Add(this.label11);
-            this.groupBox2.Controls.Add(this.label10);
-            this.groupBox2.Controls.Add(this.label18);
-            this.groupBox2.Controls.Add(this.label16);
-            this.groupBox2.Controls.Add(this.label17);
-            this.groupBox2.Controls.Add(this.label15);
-            this.groupBox2.Controls.Add(this.label14);
-            this.groupBox2.Controls.Add(this.label9);
-            this.groupBox2.Controls.Add(this.tbDatPhong_TienDatCoc);
-            this.groupBox2.Controls.Add(this.tbDatPhong_GioDen);
-            this.groupBox2.Controls.Add(this.tbDatPhong_GioDi);
-            this.groupBox2.Controls.Add(this.tbDatPhong_TrangThai);
-            this.groupBox2.Font = new System.Drawing.Font("Times New Roman", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox2.Location = new System.Drawing.Point(113, 219);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(870, 266);
-            this.groupBox2.TabIndex = 1;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Thông tin phòng";
+            this.grbDatPhong_Phong.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.grbDatPhong_Phong.Controls.Add(this.dtpDatPhong_NgayDi);
+            this.grbDatPhong_Phong.Controls.Add(this.dtpDatPhong_NgayDen);
+            this.grbDatPhong_Phong.Controls.Add(this.cbbDatPhong_TrangThietBi);
+            this.grbDatPhong_Phong.Controls.Add(this.cbbDatPhong_DonGia);
+            this.grbDatPhong_Phong.Controls.Add(this.cbbDatPhong_LoaiPhong);
+            this.grbDatPhong_Phong.Controls.Add(this.cbbDatPhong_SoPhong);
+            this.grbDatPhong_Phong.Controls.Add(this.label13);
+            this.grbDatPhong_Phong.Controls.Add(this.label12);
+            this.grbDatPhong_Phong.Controls.Add(this.label11);
+            this.grbDatPhong_Phong.Controls.Add(this.label10);
+            this.grbDatPhong_Phong.Controls.Add(this.label18);
+            this.grbDatPhong_Phong.Controls.Add(this.label16);
+            this.grbDatPhong_Phong.Controls.Add(this.label17);
+            this.grbDatPhong_Phong.Controls.Add(this.label15);
+            this.grbDatPhong_Phong.Controls.Add(this.label14);
+            this.grbDatPhong_Phong.Controls.Add(this.label9);
+            this.grbDatPhong_Phong.Controls.Add(this.tbDatPhong_TienDatCoc);
+            this.grbDatPhong_Phong.Controls.Add(this.tbDatPhong_GioDen);
+            this.grbDatPhong_Phong.Controls.Add(this.tbDatPhong_GioDi);
+            this.grbDatPhong_Phong.Controls.Add(this.tbDatPhong_TrangThai);
+            this.grbDatPhong_Phong.Font = new System.Drawing.Font("Times New Roman", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.grbDatPhong_Phong.Location = new System.Drawing.Point(113, 219);
+            this.grbDatPhong_Phong.Name = "grbDatPhong_Phong";
+            this.grbDatPhong_Phong.Size = new System.Drawing.Size(877, 266);
+            this.grbDatPhong_Phong.TabIndex = 1;
+            this.grbDatPhong_Phong.TabStop = false;
+            this.grbDatPhong_Phong.Text = "Thông tin phòng";
             // 
             // dtpDatPhong_NgayDi
             // 
@@ -424,33 +432,33 @@
             this.tbDatPhong_TrangThai.Size = new System.Drawing.Size(235, 23);
             this.tbDatPhong_TrangThai.TabIndex = 3;
             // 
-            // groupBox1
+            // grbDatPhong_Khach
             // 
-            this.groupBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.groupBox1.Controls.Add(this.dtpDatPhong_NgaySinh);
-            this.groupBox1.Controls.Add(this.cbDatPhong_Nam);
-            this.groupBox1.Controls.Add(this.cbDatPhong_Nu);
-            this.groupBox1.Controls.Add(this.tbDatPhong_SoLuong);
-            this.groupBox1.Controls.Add(this.label8);
-            this.groupBox1.Controls.Add(this.tbDatPhong_SoDienThoai);
-            this.groupBox1.Controls.Add(this.label7);
-            this.groupBox1.Controls.Add(this.tbDatPhong_QuocTich);
-            this.groupBox1.Controls.Add(this.label6);
-            this.groupBox1.Controls.Add(this.tbDatPhong_DiaChi);
-            this.groupBox1.Controls.Add(this.label5);
-            this.groupBox1.Controls.Add(this.tbDatPhong_CMND);
-            this.groupBox1.Controls.Add(this.label4);
-            this.groupBox1.Controls.Add(this.label3);
-            this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Controls.Add(this.tbDatPhong_HoTen);
-            this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Font = new System.Drawing.Font("Times New Roman", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox1.Location = new System.Drawing.Point(116, 0);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(867, 213);
-            this.groupBox1.TabIndex = 0;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Thông tin khách hàng";
+            this.grbDatPhong_Khach.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.grbDatPhong_Khach.Controls.Add(this.dtpDatPhong_NgaySinh);
+            this.grbDatPhong_Khach.Controls.Add(this.cbDatPhong_Nam);
+            this.grbDatPhong_Khach.Controls.Add(this.cbDatPhong_Nu);
+            this.grbDatPhong_Khach.Controls.Add(this.tbDatPhong_SoLuong);
+            this.grbDatPhong_Khach.Controls.Add(this.label8);
+            this.grbDatPhong_Khach.Controls.Add(this.tbDatPhong_SoDienThoai);
+            this.grbDatPhong_Khach.Controls.Add(this.label7);
+            this.grbDatPhong_Khach.Controls.Add(this.tbDatPhong_QuocTich);
+            this.grbDatPhong_Khach.Controls.Add(this.label6);
+            this.grbDatPhong_Khach.Controls.Add(this.tbDatPhong_DiaChi);
+            this.grbDatPhong_Khach.Controls.Add(this.label5);
+            this.grbDatPhong_Khach.Controls.Add(this.tbDatPhong_CMND);
+            this.grbDatPhong_Khach.Controls.Add(this.label4);
+            this.grbDatPhong_Khach.Controls.Add(this.label3);
+            this.grbDatPhong_Khach.Controls.Add(this.label2);
+            this.grbDatPhong_Khach.Controls.Add(this.tbDatPhong_HoTen);
+            this.grbDatPhong_Khach.Controls.Add(this.label1);
+            this.grbDatPhong_Khach.Font = new System.Drawing.Font("Times New Roman", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.grbDatPhong_Khach.Location = new System.Drawing.Point(116, 0);
+            this.grbDatPhong_Khach.Name = "grbDatPhong_Khach";
+            this.grbDatPhong_Khach.Size = new System.Drawing.Size(874, 213);
+            this.grbDatPhong_Khach.TabIndex = 0;
+            this.grbDatPhong_Khach.TabStop = false;
+            this.grbDatPhong_Khach.Text = "Thông tin khách hàng";
             // 
             // dtpDatPhong_NgaySinh
             // 
@@ -609,9 +617,9 @@
             // 
             // 
             // 
-            galleryItemGroup2.Caption = "Phòng";
+            galleryItemGroup3.Caption = "Phòng";
             this.galleryControl_DatPhong.Gallery.Groups.AddRange(new DevExpress.XtraBars.Ribbon.GalleryItemGroup[] {
-            galleryItemGroup2});
+            galleryItemGroup3});
             this.galleryControl_DatPhong.Gallery.HoverImageSize = new System.Drawing.Size(30, 30);
             this.galleryControl_DatPhong.Gallery.ImageSize = new System.Drawing.Size(70, 70);
             this.galleryControl_DatPhong.Gallery.ShowItemText = true;
@@ -646,6 +654,16 @@
             this.tabPageThongKe.Text = "Thống kê";
             this.tabPageThongKe.UseVisualStyleBackColor = true;
             // 
+            // tabPageHuongDan
+            // 
+            this.tabPageHuongDan.Location = new System.Drawing.Point(4, 24);
+            this.tabPageHuongDan.Name = "tabPageHuongDan";
+            this.tabPageHuongDan.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPageHuongDan.Size = new System.Drawing.Size(986, 585);
+            this.tabPageHuongDan.TabIndex = 6;
+            this.tabPageHuongDan.Text = "Hướng dẫn";
+            this.tabPageHuongDan.UseVisualStyleBackColor = true;
+            // 
             // dockManager1
             // 
             this.dockManager1.Form = this;
@@ -672,7 +690,8 @@
             new DevExpress.XtraNavBar.NavBarItemLink(this.nbiMain_DatPhong),
             new DevExpress.XtraNavBar.NavBarItemLink(this.nbiMain_QLKhach),
             new DevExpress.XtraNavBar.NavBarItemLink(this.nbiMain_ThongKe),
-            new DevExpress.XtraNavBar.NavBarItemLink(this.nbiMain_Thoat)});
+            new DevExpress.XtraNavBar.NavBarItemLink(this.nbiMain_HuongDan),
+            new DevExpress.XtraNavBar.NavBarItemLink(this.nbiMain_Thoát)});
             this.nbgMain_TrangChu.Name = "nbgMain_TrangChu";
             // 
             // nbiMain_TrangChu
@@ -710,12 +729,19 @@
             this.nbiMain_ThongKe.Name = "nbiMain_ThongKe";
             this.nbiMain_ThongKe.LinkPressed += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.nbiMain_ThongKe_LinkPressed);
             // 
-            // nbiMain_Thoat
+            // nbiMain_HuongDan
             // 
-            this.nbiMain_Thoat.Caption = "Thoát";
-            this.nbiMain_Thoat.ImageUri.Uri = "Delete";
-            this.nbiMain_Thoat.Name = "nbiMain_Thoat";
-            this.nbiMain_Thoat.LinkPressed += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.nbiMain_Thoat_LinkPressed);
+            this.nbiMain_HuongDan.Caption = "Hướng dẫn";
+            this.nbiMain_HuongDan.ImageUri.Uri = "InLineWithText";
+            this.nbiMain_HuongDan.Name = "nbiMain_HuongDan";
+            this.nbiMain_HuongDan.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.nbiMain_HuongDan_LinkClicked);
+            // 
+            // nbiMain_Thoát
+            // 
+            this.nbiMain_Thoát.Caption = "Thoát";
+            this.nbiMain_Thoát.ImageUri.Uri = "Delete";
+            this.nbiMain_Thoát.Name = "nbiMain_Thoát";
+            this.nbiMain_Thoát.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.nbiMain_Thoat_LinkClicked);
             // 
             // nbiMain_PhongTrong
             // 
@@ -757,7 +783,8 @@
             this.nbiMain_DatPhong,
             this.nbiMain_QLKhach,
             this.nbiMain_ThongKe,
-            this.nbiMain_Thoat});
+            this.nbiMain_HuongDan,
+            this.nbiMain_Thoát});
             this.navBarControl1.Location = new System.Drawing.Point(0, 0);
             this.navBarControl1.Name = "navBarControl1";
             this.navBarControl1.OptionsNavPane.ExpandedWidth = 191;
@@ -776,6 +803,34 @@
             this.dockPanel1.OriginalSize = new System.Drawing.Size(200, 200);
             this.dockPanel1.Size = new System.Drawing.Size(200, 600);
             this.dockPanel1.Text = "dockPanel1";
+            // 
+            // btnDatPhong_DanhSach
+            // 
+            this.btnDatPhong_DanhSach.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.btnDatPhong_DanhSach.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDatPhong_DanhSach.Location = new System.Drawing.Point(367, 536);
+            this.btnDatPhong_DanhSach.Name = "btnDatPhong_DanhSach";
+            this.btnDatPhong_DanhSach.Size = new System.Drawing.Size(169, 38);
+            this.btnDatPhong_DanhSach.TabIndex = 5;
+            this.btnDatPhong_DanhSach.Text = "Danh sách đặt phòng";
+            this.btnDatPhong_DanhSach.UseVisualStyleBackColor = false;
+            this.btnDatPhong_DanhSach.Click += new System.EventHandler(this.btnDatPhong_DanhSach_Click);
+            // 
+            // dgv_DatPhong_DanhSach
+            // 
+            this.dgv_DatPhong_DanhSach.AllowUserToAddRows = false;
+            this.dgv_DatPhong_DanhSach.AllowUserToDeleteRows = false;
+            this.dgv_DatPhong_DanhSach.AllowUserToOrderColumns = true;
+            this.dgv_DatPhong_DanhSach.AllowUserToResizeColumns = false;
+            this.dgv_DatPhong_DanhSach.AllowUserToResizeRows = false;
+            this.dgv_DatPhong_DanhSach.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
+            this.dgv_DatPhong_DanhSach.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgv_DatPhong_DanhSach.Location = new System.Drawing.Point(113, 491);
+            this.dgv_DatPhong_DanhSach.Name = "dgv_DatPhong_DanhSach";
+            this.dgv_DatPhong_DanhSach.ReadOnly = true;
+            this.dgv_DatPhong_DanhSach.Size = new System.Drawing.Size(877, 31);
+            this.dgv_DatPhong_DanhSach.TabIndex = 6;
+            this.dgv_DatPhong_DanhSach.Visible = false;
             // 
             // frmMain
             // 
@@ -797,16 +852,17 @@
             ((System.ComponentModel.ISupportInitialize)(this.galleryControl_TrangChu)).EndInit();
             this.galleryControl_TrangChu.ResumeLayout(false);
             this.tabPageDatPhong.ResumeLayout(false);
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
+            this.grbDatPhong_Phong.ResumeLayout(false);
+            this.grbDatPhong_Phong.PerformLayout();
+            this.grbDatPhong_Khach.ResumeLayout(false);
+            this.grbDatPhong_Khach.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.galleryControl_DatPhong)).EndInit();
             this.galleryControl_DatPhong.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dockManager1)).EndInit();
             this.dockPanel1_Container.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.navBarControl1)).EndInit();
             this.dockPanel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_DatPhong_DanhSach)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -835,8 +891,7 @@
         private DevExpress.XtraNavBar.NavBarItem nbiMain_DatPhong;
         private DevExpress.XtraNavBar.NavBarItem nbiMain_QLKhach;
         private DevExpress.XtraNavBar.NavBarItem nbiMain_ThongKe;
-        private DevExpress.XtraNavBar.NavBarItem nbiMain_Thoat;
-        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.GroupBox grbDatPhong_Phong;
         private System.Windows.Forms.ComboBox cbbDatPhong_TrangThietBi;
         private System.Windows.Forms.ComboBox cbbDatPhong_DonGia;
         private System.Windows.Forms.ComboBox cbbDatPhong_LoaiPhong;
@@ -847,7 +902,7 @@
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.TextBox tbDatPhong_TrangThai;
-        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.GroupBox grbDatPhong_Khach;
         private System.Windows.Forms.DateTimePicker dtpDatPhong_NgaySinh;
         private System.Windows.Forms.CheckBox cbDatPhong_Nam;
         private System.Windows.Forms.CheckBox cbDatPhong_Nu;
@@ -878,5 +933,10 @@
         private System.Windows.Forms.DateTimePicker dtpDatPhong_NgayDi;
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.TextBox tbDatPhong_TienDatCoc;
+        private System.Windows.Forms.TabPage tabPageHuongDan;
+        private DevExpress.XtraNavBar.NavBarItem nbiMain_HuongDan;
+        private DevExpress.XtraNavBar.NavBarItem nbiMain_Thoát;
+        private System.Windows.Forms.Button btnDatPhong_DanhSach;
+        private System.Windows.Forms.DataGridView dgv_DatPhong_DanhSach;
     }
 }

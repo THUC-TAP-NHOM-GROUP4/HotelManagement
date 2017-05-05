@@ -90,6 +90,7 @@
             this.login_linklabel_linkpage.TabIndex = 3;
             this.login_linklabel_linkpage.TabStop = true;
             this.login_linklabel_linkpage.Text = "hoaromhotel.hoarom.vn";
+            this.login_linklabel_linkpage.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.login_linklabel_linkpage_LinkClicked);
             // 
             // label4
             // 
@@ -176,6 +177,7 @@
             this.Name = "frmLogin";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Hoarom Hotel";
+            this.Load += new System.EventHandler(this.frmLogin_Load);
             ((System.ComponentModel.ISupportInitialize)(this.login_picturebox_hotelimage)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.login_erp_password)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.login_erp_username)).EndInit();

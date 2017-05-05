@@ -50,5 +50,19 @@ namespace HotelManagement
                 return true;
             return false;
         }
+
+        private void login_linklabel_linkpage_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            frmMain frm = new frmMain(5);//đặt phòng
+            
+            frm.Visible = true;
+            this.Visible = false;
+        }
+
+        private void frmLogin_Load(object sender, EventArgs e)
+        {
+            login_textbox_username.Text = "NV0002";
+            login_textbox_password.Text = "nv0002";
+        }
     }
 }

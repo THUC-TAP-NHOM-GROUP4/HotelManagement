@@ -29,11 +29,11 @@ namespace HotelManagement
             this.frmLogin = frmLogin;
             this.nhanvien = nv;
         }
-        public frmMain(int key)
+        public frmMain(int tabpage)
         {
             InitializeComponent();
             Load_();
-            tabControlMain.SelectedIndex = 2;//tabpage DatPhong
+            tabControlMain.SelectTab(tabpage);//tabpage DatPhong
         }
         private void frmMain_Load(object sender, EventArgs e)
         {
@@ -41,7 +41,7 @@ namespace HotelManagement
             Load_tabpage_trangchu();
             //loaded tabpage DatPhong
             Load_tabpage_datphong();
-            
+
         }
         private void Load_()
         {
@@ -97,6 +97,7 @@ namespace HotelManagement
             IEnumerable<Phong> ls_phong_sort = from phong in lsPhong
                                                orderby phong.SoPhong.Substring(0, 1)
                                                select phong;
+            dgv_DatPhong_DanhSach.Visible = false;
             i = 0;
             galleryControl_DatPhong.Gallery.Groups[0].Items.Clear();
             foreach (Phong phong in ls_phong_sort)
@@ -153,6 +154,7 @@ namespace HotelManagement
 
         private void frmMain_FormClosed(object sender, FormClosedEventArgs e)
         {
+            if (this.frmLogin == null) this.frmLogin = new frmLogin();
             this.frmLogin.Visible = true;
         }
 
@@ -212,7 +214,7 @@ namespace HotelManagement
             phong = controller.get_Phong(e.Item.Caption);
             cbbDatPhong_SoPhong.Text = phong.SoPhong;
             cbbDatPhong_LoaiPhong.Text = phong.LoaiPhong;
-            cbbDatPhong_DonGia.Text = phong.DonGia.ToString() ;
+            cbbDatPhong_DonGia.Text = phong.DonGia.ToString();
             if (phong.TrangThai == 0) tbDatPhong_TrangThai.Text = "Phòng trống";
             else if (phong.TrangThai == 1)
                 tbDatPhong_TrangThai.Text = "Phòng có khách";
@@ -252,6 +254,9 @@ namespace HotelManagement
 
         private void btnDatPhong_DatPhong_Click(object sender, EventArgs e)
         {
+            grbDatPhong_Khach.Visible = true;
+            grbDatPhong_Phong.Visible = true;
+            dgv_DatPhong_DanhSach.Visible = false;
             Khach khach = new Khach();
             khach.Ten = tbDatPhong_HoTen.Text;
             khach.NgaySinh = DateTime.Parse(dtpDatPhong_NgaySinh.Value.ToShortDateString());
@@ -261,11 +266,12 @@ namespace HotelManagement
             khach.QuocTich = tbDatPhong_QuocTich.Text;
             khach.SoDienThoai = tbDatPhong_SoDienThoai.Text;
             khach.ChungMinhThu = tbDatPhong_CMND.Text;
+
+            if (khach.Ten == "") return;
+
             controller.ThemKhachHang(khach);
 
-
             khach.Ma = controller.getMaKhach(khach);
-
 
             DangKy dangky = new DangKy();
             dangky.NgayDangKy = DateTime.Now;
@@ -287,7 +293,7 @@ namespace HotelManagement
             controller.DatPhong(dangky);
             MessageBox.Show("Đặt phòng thành công", "Đặt phòng");
             tabControlMain.SelectTab(tabPageTrangChu);
-           
+
             Load_();
             /*String khachMa, String phongMa, DateTime ngayDen, int gioDen, DateTime ngayDi, int gioDi, double tienDatCoc,
             String nhanVienMa)*/
@@ -295,17 +301,44 @@ namespace HotelManagement
 
         private void btnDatPhong_Huy_Click(object sender, EventArgs e)
         {
+            grbDatPhong_Phong.Visible = true;
+            grbDatPhong_Khach.Visible = true;
+            dgv_DatPhong_DanhSach.Visible = false;
             Load_tabpage_datphong();
         }
 
         private void btnDatPhong_Thoat_Click(object sender, EventArgs e)
         {
+            grbDatPhong_Phong.Visible = true;
+            grbDatPhong_Khach.Visible = true;
+            dgv_DatPhong_DanhSach.Visible = false;
+
             tabControlMain.SelectTab(tabPageTrangChu);
         }
 
         private void cbbDatPhong_SoPhong_SelectedValueChanged(object sender, EventArgs e)
         {
             cbbDatPhong_TrangThietBi.DataSource = controller.getList_TrangThietBi(cbbDatPhong_SoPhong.SelectedValue.ToString().Trim());
+
+        }
+
+        private void nbiMain_Thoat_LinkClicked(object sender, DevExpress.XtraNavBar.NavBarLinkEventArgs e)
+        {
+            this.Close();
+        }
+
+        private void nbiMain_HuongDan_LinkClicked(object sender, DevExpress.XtraNavBar.NavBarLinkEventArgs e)
+        {
+            tabControlMain.SelectTab(tabPageHuongDan);
+        }
+
+        private void btnDatPhong_DanhSach_Click(object sender, EventArgs e)
+        {
+            dgv_DatPhong_DanhSach.Visible = true;
+
+            dgv_DatPhong_DanhSach.Location = new Point(113, 0);
+            dgv_DatPhong_DanhSach.Size = new System.Drawing.Size(877, 522);
+            dgv_DatPhong_DanhSach.DataSource = controller.getList_DangKy();
 
         }
     }

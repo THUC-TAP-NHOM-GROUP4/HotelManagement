@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace HotelManagement.Controllers
 {
-    class Controller
+    public class Controller
     {
         DataAccess da = new DataAccess();
         public Controller()
@@ -191,7 +191,44 @@ create proc proc_insertKhach(@ten nvarchar(50), @ngaysinh date, @gioitinh int, @
             }
             return nv;
         }
+        public DangKy[] getList_DangKy()
+        {
+            DataTable table = da.Query("select *from DangKy");
+            int n = table.Rows.Count;
+            int i;
+            if (n == 0) return null;
+            DangKy[] list = new DangKy[n];
+            DangKy dk = new DangKy();
+            int soluong = 0;
+            DateTime date = DateTime.Now;
+            for (i = 0; i < n; i++)
+            {
+                dk.Ma = table.Rows[i]["ma"].ToString().Trim();
+                if(DateTime.TryParse(table.Rows[i]["ngaydangky"].ToString().Trim(), out date))
+                {
+                    dk.NgayDangKy = date;
+                }
+                dk.KhachMa = table.Rows[i]["khachma"].ToString().Trim();
+                date = DateTime.Now;
+                if(DateTime.TryParse(table.Rows[i]["ngayden"].ToString().Trim(), out date))
+                {
+                    dk.NgayDen = date;
+                }
+                date = DateTime.Now;
+                dk.GioDen = int.Parse(table.Rows[i]["gioden"].ToString().Trim());
+                if (DateTime.TryParse(table.Rows[i]["ngaydi"].ToString().Trim(), out date))
+                {
+                    dk.NgayDi = date;
+                }
+                dk.GioDi= int.Parse(table.Rows[i]["giodi"].ToString().Trim());
 
+                dk.TienDatCoc = double.Parse(table.Rows[i]["tiendatcoc"].ToString().Trim());
+                dk.NhanVienMa = table.Rows[i]["nhanvienma"].ToString().Trim();
+                dk.PhongMa = table.Rows[i]["phongma"].ToString().Trim();
+                list[i] = dk;
+            }
+            return list;
+        }
     }
 }
 

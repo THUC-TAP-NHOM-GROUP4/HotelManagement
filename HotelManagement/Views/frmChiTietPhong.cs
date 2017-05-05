@@ -61,13 +61,14 @@ namespace HotelManagement.Views
 
         private void btnDatPhong_Click(object sender, EventArgs e)
         {
-            this.frmMain = new frmMain(1);
+            this.frmMain.Visible = true;
+             this.frmMain = new frmMain(2);
             this.Close();
         }
 
         private void frmChiTietPhong_FormClosed(object sender, FormClosedEventArgs e)
         {
-
+            this.Close();
         }
     }
 }
