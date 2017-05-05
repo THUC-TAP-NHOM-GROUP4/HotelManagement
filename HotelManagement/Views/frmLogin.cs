@@ -62,7 +62,7 @@ namespace HotelManagement
         private void frmLogin_Load(object sender, EventArgs e)
         {
             login_textbox_username.Text = "NV0002";
-            login_textbox_password.Text = "nv0002";
+            login_textbox_password.Text = "NV0002";
         }
     }
 }

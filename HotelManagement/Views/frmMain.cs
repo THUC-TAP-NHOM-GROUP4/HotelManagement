@@ -150,6 +150,22 @@ namespace HotelManagement
             tbDatPhong_GioDen.Text = "";
             tbDatPhong_GioDi.Text = "";
 
+            //load danh sách đăng ký
+            Load_tabpage_datphong_ds_dangky();
+        }
+        private void Load_tabpage_datphong_ds_dangky()
+        {
+            dgv_DatPhong_DanhSach.DataSource = controller.getList_DangKy();
+            dgv_DatPhong_DanhSach.Columns["Ma"].HeaderText = "Mã";
+            dgv_DatPhong_DanhSach.Columns["NgayDangKy"].HeaderText = "Ngày đăng ký";
+            dgv_DatPhong_DanhSach.Columns["KhachMa"].HeaderText = "Khách hàng";
+            dgv_DatPhong_DanhSach.Columns["NgayDen"].HeaderText = "Ngày đến";
+            dgv_DatPhong_DanhSach.Columns["GioDen"].HeaderText = "Giờ đến";
+            dgv_DatPhong_DanhSach.Columns["NgayDi"].HeaderText = "Ngày đi";
+            dgv_DatPhong_DanhSach.Columns["GioDi"].HeaderText = "Giờ đi";
+            dgv_DatPhong_DanhSach.Columns["PhongMa"].HeaderText = "Số phòng";
+            dgv_DatPhong_DanhSach.Columns["TienDatCoc"].HeaderText = "Tiền đặt cọc";
+            dgv_DatPhong_DanhSach.Columns["NhanVienMa"].HeaderText = "Nhân viên";
         }
 
         private void frmMain_FormClosed(object sender, FormClosedEventArgs e)
@@ -280,7 +296,7 @@ namespace HotelManagement
             dangky.GioDen = int.Parse(tbDatPhong_GioDen.Text);
             dangky.NgayDi = dtpDatPhong_NgayDi.Value;
             dangky.GioDi = int.Parse(tbDatPhong_GioDi.Text);
-            dangky.PhongMa = controller.get_MaPhong(cbbDatPhong_SoPhong.Text.ToString().Trim());
+            dangky.PhongMa = controller.get_Phong(cbbDatPhong_SoPhong.Text.ToString().Trim(), "ma");
             dangky.TienDatCoc = double.Parse(tbDatPhong_TienDatCoc.Text);
             dangky.NhanVienMa = nhanvien.Ma;
             //ma- ngaydangky- khachma- ngayden- gioden- ngaydi- giodi- phongma - tiendatcoc- nhanvienma
@@ -318,8 +334,15 @@ namespace HotelManagement
 
         private void cbbDatPhong_SoPhong_SelectedValueChanged(object sender, EventArgs e)
         {
-            cbbDatPhong_TrangThietBi.DataSource = controller.getList_TrangThietBi(cbbDatPhong_SoPhong.SelectedValue.ToString().Trim());
+            String sophong = cbbDatPhong_SoPhong.SelectedValue.ToString().Trim();
+            int trangthai = controller.getTrangThai(sophong);
+            if (trangthai == 0) tbDatPhong_TrangThai.Text = "Phòng trống";
+            else if (trangthai == 1)
+                tbDatPhong_TrangThai.Text = "Phòng có khách";
+            else tbDatPhong_TrangThai.Text = "Khác";
 
+            cbbDatPhong_TrangThietBi.DataSource = controller.getList_TrangThietBi(sophong);
+            cbbDatPhong_LoaiPhong.Text = controller.get_Phong(sophong, "loaiphong");
         }
 
         private void nbiMain_Thoat_LinkClicked(object sender, DevExpress.XtraNavBar.NavBarLinkEventArgs e)
@@ -334,6 +357,7 @@ namespace HotelManagement
 
         private void btnDatPhong_DanhSach_Click(object sender, EventArgs e)
         {
+            Load_tabpage_datphong();
             dgv_DatPhong_DanhSach.Visible = true;
 
             dgv_DatPhong_DanhSach.Location = new Point(113, 0);

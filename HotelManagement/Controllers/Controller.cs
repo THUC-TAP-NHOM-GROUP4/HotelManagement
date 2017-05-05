@@ -108,18 +108,25 @@ namespace HotelManagement.Controllers
             }
             return phong;
         }
-        public String get_MaPhong(String sophong)
+        public String get_Phong(String sophong, String key)
         {
             Phong phong = new Phong();
-            DataTable table = da.Query("select *from Phong where phong.sophong = N'" + sophong + "'");
+            DataTable table;
+            if (key == "loaiphong")
+            {
+                table = da.Query("select ten from loaiphong inner join phong on phong.loaiphongma = loaiphong.ma"
+                    + " where phong.sophong = " + sophong);
+                key = "ten";
+            }
+            else table = da.Query("select  " + key + " from Phong where phong.sophong = N'" + sophong + "'");
             int n = table.Rows.Count;
             if (n == 1)
             {
-                return  table.Rows[0]["ma"].ToString().Trim();
+                return  table.Rows[0][key].ToString().Trim();
             }
             return "";
         }
-
+       
         public String getMaKhach(Khach khach)
         {
             DataTable table = da.Query("select ma from khach where ten = N'" + khach.Ten + "' and gioitinh = " + khach.GioiTinh
@@ -128,6 +135,18 @@ namespace HotelManagement.Controllers
             if (table.Rows.Count == 1)
                 return table.Rows[0]["ma"].ToString().Trim();
             return ma;
+        }
+        public int getTrangThai(String soPhong)
+        {
+            String maphong = get_Phong(soPhong, "ma");
+            DataTable table = da.Query("select trangthai from Phong where phong.ma = N'" + maphong + "'");
+            int n = table.Rows.Count;
+            int i;
+            if (n == 1)
+            {
+                return int.Parse(table.Rows[0]["trangthai"].ToString().Trim());
+            }
+            return 2;
         }
         public void ThemKhachHang(Khach khach)
         {
@@ -193,7 +212,16 @@ create proc proc_insertKhach(@ten nvarchar(50), @ngaysinh date, @gioitinh int, @
         }
         public DangKy[] getList_DangKy()
         {
-            DataTable table = da.Query("select *from DangKy");
+            DataTable table = da.Query("select dk.ma, dk.ngaydangky, Khach.ten as [tenkhach], dk.ngayden, dk.gioden, dk.ngaydi, "
+                                        + " dk.giodi, Phong.sophong as [sophong], dk.tiendatcoc, NhanVien.ten as [tennhanvien] " 
+                                       
+                                        + " from dangky dk inner join Khach on dk.khachma = Khach.ma " 
+                                        
+                                        + " inner  join NhanVien on NhanVien.ma = dk.nhanvienma " 
+                                        + " inner  join Phong on Phong.ma = dk.phongma " 
+                                        
+                                        + " group by dk.ma, dk.ngaydangky, Khach.ten, dk.ngayden, dk.gioden, dk.ngaydi,dk.giodi, " 
+                                        + "          Phong.sophong, dk.tiendatcoc, NhanVien.ten ");
             int n = table.Rows.Count;
             int i;
             if (n == 0) return null;
@@ -203,12 +231,13 @@ create proc proc_insertKhach(@ten nvarchar(50), @ngaysinh date, @gioitinh int, @
             DateTime date = DateTime.Now;
             for (i = 0; i < n; i++)
             {
+                dk = new DangKy();
                 dk.Ma = table.Rows[i]["ma"].ToString().Trim();
                 if(DateTime.TryParse(table.Rows[i]["ngaydangky"].ToString().Trim(), out date))
                 {
                     dk.NgayDangKy = date;
                 }
-                dk.KhachMa = table.Rows[i]["khachma"].ToString().Trim();
+                dk.KhachMa = table.Rows[i]["tenkhach"].ToString().Trim();
                 date = DateTime.Now;
                 if(DateTime.TryParse(table.Rows[i]["ngayden"].ToString().Trim(), out date))
                 {
@@ -223,8 +252,8 @@ create proc proc_insertKhach(@ten nvarchar(50), @ngaysinh date, @gioitinh int, @
                 dk.GioDi= int.Parse(table.Rows[i]["giodi"].ToString().Trim());
 
                 dk.TienDatCoc = double.Parse(table.Rows[i]["tiendatcoc"].ToString().Trim());
-                dk.NhanVienMa = table.Rows[i]["nhanvienma"].ToString().Trim();
-                dk.PhongMa = table.Rows[i]["phongma"].ToString().Trim();
+                dk.NhanVienMa = table.Rows[i]["tennhanvien"].ToString().Trim();
+                dk.PhongMa =  table.Rows[i]["sophong"].ToString().Trim();
                 list[i] = dk;
             }
             return list;
