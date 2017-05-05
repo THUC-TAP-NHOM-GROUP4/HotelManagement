@@ -123,7 +123,7 @@
             this.lblTang.Location = new System.Drawing.Point(176, 57);
             this.lblTang.Name = "lblTang";
             this.lblTang.Size = new System.Drawing.Size(16, 17);
-            this.lblTang.TabIndex = 0;
+            this.lblTang.TabIndex = 1;
             this.lblTang.Text = "3";
             // 
             // lblTrangThai
@@ -133,7 +133,7 @@
             this.lblTrangThai.Location = new System.Drawing.Point(176, 89);
             this.lblTrangThai.Name = "lblTrangThai";
             this.lblTrangThai.Size = new System.Drawing.Size(46, 17);
-            this.lblTrangThai.TabIndex = 0;
+            this.lblTrangThai.TabIndex = 2;
             this.lblTrangThai.Text = "Trống";
             // 
             // lblGiaPhong
@@ -143,7 +143,7 @@
             this.lblGiaPhong.Location = new System.Drawing.Point(176, 121);
             this.lblGiaPhong.Name = "lblGiaPhong";
             this.lblGiaPhong.Size = new System.Drawing.Size(89, 17);
-            this.lblGiaPhong.TabIndex = 0;
+            this.lblGiaPhong.TabIndex = 3;
             this.lblGiaPhong.Text = "750000 VND";
             // 
             // lblKhachHang
@@ -153,7 +153,7 @@
             this.lblKhachHang.Location = new System.Drawing.Point(176, 195);
             this.lblKhachHang.Name = "lblKhachHang";
             this.lblKhachHang.Size = new System.Drawing.Size(82, 17);
-            this.lblKhachHang.TabIndex = 0;
+            this.lblKhachHang.TabIndex = 5;
             this.lblKhachHang.Text = "khách hàng";
             // 
             // cbbTrangThietBi
@@ -163,7 +163,7 @@
             this.cbbTrangThietBi.Location = new System.Drawing.Point(176, 153);
             this.cbbTrangThietBi.Name = "cbbTrangThietBi";
             this.cbbTrangThietBi.Size = new System.Drawing.Size(227, 24);
-            this.cbbTrangThietBi.TabIndex = 2;
+            this.cbbTrangThietBi.TabIndex = 4;
             // 
             // btnThoat
             // 
@@ -171,7 +171,7 @@
             this.btnThoat.Location = new System.Drawing.Point(304, 295);
             this.btnThoat.Name = "btnThoat";
             this.btnThoat.Size = new System.Drawing.Size(99, 37);
-            this.btnThoat.TabIndex = 3;
+            this.btnThoat.TabIndex = 1;
             this.btnThoat.Text = "Thoát";
             this.btnThoat.UseVisualStyleBackColor = false;
             this.btnThoat.Click += new System.EventHandler(this.btnThoat_Click);
@@ -182,7 +182,7 @@
             this.btnDatPhong.Location = new System.Drawing.Point(158, 295);
             this.btnDatPhong.Name = "btnDatPhong";
             this.btnDatPhong.Size = new System.Drawing.Size(99, 37);
-            this.btnDatPhong.TabIndex = 3;
+            this.btnDatPhong.TabIndex = 0;
             this.btnDatPhong.Text = "Đặt phòng";
             this.btnDatPhong.UseVisualStyleBackColor = false;
             this.btnDatPhong.Click += new System.EventHandler(this.btnDatPhong_Click);
@@ -204,7 +204,7 @@
             this.lblSoLuong.Location = new System.Drawing.Point(176, 229);
             this.lblSoLuong.Name = "lblSoLuong";
             this.lblSoLuong.Size = new System.Drawing.Size(64, 17);
-            this.lblSoLuong.TabIndex = 4;
+            this.lblSoLuong.TabIndex = 6;
             this.lblSoLuong.Text = "Số lượng";
             // 
             // frmChiTietPhong

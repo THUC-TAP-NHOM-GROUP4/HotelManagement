@@ -41,15 +41,16 @@ namespace HotelManagement.Views
             {
                 lblTrangThai.Text = "Có khách";
                 btnDatPhong.Enabled = false;
-               
+
             }
             else
             {
                 lblTrangThai.Text = "Khác";
                 btnDatPhong.Enabled = false;
-            } 
+            }
             lblTang.Text = phong.SoPhong.Substring(0, 1);
-            cbbTrangThietBi.DataSource = new String[1] { "" };
+
+            cbbTrangThietBi.DataSource = controller.getList_TrangThietBi(phong.SoPhong);
             lblSoLuong.Text = "0";
 
         }
@@ -66,7 +67,7 @@ namespace HotelManagement.Views
 
         private void frmChiTietPhong_FormClosed(object sender, FormClosedEventArgs e)
         {
-            
+
         }
     }
 }

@@ -45,6 +45,7 @@ namespace HotelManagement
         }
         private void Load_()
         {
+
             Load_tabpage_trangchu();
             Load_tabpage_datphong();
         }
@@ -58,6 +59,7 @@ namespace HotelManagement
             IEnumerable<Phong> ls_phong_sort = from phong in lsPhong
                                                orderby phong.SoPhong.Substring(0, 1)
                                                select phong;
+            galleryControl_TrangChu.Gallery.Groups[0].Items.Clear();
 
             foreach (Phong phong in ls_phong_sort)
             {
@@ -96,6 +98,7 @@ namespace HotelManagement
                                                orderby phong.SoPhong.Substring(0, 1)
                                                select phong;
             i = 0;
+            galleryControl_DatPhong.Gallery.Groups[0].Items.Clear();
             foreach (Phong phong in ls_phong_sort)
             {
                 src_image = "E:\\HOC_KY_6\\ThucTapNhom\\PROJECT\\HotelManagement\\HotelManagement\\Images\\";
