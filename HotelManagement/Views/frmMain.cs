@@ -260,21 +260,32 @@ namespace HotelManagement
             khach.ChungMinhThu = tbDatPhong_CMND.Text;
             controller.ThemKhachHang(khach);
 
-            Phong phong = new Phong();
-            phong = controller.get_Phong(cbbDatPhong_SoPhong.SelectedValue.ToString().Trim());
-            DateTime ngayden = DateTime.Parse(dtpDatPhong_NgayDen.Value.ToShortDateString());
-            DateTime ngaydi = DateTime.Parse(dtpDatPhong_NgayDi.Value.ToShortDateString());
-            int gio = 8;
-            int gioden= 8, giodi= 8;
-            if(int.TryParse(tbDatPhong_GioDen.ToString().Trim(), out gio)){
-                gioden = gio;
+
+            khach.Ma = controller.getMaKhach(khach);
+
+
+            DangKy dangky = new DangKy();
+            dangky.NgayDangKy = DateTime.Now;
+            dangky.KhachMa = khach.Ma;
+            dangky.NgayDen = dtpDatPhong_NgayDen.Value;
+            dangky.GioDen = int.Parse(tbDatPhong_GioDen.Text);
+            dangky.NgayDi = dtpDatPhong_NgayDi.Value;
+            dangky.GioDi = int.Parse(tbDatPhong_GioDi.Text);
+            dangky.PhongMa = controller.get_MaPhong(cbbDatPhong_SoPhong.Text.ToString().Trim());
+            dangky.TienDatCoc = double.Parse(tbDatPhong_TienDatCoc.Text);
+            dangky.NhanVienMa = nhanvien.Ma;
+            //ma- ngaydangky- khachma- ngayden- gioden- ngaydi- giodi- phongma - tiendatcoc- nhanvienma
+            if (tbDatPhong_TrangThai.Text == "Có khách" || tbDatPhong_TrangThai.Text == "Khác")
+            {
+                MessageBox.Show("Không đặt phòng này");
+
+                return;
             }
-            if (int.TryParse(tbDatPhong_GioDi.ToString().Trim(), out gio)){
-                giodi = gio;
-            }
-            
-            controller.DatPhong( khach.Ma, phong.Ma, ngayden, gioden, ngaydi,giodi, 
-                double.Parse(tbDatPhong_TienDatCoc.ToString().Trim()), nhanvien.Ma);
+            controller.DatPhong(dangky);
+            MessageBox.Show("Đặt phòng thành công", "Đặt phòng");
+            tabControlMain.SelectTab(tabPageTrangChu);
+           
+            Load_();
             /*String khachMa, String phongMa, DateTime ngayDen, int gioDen, DateTime ngayDi, int gioDi, double tienDatCoc,
             String nhanVienMa)*/
         }

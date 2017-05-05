@@ -52,6 +52,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controllers\Controller.cs" />
+    <Compile Include="Models\DangKy.cs" />
     <Compile Include="Models\DataAccess.cs" />
     <Compile Include="Models\Khach.cs" />
     <Compile Include="Models\NhanVien.cs" />
@@ -112,7 +113,6 @@
     <None Include="Views\App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Images\1.jpg" />
     <Content Include="Images\no.png" />
     <Content Include="Images\none.jpg" />
     <Content Include="Images\yes.png" />

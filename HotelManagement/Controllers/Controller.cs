@@ -60,8 +60,8 @@ namespace HotelManagement.Controllers
         {
             if (sophong == "")
                 return new String[0];
-            DataTable table = da.Query("select *from ThietBiPhong where " 
-                + "thietbiphong.phongma = (select ma from phong where phong.sophong = '" + sophong+ "')");
+            DataTable table = da.Query("select *from ThietBiPhong where "
+                + "thietbiphong.phongma = (select ma from phong where phong.sophong = '" + sophong + "')");
             int n = table.Rows.Count;
             int i;
             if (n == 0) return null;
@@ -108,28 +108,62 @@ namespace HotelManagement.Controllers
             }
             return phong;
         }
-
-        public void ThemKhachHang(Khach khach)
+        public String get_MaPhong(String sophong)
         {
-
+            Phong phong = new Phong();
+            DataTable table = da.Query("select *from Phong where phong.sophong = N'" + sophong + "'");
+            int n = table.Rows.Count;
+            if (n == 1)
+            {
+                return  table.Rows[0]["ma"].ToString().Trim();
+            }
+            return "";
         }
 
-        public bool DatPhong(String khachMa, String phongMa, DateTime ngayDen, int gioDen, DateTime ngayDi, int gioDi, double tienDatCoc,
-            String nhanVienMa)
+        public String getMaKhach(Khach khach)
+        {
+            DataTable table = da.Query("select ma from khach where ten = N'" + khach.Ten + "' and gioitinh = " + khach.GioiTinh
+                + " and quoctich = N'" + khach.QuocTich + "' and chungminhthu = '" + khach.ChungMinhThu + "'");
+            String ma = "";
+            if (table.Rows.Count == 1)
+                return table.Rows[0]["ma"].ToString().Trim();
+            return ma;
+        }
+        public void ThemKhachHang(Khach khach)
+        {
+            /*
+create proc proc_insertKhach(@ten nvarchar(50), @ngaysinh date, @gioitinh int, @diachi nvarchar(50),
+ @quoctich nvarchar(30), @chungminhthu varchar(20), @sodienthoai varchar(12))*/
+            SqlParameter[] para =
+            {
+                new SqlParameter("ten", khach.Ten),
+                new SqlParameter("ngaysinh", khach.NgaySinh),
+                new SqlParameter("gioitinh", khach.GioiTinh),
+                new SqlParameter("diachi", khach.DiaChi),
+                new SqlParameter("quoctich", khach.QuocTich),
+                new SqlParameter("chungminhthu", khach.ChungMinhThu),
+                new SqlParameter("sodienthoai", khach.SoDienThoai)
+            };
+            da.Query("proc_insertKhach", para);
+        }
+
+        public bool DatPhong(DangKy dk)
         {
             /*proc_insert_DatPhong](@khachma varchar(20), @phongma varchar(20),@ngaydangky date, @ngayden date, @gioden int, 
 @ngaydi date, @giodi int, @tiendatcoc money , @nhanvienma varchar(20)*/
             SqlParameter[] para =
             {
-                new SqlParameter("khachma", khachMa),
-                new SqlParameter("phongma", phongMa),
-                new SqlParameter("ngaydangky", DateTime.Now.ToShortDateString()),
-                new SqlParameter("ngayden", ngayDen),
-                new SqlParameter("gioden", gioDen),
-                new SqlParameter("ngaydi", ngayDi),
-                new SqlParameter("giodi", gioDi),
-                new SqlParameter("tiendatcoc", tienDatCoc),
-                new SqlParameter("nhanvienma", nhanVienMa)
+                //([proc_insert_DatPhong](@khachma varchar(20), @phongma varchar(20),@ngaydangky date, @ngayden date, @gioden int, 
+//@ngaydi date, @giodi int, @tiendatcoc money , @nhanvienma varchar(20))
+                new SqlParameter("khachma", dk.KhachMa),
+                new SqlParameter("phongma", dk.PhongMa),
+                new SqlParameter("ngaydangky",dk.NgayDangKy),
+                new SqlParameter("ngayden", dk.NgayDen),
+                new SqlParameter("gioden", dk.GioDen),
+                new SqlParameter("ngaydi", dk.NgayDi),
+                new SqlParameter("giodi", dk.GioDi),
+                new SqlParameter("tiendatcoc", dk.TienDatCoc),
+                new SqlParameter("nhanvienma", dk.NhanVienMa)
             };
             da.Query("proc_insert_DatPhong", para);
             return true;
