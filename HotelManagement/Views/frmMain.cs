@@ -83,13 +83,13 @@ namespace HotelManagement
                     src_image += "none.jpg";
                     trangthai = "khác";
                 }
-                //galleryControl_TrangChu.Gallery.Groups[0].Items.Add(
-                //    new DevExpress.XtraBars.Ribbon.GalleryItem(
-                //        new Bitmap(src_image), phong.SoPhong, trangthai));
+                galleryControl_TrangChu.Gallery.Groups[0].Items.Add(
+                    new DevExpress.XtraBars.Ribbon.GalleryItem(
+                        new Bitmap(src_image), phong.SoPhong, trangthai));
 
-                //galleryControl_TrangChu.Gallery.Groups[0].Items[i].HoverImage =
-                //    galleryControl_TrangChu.Gallery.Groups[0].Items[i].Image;
-                //i++;
+                galleryControl_TrangChu.Gallery.Groups[0].Items[i].HoverImage =
+                    galleryControl_TrangChu.Gallery.Groups[0].Items[i].Image;
+                i++;
             }
         }
         private void Load_tabpage_datphong()
@@ -122,13 +122,13 @@ namespace HotelManagement
                     src_image += "none.jpg";
                     trangthai = "khác";
                 }
-                //galleryControl_DatPhong.Gallery.Groups[0].Items.Add(
-                //    new DevExpress.XtraBars.Ribbon.GalleryItem(
-                //        new Bitmap(src_image), phong.SoPhong, trangthai));
+                galleryControl_DatPhong.Gallery.Groups[0].Items.Add(
+                    new DevExpress.XtraBars.Ribbon.GalleryItem(
+                        new Bitmap(src_image), phong.SoPhong, trangthai));
 
-                //galleryControl_DatPhong.Gallery.Groups[0].Items[i].HoverImage =
-                //    galleryControl_DatPhong.Gallery.Groups[0].Items[i].Image;
-                //i++;
+                galleryControl_DatPhong.Gallery.Groups[0].Items[i].HoverImage =
+                    galleryControl_DatPhong.Gallery.Groups[0].Items[i].Image;
+                i++;
             }
 
             tbDatPhong_HoTen.Text = "";
@@ -155,23 +155,23 @@ namespace HotelManagement
             tbDatPhong_GioDi.Text = "";
 
             //load danh sách đăng ký
-            //Load_tabpage_datphong_ds_dangky();
+            Load_tabpage_datphong_ds_dangky();
         }
-        //private void Load_tabpage_datphong_ds_dangky()
-        //{
-        //    dgv_DatPhong_DanhSach.DataSource = controller.getList_DangKy();
-        //    dgv_DatPhong_DanhSach.Columns["Ma"].HeaderText = "Mã";
-        //    dgv_DatPhong_DanhSach.Columns["NgayDangKy"].HeaderText = "Ngày đăng ký";
-        //    dgv_DatPhong_DanhSach.Columns["KhachMa"].HeaderText = "Khách hàng";
-        //    dgv_DatPhong_DanhSach.Columns["NgayDen"].HeaderText = "Ngày đến";
-        //    dgv_DatPhong_DanhSach.Columns["GioDen"].HeaderText = "Giờ đến";
-        //    dgv_DatPhong_DanhSach.Columns["NgayDi"].HeaderText = "Ngày đi";
-        //    dgv_DatPhong_DanhSach.Columns["GioDi"].HeaderText = "Giờ đi";
-        //    dgv_DatPhong_DanhSach.Columns["PhongMa"].HeaderText = "Số phòng";
-        //    dgv_DatPhong_DanhSach.Columns["TienDatCoc"].HeaderText = "Tiền đặt cọc";
-        //    dgv_DatPhong_DanhSach.Columns["NhanVienMa"].HeaderText = "Nhân viên";
-        //}
-          private void Load_tabpage_loaiphong()
+        private void Load_tabpage_datphong_ds_dangky()
+        {
+            dgv_DatPhong_DanhSach.DataSource = controller.getList_DangKy();
+            dgv_DatPhong_DanhSach.Columns["Ma"].HeaderText = "Mã";
+            dgv_DatPhong_DanhSach.Columns["NgayDangKy"].HeaderText = "Ngày đăng ký";
+            dgv_DatPhong_DanhSach.Columns["KhachMa"].HeaderText = "Khách hàng";
+            dgv_DatPhong_DanhSach.Columns["NgayDen"].HeaderText = "Ngày đến";
+            dgv_DatPhong_DanhSach.Columns["GioDen"].HeaderText = "Giờ đến";
+            dgv_DatPhong_DanhSach.Columns["NgayDi"].HeaderText = "Ngày đi";
+            dgv_DatPhong_DanhSach.Columns["GioDi"].HeaderText = "Giờ đi";
+            dgv_DatPhong_DanhSach.Columns["PhongMa"].HeaderText = "Số phòng";
+            dgv_DatPhong_DanhSach.Columns["TienDatCoc"].HeaderText = "Tiền đặt cọc";
+            dgv_DatPhong_DanhSach.Columns["NhanVienMa"].HeaderText = "Nhân viên";
+        }
+        private void Load_tabpage_loaiphong()
         {
             dtgLoaiPhong.DataSource = controller.getList_LoaiPhong();
             dtgLoaiPhong.Columns["Ma"].HeaderText = "Mã";
