@@ -42,6 +42,9 @@ namespace HotelManagement
             //loaded tabpage DatPhong
             Load_tabpage_datphong();
             Load_tabpage_loaiphong();
+            Load_tabpage_quanlyphong();
+            Load_tabpage_quanlyDichVu();
+            Load_tabpage_quanlySDDichVu();
         }
         private void Load_()
         {
@@ -180,7 +183,54 @@ namespace HotelManagement
             dtgLoaiPhong.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
 
         }
+        private void Load_tabpage_quanlyphong()
+        {
+       
+            dtgPhong.DataSource = controller.getList_Phong();
+            dtgPhong.Columns["Ma"].HeaderText = "Mã";
+            dtgPhong.Columns["SoPhong"].HeaderText = "Số Phòng";
+            dtgPhong.Columns["LoaiPhong"].HeaderText = "Loại Phòng";
+            dtgPhong.Columns["DonGia"].HeaderText = "Đơn giá";
+            dtgPhong.Columns["TrangThai"].HeaderText = "Trạng thái";
+            dtgPhong.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            cbbLoaiPhong.DataSource = controller.getList_LoaiPhong();
+            cbbLoaiPhong.DisplayMember = "ten";
+            cbbLoaiPhong.ValueMember = "ma";
+        }
+        public void Load_tabpage_quanlyDichVu()
+        {
+            dtgDSDichVu.DataSource = controller.getList_DichVu();
+            dtgDSDichVu.Columns["Ma"].HeaderText = "Mã";
+            dtgDSDichVu.Columns["Ten"].HeaderText = "Tên";
+            dtgDSDichVu.Columns["DonGia"].HeaderText = "Đơn Gía";
+            dtgDSDichVu.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
 
+        }
+   
+        public void Load_tabpage_quanlySDDichVu()
+        {
+            dtgSuDungDichVu.DataSource = controller.getList_SuDungDichVu();
+            dtgSuDungDichVu.Columns["Ma"].HeaderText = "Mã";
+            dtgSuDungDichVu.Columns["PhongMa"].HeaderText = "Mã Phòng";
+            dtgSuDungDichVu.Columns["KhachMa"].HeaderText = "Mã Khách Hàng";
+            dtgSuDungDichVu.Columns["DichVuMa"].HeaderText = "Mã Khách Hàng";
+            dtgSuDungDichVu.Columns["NgaySuDung"].HeaderText = "Ngày sử dụng";
+            dtgSuDungDichVu.Columns["SoLuong"].HeaderText = "Số Lượng";
+            dtgSuDungDichVu.Columns["ThanhTien"].HeaderText = "Thành tiền";
+            dtgSuDungDichVu.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+          
+            cbbSDDichVu.DataSource = controller.getList_DichVu();
+            cbbSDDichVu.DisplayMember = "ten";
+            cbbSDDichVu.ValueMember = "ma";
+            cbbKhachMa.DataSource = controller.getList_Khach();
+            cbbKhachMa.DisplayMember = "ma";
+            cbbKhachMa.ValueMember = "ma";
+
+            txtTenKhach.Text = controller.getTenKhach(cbbKhachMa.SelectedValue.ToString());
+            cbbPhongSDDV.DataSource = controller.getList_Phong();
+            cbbPhongSDDV.DisplayMember = "sophong";
+            cbbPhongSDDV.ValueMember = "ma";
+        }
         private void frmMain_FormClosed(object sender, FormClosedEventArgs e)
         {
             if (this.frmLogin == null) this.frmLogin = new frmLogin();
@@ -498,5 +548,257 @@ namespace HotelManagement
                 }
             }
         }
+
+        private void dtgPhong_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+
+            DataGridViewRow row = new DataGridViewRow();
+            row = dtgPhong.Rows[e.RowIndex];
+            try
+            {
+                txtSoPhong.Text = row.Cells[1].Value.ToString();
+                cbbLoaiPhong.Text = row.Cells[2].Value.ToString();
+                txtTrangThai.Text = row.Cells[3].Value.ToString();
+                
+
+            }
+            catch (Exception)
+            {
+
+            }
+        }
+        private bool checkPhong()
+        {
+            if(txtSoPhong.Text.ToString().Trim().Equals(""))
+            {
+                errSoPhong.SetError(txtSoPhong, "Nhap so phong");
+                return false;
+            }
+            errSoPhong.Clear();
+
+            if (cbbLoaiPhong.Text.ToString().Trim().Equals(""))
+            {
+                errLoaiPhong.SetError(cbbLoaiPhong, "Nhap so phong");
+                return false;
+            }
+            errLoaiPhong.Clear();
+
+            if (txtTrangThai.Text.ToString().Trim().Equals(""))
+            {
+                errTrangThai.SetError(txtTrangThai, "Nhap so phong");
+                return false;
+            }
+            errTrangThai.Clear();
+            return true;
+        }
+        private void btnThemPhong_Click(object sender, EventArgs e)
+        {
+
+            if(checkPhong())
+            {
+                Phong p = new Phong();
+                p.SoPhong = txtSoPhong.Text.ToString().Trim();
+                p.LoaiPhong = cbbLoaiPhong.SelectedValue.ToString().Trim();
+                p.TrangThai = int.Parse(txtTrangThai.Text.ToString().Trim());
+                if(controller.addPhong(p))
+                {
+                    dtgPhong.DataSource = controller.getList_Phong();
+                }
+            }
+        }
+
+        private void btnSuaPhong_Click(object sender, EventArgs e)
+        {
+            Phong p = new Phong();
+            p.Ma = dtgPhong.Rows[dtgPhong.CurrentRow.Index].Cells[0].Value.ToString();
+            p.SoPhong = txtSoPhong.Text.ToString().Trim();
+            p.TrangThai = int.Parse(txtTrangThai.Text.ToString().Trim());
+            p.LoaiPhong = cbbLoaiPhong.SelectedValue.ToString().Trim();
+            if(controller.updatePhong(p))
+            {
+               dtgPhong.DataSource = controller.getList_Phong();
+
+            }
+        }
+
+        private void btnXoaPhong_Click(object sender, EventArgs e)
+        {
+
+            if (this.dtgPhong.SelectedRows.Count > 0)
+            {
+
+                int selectedIndex = dtgPhong.SelectedRows[0].Index;
+                string rowID = dtgPhong[0, selectedIndex].Value.ToString();
+                if (MessageBox.Show("Chắc chắn xóa phòng mã " + rowID + "?", "Xoá loại phòng", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                {
+
+                    controller.XoaPhong(rowID);
+                    dtgPhong.DataSource = controller.getList_Phong();
+                }
+            }
+        }
+        private bool checkDV()
+        {
+            if(txtTenDichVu.Text.ToString().Trim().Equals(""))
+            {
+                errTenDichVu.SetError(txtTenDichVu, "nhap ten dich vu");
+                return false;
+            }
+            errTenDichVu.Clear();
+            if(txtGiaDichVu.Text.ToString().Trim().Equals(""))
+            {
+                errGiaDichVu.SetError(txtGiaDichVu, "nhap gia dich vu");
+                return false;
+            }
+            errGiaDichVu.Clear();
+            return true;
+        }
+        private void btnThemDichVu_Click(object sender, EventArgs e)
+        {
+
+            if (checkDV())
+            {
+                DichVu dv = new DichVu();
+                dv.Ten = txtTenDichVu.Text.ToString().Trim();
+                double gia = 0;
+                double.TryParse(txtGiaDichVu.Text.ToString().Trim(), out gia);
+                dv.DonGia = gia;
+               
+                if (controller.addDichVu(dv))
+                {
+                    dtgDSDichVu.DataSource = controller.getList_DichVu();
+                }
+            }
+        }
+
+        private void btnSuaDichVu_Click(object sender, EventArgs e)
+        {
+            DichVu dv = new DichVu();
+            dv.Ma = dtgDSDichVu.Rows[dtgDSDichVu.CurrentRow.Index].Cells[0].Value.ToString();
+            dv.Ten = txtTenDichVu.Text.ToString().Trim();
+            double gia = 0;
+            double.TryParse(txtGiaDichVu.Text.ToString().Trim(), out gia);
+            dv.DonGia = gia;
+
+            if (controller.updateDichVu(dv))
+            {
+                dtgDSDichVu.DataSource = controller.getList_DichVu();
+            }
+        }
+
+        private void dtgDSDichVu_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+
+            DataGridViewRow row = new DataGridViewRow();
+            row = dtgDSDichVu.Rows[e.RowIndex];
+            try
+            {
+                txtTenDichVu.Text = row.Cells[1].Value.ToString();
+                txtGiaDichVu.Text = row.Cells[2].Value.ToString();
+               
+            }
+            catch (Exception)
+            {
+
+            }
+        }
+
+        private void btnXoaDichVu_Click(object sender, EventArgs e)
+        {
+            if (this.dtgDSDichVu.SelectedRows.Count > 0)
+            {
+
+                int selectedIndex = dtgDSDichVu.SelectedRows[0].Index;
+                string rowID = dtgDSDichVu[0, selectedIndex].Value.ToString();
+                if (MessageBox.Show("Bạn có chắc chắn xóa dịch vụ mã " + rowID + "?", "Xoá dịch vụ", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                {
+
+                    controller.XoaDichVu(rowID);
+                    dtgDSDichVu.DataSource = controller.getList_DichVu();
+                }
+            }
+        }
+
+        private void dtgSuDungDichVu_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            DataGridViewRow row = new DataGridViewRow();
+            row = dtgSuDungDichVu.Rows[e.RowIndex];
+            try
+            {
+                cbbPhongSDDV.Text = row.Cells[1].Value.ToString();
+                cbbKhachMa.Text = row.Cells[2].Value.ToString();
+                cbbSDDichVu.Text = row.Cells[3].Value.ToString();
+                txtSoLuongSDDV.Text= row.Cells[5].Value.ToString();
+
+            }
+            catch (Exception)
+            {
+
+            }
+        }
+        private bool checkSDDV()
+        {
+            if (cbbPhongSDDV.Text.ToString().Trim().Equals(""))
+            {
+                errPhongSDDV.SetError(cbbPhongSDDV, "chọn phòng sử dụng dich vu");
+                return false;
+            }
+            errPhongSDDV.Clear();
+            if (cbbKhachMa.Text.ToString().Trim().Equals(""))
+            {
+                errKhachHangSDDV.SetError(cbbKhachMa, "nhap khach hang su dung dich vu");
+                return false;
+            }
+            errKhachHangSDDV.Clear();
+            if (cbbSDDichVu.Text.ToString().Trim().Equals(""))
+            {
+                errDichVuSD.SetError(cbbSDDichVu, "nhap loại dich vu");
+                return false;
+            }
+            errDichVuSD.Clear();
+            if (txtSoLuongSDDV.Text.ToString().Trim().Equals(""))
+            {
+                errSoLuongSDDV.SetError(txtSoLuongSDDV, "nhap số lượng");
+                return false;
+            }
+            errSoLuongSDDV.Clear();
+            return true;
+        }
+        private void btnThemSDDV_Click(object sender, EventArgs e)
+        {
+            if (checkSDDV())
+            {
+                SuDungDichVu sddv = new SuDungDichVu();
+                sddv.PhongMa = cbbPhongSDDV.SelectedValue.ToString().Trim();
+                sddv.KhachMa = cbbKhachMa.Text.ToString().Trim();
+                sddv.DichVuMa = cbbSDDichVu.SelectedValue.ToString().Trim();
+                sddv.SoLuong = int.Parse(txtSoLuongSDDV.Text.ToString().Trim());
+                if (controller.addSuDungDichVu(sddv))
+                {
+                    dtgSuDungDichVu.DataSource = controller.getList_SuDungDichVu();
+                }
+            }
+        }
+
+        private void cbbKhachMa_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            txtTenKhach.Text = controller.getTenKhach(cbbKhachMa.SelectedValue.ToString());
+
+        }
+
+        private void btnSuaSDDV_Click(object sender, EventArgs e)
+        {
+            SuDungDichVu sddv = new SuDungDichVu();
+            sddv.Ma = dtgSuDungDichVu.Rows[dtgSuDungDichVu.CurrentRow.Index].Cells[0].Value.ToString();
+            sddv.PhongMa = cbbPhongSDDV.SelectedValue.ToString().Trim();
+            sddv.KhachMa = cbbKhachMa.Text.ToString().Trim();
+            sddv.DichVuMa = cbbSDDichVu.SelectedValue.ToString().Trim();
+            sddv.SoLuong = int.Parse(txtSoLuongSDDV.Text.ToString().Trim());
+            if (controller.updateSuDungDichVu(sddv))
+            {
+                dtgSuDungDichVu.DataSource = controller.getList_SuDungDichVu();
+            }
+        }
     }
 }
+
