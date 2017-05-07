@@ -29,6 +29,71 @@ namespace HotelManagement.Controllers
             }
             return list;
         }
+        public List<LoaiPhong> getList_LoaiPhong()
+        {
+            List<LoaiPhong> list = new List<LoaiPhong>();
+            DataTable table = da.Query("select *from LoaiPhong");
+            int n = table.Rows.Count;
+            int i;
+            if (n == 0) return null;
+            for (i = 0; i < n; i++)
+            {
+                list.Add(get_LoaiPhong(table.Rows[i]));
+            }
+            return list;
+        }
+        public LoaiPhong get_LoaiPhong(DataRow row)
+        {
+            LoaiPhong loaiphong = new LoaiPhong();
+            loaiphong.Ma = row["ma"].ToString().Trim();
+            loaiphong.Ten= row["ten"].ToString().Trim();
+            loaiphong.MoTa= row["mota"].ToString().Trim();
+            loaiphong.SoLuong = int.Parse(row["soluong"].ToString().Trim());
+            double giaquangay = 0;
+            if(double.TryParse(row["giaquangay"].ToString().Trim(), out giaquangay))
+            {
+                loaiphong.GiaQuaNgay = giaquangay;
+            }
+            double giaquadem = 0;
+            if (double.TryParse(row["giaquadem"].ToString().Trim(), out giaquadem))
+            {
+                loaiphong.GiaQuaDem = giaquadem;
+            }
+            return loaiphong;
+        }
+       
+        public bool addLoaiPhong(LoaiPhong lp)
+        {
+            SqlParameter[] para =
+            {
+                new SqlParameter("ten",lp.Ten),
+                new SqlParameter("mota",lp.MoTa),
+                new SqlParameter("soluong",lp.SoLuong),
+                new SqlParameter("giaquangay",lp.GiaQuaNgay),
+                new SqlParameter("giaquadem",lp.GiaQuaDem)
+            };
+            da.Query("procedure_insertLoaiPhong", para);
+            return true;
+        }
+        public bool updateLP(LoaiPhong lp)
+        {
+
+            SqlParameter[] para =
+            {
+                new SqlParameter("ma",lp.Ma),
+                new SqlParameter("ten",lp.Ten),
+                new SqlParameter("mota",lp.MoTa),
+                new SqlParameter("soluong",lp.SoLuong),
+                new SqlParameter("giaquangay",lp.GiaQuaNgay),
+                new SqlParameter("giaquadem",lp.GiaQuaDem)
+            };
+            da.Query("procedure_updateLoaiPhong", para);
+            return true;
+        }
+        public void XoaLoaiPhong(string ma)
+        {
+            da.NonQuery("delete LoaiPhong where ma='" + ma + "'");
+        }
         public String[] getList_Phong_byKey(String key)
         {
             DataTable table = da.Query("select *from phong");
@@ -258,6 +323,8 @@ create proc proc_insertKhach(@ten nvarchar(50), @ngaysinh date, @gioitinh int, @
             }
             return list;
         }
+
+      
     }
 }
 

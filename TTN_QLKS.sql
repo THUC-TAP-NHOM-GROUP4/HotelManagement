@@ -17,9 +17,9 @@ create table LoaiPhong
 ma varchar(20) primary key  not null,
 ten nvarchar(20) not null,
 mota nvarchar(50) not null,
-gia float not null,
-soluong  int not null
-
+soluong  int not null,
+giaquadem money not null,
+giaquangay money
 )
 create table Phong
 (
@@ -27,8 +27,8 @@ ma varchar(20) primary key not null,
 sophong int not null,
 loaiphongma varchar(20) not null,
 foreign key(loaiphongma) references LoaiPhong(ma),
-dongia float  not null,
-trangthai int not null
+trangthai int not null,
+dongia float not null
 )
 create table DichVu
 (
@@ -124,7 +124,8 @@ khachma varchar(20) not null foreign key(khachma) references Khach(ma),
 dangkyma varchar(20) not null foreign key(dangkyma) references DangKy(ma),
 dichvuma varchar(20) not null foreign key(dichvuma) references DichVu(ma),
 ngaysudung date not null,
-dongia float not null
+soluong int  not null,
+thanhtien float not null
 )
 
 
@@ -137,12 +138,11 @@ select *from Khach
  insert into Khach values('K0005',N'Nguyễn Văn Nam','1975-1-14',1,N'Nam Định',N'Việt Nam','165636261','01232456789')
 
  select *from LoaiPhong
-
- insert  into LoaiPhong values('LP0001',N'Phòng standard(STD)',N'phòng tiêu chuẩn,giá rẻ nhất',650000,100)
- insert  into LoaiPhong values('LP0002',N'Phòng Superior (SUP)',N'phòng chất  lượng hơn STD',750000,100)
- insert  into LoaiPhong values('LP0003',N'Phòng DeluxeTwin',N'phòng đôi chất lượng',850000,100)
- insert  into LoaiPhong values('LP0004',N'Phòng Deluxe(DLX)',N'phòng đơn chất lượng',800000,100)
- insert  into LoaiPhong values('LP0005',N'Phòng Suite (SUT)',N'phòng cao cấp',1000000,100)
+ insert  into LoaiPhong values('LP0001',N'Phòng standard(STD)',N'phòng tiêu chuẩn,giá rẻ nhất',100,650000,50000)
+ insert  into LoaiPhong values('LP0002',N'Phòng Superior (SUP)',N'phòng chất  lượng hơn STD',100,750000,50000)
+ insert  into LoaiPhong values('LP0003',N'Phòng DeluxeTwin',N'phòng đôi chất lượng',100,850000,100000)
+ insert  into LoaiPhong values('LP0004',N'Phòng Deluxe(DLX)',N'phòng đơn chất lượng',200,800000,2000000)
+ insert  into LoaiPhong values('LP0005',N'Phòng Suite (SUT)',N'phòng cao cấp',100,1000000,120000)
 
  select *From phong
  insert into Phong values('P0001',201,'LP0001',650000,N'Còn phòng') 
@@ -194,7 +194,7 @@ insert into DichVu values('DV0004',N'thức ăn',600000)
 select *from SuDungDichVu
 
 
-create function [dbo].[auto_ma_DangKy]() returns varchar(6)
+alter function [dbo].[auto_ma_DangKy]() returns varchar(6)
 as
 begin
 declare @ma varchar(50)
@@ -204,14 +204,14 @@ else
 select @ma=max(right(ma,4)) from DangKy
 set @ma=case
 when
-@ma>=0 and @ma<9 then 'NV000'+CONVERT(char,CONVERT(int,@ma)+1)
-when @ma>=9 and @ma<99then 'NV00'+CONVERT(char,CONVERT(int,@ma)+1)
-when @ma>=99 and @ma<999then 'NV0'+CONVERT(char,CONVERT(int,@ma)+1)
+@ma>=0 and @ma<9 then 'DK000'+CONVERT(char,CONVERT(int,@ma)+1)
+when @ma>=9 and @ma<99then 'DK00'+CONVERT(char,CONVERT(int,@ma)+1)
+when @ma>=99 and @ma<999then 'DK0'+CONVERT(char,CONVERT(int,@ma)+1)
 end
 return @ma
 end
 
-create function [dbo].[auto_ma_DichVu]() returns varchar(6)
+alter function [dbo].[auto_ma_DichVu]() returns varchar(6)
 as
 begin
 declare @ma varchar(50)
@@ -221,13 +221,13 @@ else
 select @ma=max(right(ma,4)) from DichVu
 set @ma=case
 when
-@ma>=0 and @ma<9 then 'NV000'+CONVERT(char,CONVERT(int,@ma)+1)
-when @ma>=9 and @ma<99then 'NV00'+CONVERT(char,CONVERT(int,@ma)+1)
-when @ma>=99 and @ma<999then 'NV0'+CONVERT(char,CONVERT(int,@ma)+1)
+@ma>=0 and @ma<9 then 'DV000'+CONVERT(char,CONVERT(int,@ma)+1)
+when @ma>=9 and @ma<99then 'DV00'+CONVERT(char,CONVERT(int,@ma)+1)
+when @ma>=99 and @ma<999then 'DV0'+CONVERT(char,CONVERT(int,@ma)+1)
 end
 return @ma
 end
-create function [dbo].[auto_ma_Khach]() returns varchar(6)
+alter function [dbo].[auto_ma_Khach]() returns varchar(5)
 as
 begin
 declare @ma varchar(50)
@@ -237,9 +237,9 @@ else
 select @ma=max(right(ma,4)) from Khach
 set @ma=case
 when
-@ma>=0 and @ma<9 then 'NV000'+CONVERT(char,CONVERT(int,@ma)+1)
-when @ma>=9 and @ma<99then 'NV00'+CONVERT(char,CONVERT(int,@ma)+1)
-when @ma>=99 and @ma<999then 'NV0'+CONVERT(char,CONVERT(int,@ma)+1)
+@ma>=0 and @ma<9 then 'K000'+CONVERT(char,CONVERT(int,@ma)+1)
+when @ma>=9 and @ma<99then 'K00'+CONVERT(char,CONVERT(int,@ma)+1)
+when @ma>=99 and @ma<999then 'K0'+CONVERT(char,CONVERT(int,@ma)+1)
 end
 return @ma
 end
@@ -259,7 +259,7 @@ when @ma>=99 and @ma<999then 'NV0'+CONVERT(char,CONVERT(int,@ma)+1)
 end
 return @ma
 end
-create function [dbo].[auto_ma_phong]() returns varchar(6)
+CREATE function [dbo].[auto_ma_phong]() returns varchar(5)
 as
 begin
 declare @ma varchar(50)
@@ -269,9 +269,43 @@ else
 select @ma=max(right(ma,4)) from Phong
 set @ma=case
 when
-@ma>=0 and @ma<9 then 'NV000'+CONVERT(char,CONVERT(int,@ma)+1)
-when @ma>=9 and @ma<99then 'NV00'+CONVERT(char,CONVERT(int,@ma)+1)
-when @ma>=99 and @ma<999then 'NV0'+CONVERT(char,CONVERT(int,@ma)+1)
+@ma>=0 and @ma<9 then 'P000'+CONVERT(char,CONVERT(int,@ma)+1)
+when @ma>=9 and @ma<99then 'P00'+CONVERT(char,CONVERT(int,@ma)+1)
+when @ma>=99 and @ma<999then 'P0'+CONVERT(char,CONVERT(int,@ma)+1)
 end
 return @ma
+end
+
+ALTER function [dbo].[auto_maLoaiPhong]() returns varchar(6)
+as
+begin
+declare @ma varchar(6)
+if(select count(ma) from LoaiPhong)=0
+set @ma='0'
+else 
+select @ma=max(right(ma,4)) from LoaiPhong
+set @ma=case
+when 
+@ma>=0 and @ma<9 then 'LP000'+CONVERT(char,convert(int,@ma)+1)
+when @ma>=9 and @ma<99 then 'LP00'+CONVERT(char,convert(int,@ma)+1)
+when @ma>=99 and @ma<999 then 'LP0'+CONVERT(char,convert(int,@ma)+1)
+end
+return 
+@ma
+end
+
+create proc [dbo].[procedure_insertLoaiPhong](@ten nvarchar(20),@mota nvarchar(50),@soluong int,@giaquangay money,@giaquadem money)
+as
+begin
+insert into LoaiPhong(ma,ten,mota,soluong,giaquangay,giaquadem)
+values(dbo.auto_maLoaiPhong(),@ten,@mota,@soluong,@giaquangay,@giaquadem)
+end
+
+
+create proc procedure_updateLoaiPhong(@ma varchar(20),@ten nvarchar(20),@mota nvarchar(50),@soluong int,@giaquangay money,@giaquadem money)
+as
+begin
+update LoaiPhong
+set ten=@ten,mota=@mota,soluong=@soluong,giaquangay=@giaquangay,giaquadem=@giaquadem
+where ma=@ma
 end
