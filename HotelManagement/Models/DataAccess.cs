@@ -10,7 +10,7 @@ namespace HotelManagement.Models
 {
     class DataAccess
     {
-        static string constr = @"Data Source=DESKTOP-4KR3HIP\SQLEXPRESS;Initial Catalog=TTN_QLKS;Integrated Security=True";
+        static string constr = @"Data Source=THANHHUONG\THANHHUONG;Initial Catalog=TTN_QLKS;Integrated Security=True";
         private static SqlConnection con = new SqlConnection(constr);
         public DataTable Query(string sql, params SqlParameter[] pr)
         {

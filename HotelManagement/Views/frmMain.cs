@@ -41,13 +41,14 @@ namespace HotelManagement
             Load_tabpage_trangchu();
             //loaded tabpage DatPhong
             Load_tabpage_datphong();
-
+            Load_tabpage_loaiphong();
         }
         private void Load_()
         {
 
             Load_tabpage_trangchu();
             Load_tabpage_datphong();
+          
         }
         private void Load_tabpage_trangchu()
         {
@@ -79,13 +80,13 @@ namespace HotelManagement
                     src_image += "none.jpg";
                     trangthai = "khác";
                 }
-                galleryControl_TrangChu.Gallery.Groups[0].Items.Add(
-                    new DevExpress.XtraBars.Ribbon.GalleryItem(
-                        new Bitmap(src_image), phong.SoPhong, trangthai));
+                //galleryControl_TrangChu.Gallery.Groups[0].Items.Add(
+                //    new DevExpress.XtraBars.Ribbon.GalleryItem(
+                //        new Bitmap(src_image), phong.SoPhong, trangthai));
 
-                galleryControl_TrangChu.Gallery.Groups[0].Items[i].HoverImage =
-                    galleryControl_TrangChu.Gallery.Groups[0].Items[i].Image;
-                i++;
+                //galleryControl_TrangChu.Gallery.Groups[0].Items[i].HoverImage =
+                //    galleryControl_TrangChu.Gallery.Groups[0].Items[i].Image;
+                //i++;
             }
         }
         private void Load_tabpage_datphong()
@@ -118,13 +119,13 @@ namespace HotelManagement
                     src_image += "none.jpg";
                     trangthai = "khác";
                 }
-                galleryControl_DatPhong.Gallery.Groups[0].Items.Add(
-                    new DevExpress.XtraBars.Ribbon.GalleryItem(
-                        new Bitmap(src_image), phong.SoPhong, trangthai));
+                //galleryControl_DatPhong.Gallery.Groups[0].Items.Add(
+                //    new DevExpress.XtraBars.Ribbon.GalleryItem(
+                //        new Bitmap(src_image), phong.SoPhong, trangthai));
 
-                galleryControl_DatPhong.Gallery.Groups[0].Items[i].HoverImage =
-                    galleryControl_DatPhong.Gallery.Groups[0].Items[i].Image;
-                i++;
+                //galleryControl_DatPhong.Gallery.Groups[0].Items[i].HoverImage =
+                //    galleryControl_DatPhong.Gallery.Groups[0].Items[i].Image;
+                //i++;
             }
 
             tbDatPhong_HoTen.Text = "";
@@ -151,21 +152,33 @@ namespace HotelManagement
             tbDatPhong_GioDi.Text = "";
 
             //load danh sách đăng ký
-            Load_tabpage_datphong_ds_dangky();
+            //Load_tabpage_datphong_ds_dangky();
         }
-        private void Load_tabpage_datphong_ds_dangky()
+        //private void Load_tabpage_datphong_ds_dangky()
+        //{
+        //    dgv_DatPhong_DanhSach.DataSource = controller.getList_DangKy();
+        //    dgv_DatPhong_DanhSach.Columns["Ma"].HeaderText = "Mã";
+        //    dgv_DatPhong_DanhSach.Columns["NgayDangKy"].HeaderText = "Ngày đăng ký";
+        //    dgv_DatPhong_DanhSach.Columns["KhachMa"].HeaderText = "Khách hàng";
+        //    dgv_DatPhong_DanhSach.Columns["NgayDen"].HeaderText = "Ngày đến";
+        //    dgv_DatPhong_DanhSach.Columns["GioDen"].HeaderText = "Giờ đến";
+        //    dgv_DatPhong_DanhSach.Columns["NgayDi"].HeaderText = "Ngày đi";
+        //    dgv_DatPhong_DanhSach.Columns["GioDi"].HeaderText = "Giờ đi";
+        //    dgv_DatPhong_DanhSach.Columns["PhongMa"].HeaderText = "Số phòng";
+        //    dgv_DatPhong_DanhSach.Columns["TienDatCoc"].HeaderText = "Tiền đặt cọc";
+        //    dgv_DatPhong_DanhSach.Columns["NhanVienMa"].HeaderText = "Nhân viên";
+        //}
+          private void Load_tabpage_loaiphong()
         {
-            dgv_DatPhong_DanhSach.DataSource = controller.getList_DangKy();
-            dgv_DatPhong_DanhSach.Columns["Ma"].HeaderText = "Mã";
-            dgv_DatPhong_DanhSach.Columns["NgayDangKy"].HeaderText = "Ngày đăng ký";
-            dgv_DatPhong_DanhSach.Columns["KhachMa"].HeaderText = "Khách hàng";
-            dgv_DatPhong_DanhSach.Columns["NgayDen"].HeaderText = "Ngày đến";
-            dgv_DatPhong_DanhSach.Columns["GioDen"].HeaderText = "Giờ đến";
-            dgv_DatPhong_DanhSach.Columns["NgayDi"].HeaderText = "Ngày đi";
-            dgv_DatPhong_DanhSach.Columns["GioDi"].HeaderText = "Giờ đi";
-            dgv_DatPhong_DanhSach.Columns["PhongMa"].HeaderText = "Số phòng";
-            dgv_DatPhong_DanhSach.Columns["TienDatCoc"].HeaderText = "Tiền đặt cọc";
-            dgv_DatPhong_DanhSach.Columns["NhanVienMa"].HeaderText = "Nhân viên";
+            dtgLoaiPhong.DataSource = controller.getList_LoaiPhong();
+            dtgLoaiPhong.Columns["Ma"].HeaderText = "Mã";
+            dtgLoaiPhong.Columns["Ten"].HeaderText = "Tên";
+            dtgLoaiPhong.Columns["MoTa"].HeaderText = "Mô Tả";
+            dtgLoaiPhong.Columns["SoLuong"].HeaderText = "Số Lượng";
+            dtgLoaiPhong.Columns["GiaQuaNgay"].HeaderText = "Gía Qua Ngày";
+            dtgLoaiPhong.Columns["GiaQuaDem"].HeaderText = "Gía Qua Đêm";
+            dtgLoaiPhong.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+
         }
 
         private void frmMain_FormClosed(object sender, FormClosedEventArgs e)
@@ -364,6 +377,126 @@ namespace HotelManagement
             dgv_DatPhong_DanhSach.Size = new System.Drawing.Size(877, 522);
             dgv_DatPhong_DanhSach.DataSource = controller.getList_DangKy();
 
+        }
+
+        private void tabPageLoaiPhong_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnThem_Click(object sender, EventArgs e)
+        {
+            if(CheckLoaiPhong())
+            {
+                LoaiPhong lp = new LoaiPhong();
+                lp.Ten = txtTen.Text.ToString().Trim();
+                lp.MoTa = rtbMoTa.Text.ToString().Trim();
+                lp.SoLuong = int.Parse(txtSoLuong.Text.ToString().Trim());
+                double giaquadem = 0;
+                if (double.TryParse(txtGiaQuaDem.Text.ToString().Trim(), out giaquadem))
+                    lp.GiaQuaDem = giaquadem;
+                double giaquangay = 0;
+                if (double.TryParse(txtGiaQuaNgay.Text.ToString().Trim(), out giaquangay))
+                    lp.GiaQuaNgay = giaquangay;
+                if(controller.addLoaiPhong(lp))
+                {
+                    dtgLoaiPhong.DataSource=controller.getList_LoaiPhong();
+                }
+            }
+
+        }
+        private bool CheckLoaiPhong()
+        { 
+        
+            if(txtTen.Text.ToString().Trim().Equals(""))
+                {
+                errTenLoaiPhong.SetError(txtTen, "nhap ten loai phong");
+                return false;
+                }
+            errTenLoaiPhong.Clear();
+            if (txtSoLuong.Text.ToString().Trim().Equals(""))
+            {
+                errSoLuongLoaiPhong.SetError(txtSoLuong, "nhap ten loai phong");
+                return false;
+            }
+            errSoLuongLoaiPhong.Clear();
+            if (txtGiaQuaNgay.Text.ToString().Trim().Equals(""))
+            {
+                errGiaQuaNgay.SetError(txtGiaQuaNgay, "nhap ten loai phong");
+                return false;
+            }
+            errGiaQuaNgay.Clear();
+            if (txtGiaQuaDem.Text.ToString().Trim().Equals(""))
+            {
+                errGiaQuaDem.SetError(txtGiaQuaDem, "nhap ten loai phong");
+                return false;
+            }
+            errGiaQuaDem.Clear();
+            if (rtbMoTa.Text.ToString().Trim().Equals(""))
+            {
+                errMoTaLoaiPhong.SetError(rtbMoTa, "nhap ten loai phong");
+                return false;
+            }
+            errMoTaLoaiPhong.Clear();
+            return true;
+        }
+
+        private void btnSua_Click(object sender, EventArgs e)
+        {
+
+            LoaiPhong lp = new LoaiPhong();
+            lp.Ma = dtgLoaiPhong.Rows[dtgLoaiPhong.CurrentRow.Index].Cells[0].Value.ToString();
+            lp.Ten = txtTen.Text.ToString().Trim();
+            lp.Ten = txtTen.Text.ToString().Trim();
+            lp.MoTa = rtbMoTa.Text.ToString().Trim();
+            lp.SoLuong = int.Parse(txtSoLuong.Text.ToString().Trim());
+            double giaquadem = 0;
+            if (double.TryParse(txtGiaQuaDem.Text.ToString().Trim(), out giaquadem))
+                lp.GiaQuaDem = giaquadem;
+            double giaquangay = 0;
+            if (double.TryParse(txtGiaQuaNgay.Text.ToString().Trim(), out giaquangay))
+                lp.GiaQuaNgay = giaquangay;
+            if (controller.updateLP(lp))
+            {
+                dtgLoaiPhong.DataSource = controller.getList_LoaiPhong();
+            }
+        }
+
+        private void dtgLoaiPhong_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+
+            DataGridViewRow row = new DataGridViewRow();
+            row = dtgLoaiPhong.Rows[e.RowIndex];
+            try
+            {
+                txtTen.Text = row.Cells[1].Value.ToString();
+                rtbMoTa.Text= row.Cells[2].Value.ToString();
+                txtSoLuong.Text = row.Cells[3].Value.ToString();
+                txtGiaQuaNgay.Text= row.Cells[4].Value.ToString();
+                txtGiaQuaDem.Text= row.Cells[5].Value.ToString();
+
+            }
+            catch (Exception)
+            {
+
+            }
+        }
+
+        private void btnXoa_Click(object sender, EventArgs e)
+        {
+
+            if (this.dtgLoaiPhong.SelectedRows.Count > 0)
+            {
+
+                int selectedIndex = dtgLoaiPhong.SelectedRows[0].Index;
+                string rowID = dtgLoaiPhong[0, selectedIndex].Value.ToString();
+                if (MessageBox.Show("Ban co chac  chan  xoa  loại phòng mã " + rowID + "", "Xoa loại phòng", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                {
+
+                    controller.XoaLoaiPhong(rowID);
+                    dtgLoaiPhong.DataSource = controller.getList_LoaiPhong();
+                }
+            }
         }
     }
 }
