@@ -30,11 +30,12 @@ foreign key(loaiphongma) references LoaiPhong(ma),
 trangthai int not null,
 dongia float not null
 )
+
 create table DichVu
 (
 ma varchar(20) primary key not null,
 ten nvarchar(20) not null,
-dongia float not null
+dongia money not null,
 )
 create table NhanVien
 (
@@ -120,12 +121,12 @@ nhanvienma varchar(20) not null foreign key(nhanvienma) references NhanVien(ma)
 create table SuDungDichVu
 (
 ma varchar(20) primary key not null,
+phongma varchar(20) not null foreign key(phongma) references Phong(ma),
 khachma varchar(20) not null foreign key(khachma) references Khach(ma),
-dangkyma varchar(20) not null foreign key(dangkyma) references DangKy(ma),
 dichvuma varchar(20) not null foreign key(dichvuma) references DichVu(ma),
 ngaysudung date not null,
 soluong int  not null,
-thanhtien float not null
+thanhtien money not null
 )
 
 
@@ -184,6 +185,9 @@ select *From ThietBiPhong
 
 insert into ThietBiPhong values('CTTB0001',N'giường đôi','P0001',1)
 
+
+
+
 select *from DichVu
 
 insert into DichVu values('DV0001',N'giặt là',100000)
@@ -192,7 +196,7 @@ insert into DichVu values('DV0003',N'giải trí',1000000)
 insert into DichVu values('DV0004',N'thức ăn',600000)
 
 select *from SuDungDichVu
-
+insert into SuDungDichVu values('SDDV0001','P0001','K0001','DV0001','2017-5-5',1,120000)
 
 alter function [dbo].[auto_ma_DangKy]() returns varchar(6)
 as
@@ -294,6 +298,32 @@ return
 @ma
 end
 
+create function auto_maSuDungDichVu() returns varchar(8)
+as
+begin
+declare @ma varchar(8)
+if(select count(ma) from SuDungDichVu)=0
+set @ma='0'
+else 
+select @ma=max(right(ma,4)) from SuDungDichVu
+set @ma=case
+when 
+@ma>=0 and @ma<9 then 'SDDV000'+CONVERT(char,convert(int,@ma)+1)
+when @ma>=9 and @ma<99 then 'SDDV00'+CONVERT(char,convert(int,@ma)+1)
+when @ma>=99 and @ma<999 then 'SDDV0'+CONVERT(char,convert(int,@ma)+1)
+end
+return 
+@ma
+end
+
+
+create proc procedure_insertPhong(@sophong int,@loaiphong varchar(20),@trangthai int)
+as
+begin
+insert into Phong(ma,sophong,loaiphongma,trangthai)
+values(dbo.auto_ma_phong(),@sophong,@loaiphong,@trangthai)
+end
+
 create proc [dbo].[procedure_insertLoaiPhong](@ten nvarchar(20),@mota nvarchar(50),@soluong int,@giaquangay money,@giaquadem money)
 as
 begin
@@ -301,6 +331,21 @@ insert into LoaiPhong(ma,ten,mota,soluong,giaquangay,giaquadem)
 values(dbo.auto_maLoaiPhong(),@ten,@mota,@soluong,@giaquangay,@giaquadem)
 end
 
+create procedure procedure_insertDichVu(@ten nvarchar(20),@dongia money)
+as
+begin
+insert into DichVu(ma,ten,dongia)
+values(dbo.auto_ma_DichVu(),@ten,@dongia)
+end
+select *from SuDungDichVu
+create  proc procedure_insertSuDungDichVu(@phongma varchar(20),@khachma varchar(20),@dichvuma varchar(20),@soluong int)
+as
+begin
+declare @thanhtien money
+set @thanhtien=@soluong*(select dongia from DichVu where ma=@dichvuma)
+insert into SuDungDichVu(ma,phongma,khachma,dichvuma,ngaysudung,soluong,thanhtien)
+values(dbo.auto_maSuDungDichVu(),@phongma,@khachma,@dichvuma,GETDATE(),@soluong,@thanhtien)
+end
 
 create proc procedure_updateLoaiPhong(@ma varchar(20),@ten nvarchar(20),@mota nvarchar(50),@soluong int,@giaquangay money,@giaquadem money)
 as
@@ -309,3 +354,28 @@ update LoaiPhong
 set ten=@ten,mota=@mota,soluong=@soluong,giaquangay=@giaquangay,giaquadem=@giaquadem
 where ma=@ma
 end
+
+create procedure procedure_updateDichVu(@ma varchar(20),@ten nvarchar(20),@dongia money)
+as
+begin
+update DichVu
+set ten=@ten,dongia=@dongia where ma=@ma
+end
+
+create proc procedure_updateSuDungDichVu(@ma varchar(20),@phongma varchar(20),@khachma varchar(20),@dichvuma varchar(20),@soluong int)
+as
+begin
+declare @thanhtien money
+set @thanhtien=@soluong*(select dongia from DichVu where ma=@dichvuma)
+update SuDungDichVu
+set  phongma=@phongma,khachma=@khachma,dichvuma=@dichvuma,soluong=@soluong,thanhtien=@thanhtien
+where ma=@ma
+end
+create proc procedure_updatePhong(@ma varchar(20),@sophong int,@loaiphong varchar(20),@trangthai int)
+as
+begin
+update Phong
+set sophong=@sophong,loaiphongma=@loaiphong,trangthai=@trangthai
+where ma=@ma
+end
+

@@ -54,10 +54,12 @@
     <Compile Include="Controllers\Controller.cs" />
     <Compile Include="Models\DangKy.cs" />
     <Compile Include="Models\DataAccess.cs" />
+    <Compile Include="Models\DichVu.cs" />
     <Compile Include="Models\Khach.cs" />
     <Compile Include="Models\LoaiPhong.cs" />
     <Compile Include="Models\NhanVien.cs" />
     <Compile Include="Models\Phong.cs" />
+    <Compile Include="Models\SuDungDichVu.cs" />
     <Compile Include="Models\VatDung.cs" />
     <Compile Include="Views\frmChiTietPhong.cs">
       <SubType>Form</SubType>

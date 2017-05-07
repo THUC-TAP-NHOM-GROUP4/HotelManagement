@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            DevExpress.XtraBars.Ribbon.GalleryItemGroup galleryItemGroup1 = new DevExpress.XtraBars.Ribbon.GalleryItemGroup();
-            DevExpress.XtraBars.Ribbon.GalleryItemGroup galleryItemGroup2 = new DevExpress.XtraBars.Ribbon.GalleryItemGroup();
+            DevExpress.XtraBars.Ribbon.GalleryItemGroup galleryItemGroup7 = new DevExpress.XtraBars.Ribbon.GalleryItemGroup();
+            DevExpress.XtraBars.Ribbon.GalleryItemGroup galleryItemGroup8 = new DevExpress.XtraBars.Ribbon.GalleryItemGroup();
             this.tabControlMain = new System.Windows.Forms.TabControl();
             this.tabPageTrangChu = new System.Windows.Forms.TabPage();
             this.galleryControl_TrangChu = new DevExpress.XtraBars.Ribbon.GalleryControl();
@@ -51,6 +51,16 @@
             this.btnThem = new System.Windows.Forms.Button();
             this.dtgLoaiPhong = new System.Windows.Forms.DataGridView();
             this.tabPageQLPhong = new System.Windows.Forms.TabPage();
+            this.btnXoaPhong = new System.Windows.Forms.Button();
+            this.btnSuaPhong = new System.Windows.Forms.Button();
+            this.btnThemPhong = new System.Windows.Forms.Button();
+            this.cbbLoaiPhong = new System.Windows.Forms.ComboBox();
+            this.txtTrangThai = new System.Windows.Forms.TextBox();
+            this.txtSoPhong = new System.Windows.Forms.TextBox();
+            this.label26 = new System.Windows.Forms.Label();
+            this.label25 = new System.Windows.Forms.Label();
+            this.label24 = new System.Windows.Forms.Label();
+            this.dtgPhong = new System.Windows.Forms.DataGridView();
             this.tabPageDatPhong = new System.Windows.Forms.TabPage();
             this.dgv_DatPhong_DanhSach = new System.Windows.Forms.DataGridView();
             this.btnDatPhong_DanhSach = new System.Windows.Forms.Button();
@@ -99,6 +109,29 @@
             this.galleryControl_DatPhong = new DevExpress.XtraBars.Ribbon.GalleryControl();
             this.galleryControlClient2 = new DevExpress.XtraBars.Ribbon.GalleryControlClient();
             this.tabPageQLKhach = new System.Windows.Forms.TabPage();
+            this.tabPageDichVu = new System.Windows.Forms.TabPage();
+            this.txtGiaDichVu = new System.Windows.Forms.TextBox();
+            this.txtTenDichVu = new System.Windows.Forms.TextBox();
+            this.label27 = new System.Windows.Forms.Label();
+            this.label28 = new System.Windows.Forms.Label();
+            this.btnXoaDichVu = new System.Windows.Forms.Button();
+            this.btnSuaDichVu = new System.Windows.Forms.Button();
+            this.btnThemDichVu = new System.Windows.Forms.Button();
+            this.dtgDSDichVu = new System.Windows.Forms.DataGridView();
+            this.tabPageSuDungDichVu = new System.Windows.Forms.TabPage();
+            this.txtTenKhach = new System.Windows.Forms.TextBox();
+            this.label33 = new System.Windows.Forms.Label();
+            this.cbbKhachMa = new System.Windows.Forms.ComboBox();
+            this.cbbSDDichVu = new System.Windows.Forms.ComboBox();
+            this.label32 = new System.Windows.Forms.Label();
+            this.cbbPhongSDDV = new System.Windows.Forms.ComboBox();
+            this.label31 = new System.Windows.Forms.Label();
+            this.txtSoLuongSDDV = new System.Windows.Forms.TextBox();
+            this.label29 = new System.Windows.Forms.Label();
+            this.label30 = new System.Windows.Forms.Label();
+            this.btnSuaSDDV = new System.Windows.Forms.Button();
+            this.btnThemSDDV = new System.Windows.Forms.Button();
+            this.dtgSuDungDichVu = new System.Windows.Forms.DataGridView();
             this.tabPageThongKe = new System.Windows.Forms.TabPage();
             this.tabPageHuongDan = new System.Windows.Forms.TabPage();
             this.dockManager1 = new DevExpress.XtraBars.Docking.DockManager(this.components);
@@ -121,18 +154,33 @@
             this.errGiaQuaNgay = new System.Windows.Forms.ErrorProvider(this.components);
             this.errGiaQuaDem = new System.Windows.Forms.ErrorProvider(this.components);
             this.errMoTaLoaiPhong = new System.Windows.Forms.ErrorProvider(this.components);
+            this.errSoPhong = new System.Windows.Forms.ErrorProvider(this.components);
+            this.errLoaiPhong = new System.Windows.Forms.ErrorProvider(this.components);
+            this.errTrangThai = new System.Windows.Forms.ErrorProvider(this.components);
+            this.errTenDichVu = new System.Windows.Forms.ErrorProvider(this.components);
+            this.errGiaDichVu = new System.Windows.Forms.ErrorProvider(this.components);
+            this.errPhongSDDV = new System.Windows.Forms.ErrorProvider(this.components);
+            this.errKhachHangSDDV = new System.Windows.Forms.ErrorProvider(this.components);
+            this.errDichVuSD = new System.Windows.Forms.ErrorProvider(this.components);
+            this.errSoLuongSDDV = new System.Windows.Forms.ErrorProvider(this.components);
             this.tabControlMain.SuspendLayout();
             this.tabPageTrangChu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.galleryControl_TrangChu)).BeginInit();
             this.galleryControl_TrangChu.SuspendLayout();
             this.tabPageLoaiPhong.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtgLoaiPhong)).BeginInit();
+            this.tabPageQLPhong.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dtgPhong)).BeginInit();
             this.tabPageDatPhong.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_DatPhong_DanhSach)).BeginInit();
             this.grbDatPhong_Phong.SuspendLayout();
             this.grbDatPhong_Khach.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.galleryControl_DatPhong)).BeginInit();
             this.galleryControl_DatPhong.SuspendLayout();
+            this.tabPageDichVu.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dtgDSDichVu)).BeginInit();
+            this.tabPageSuDungDichVu.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dtgSuDungDichVu)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dockManager1)).BeginInit();
             this.dockPanel1_Container.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.navBarControl1)).BeginInit();
@@ -142,6 +190,15 @@
             ((System.ComponentModel.ISupportInitialize)(this.errGiaQuaNgay)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errGiaQuaDem)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errMoTaLoaiPhong)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errSoPhong)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errLoaiPhong)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errTrangThai)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errTenDichVu)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errGiaDichVu)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errPhongSDDV)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errKhachHangSDDV)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errDichVuSD)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errSoLuongSDDV)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControlMain
@@ -151,6 +208,8 @@
             this.tabControlMain.Controls.Add(this.tabPageQLPhong);
             this.tabControlMain.Controls.Add(this.tabPageDatPhong);
             this.tabControlMain.Controls.Add(this.tabPageQLKhach);
+            this.tabControlMain.Controls.Add(this.tabPageDichVu);
+            this.tabControlMain.Controls.Add(this.tabPageSuDungDichVu);
             this.tabControlMain.Controls.Add(this.tabPageThongKe);
             this.tabControlMain.Controls.Add(this.tabPageHuongDan);
             this.tabControlMain.Location = new System.Drawing.Point(190, 1);
@@ -181,9 +240,9 @@
             // 
             this.galleryControl_TrangChu.Gallery.AllowHoverImages = true;
             this.galleryControl_TrangChu.Gallery.BackColor = System.Drawing.Color.White;
-            galleryItemGroup1.Caption = "Danh sách phòng";
+            galleryItemGroup7.Caption = "Danh sách phòng";
             this.galleryControl_TrangChu.Gallery.Groups.AddRange(new DevExpress.XtraBars.Ribbon.GalleryItemGroup[] {
-            galleryItemGroup1});
+            galleryItemGroup7});
             this.galleryControl_TrangChu.Gallery.HoverImageSize = new System.Drawing.Size(60, 60);
             this.galleryControl_TrangChu.Gallery.ImageSize = new System.Drawing.Size(100, 100);
             this.galleryControl_TrangChu.Gallery.ShowItemText = true;
@@ -347,12 +406,110 @@
             // 
             // tabPageQLPhong
             // 
+            this.tabPageQLPhong.Controls.Add(this.btnXoaPhong);
+            this.tabPageQLPhong.Controls.Add(this.btnSuaPhong);
+            this.tabPageQLPhong.Controls.Add(this.btnThemPhong);
+            this.tabPageQLPhong.Controls.Add(this.cbbLoaiPhong);
+            this.tabPageQLPhong.Controls.Add(this.txtTrangThai);
+            this.tabPageQLPhong.Controls.Add(this.txtSoPhong);
+            this.tabPageQLPhong.Controls.Add(this.label26);
+            this.tabPageQLPhong.Controls.Add(this.label25);
+            this.tabPageQLPhong.Controls.Add(this.label24);
+            this.tabPageQLPhong.Controls.Add(this.dtgPhong);
             this.tabPageQLPhong.Location = new System.Drawing.Point(4, 24);
             this.tabPageQLPhong.Name = "tabPageQLPhong";
             this.tabPageQLPhong.Size = new System.Drawing.Size(986, 585);
             this.tabPageQLPhong.TabIndex = 4;
             this.tabPageQLPhong.Text = "Quản Lý Phòng";
             this.tabPageQLPhong.UseVisualStyleBackColor = true;
+            // 
+            // btnXoaPhong
+            // 
+            this.btnXoaPhong.Location = new System.Drawing.Point(189, 88);
+            this.btnXoaPhong.Name = "btnXoaPhong";
+            this.btnXoaPhong.Size = new System.Drawing.Size(75, 23);
+            this.btnXoaPhong.TabIndex = 10;
+            this.btnXoaPhong.Text = "Xóa Phòng";
+            this.btnXoaPhong.UseVisualStyleBackColor = true;
+            this.btnXoaPhong.Click += new System.EventHandler(this.btnXoaPhong_Click);
+            // 
+            // btnSuaPhong
+            // 
+            this.btnSuaPhong.Location = new System.Drawing.Point(116, 88);
+            this.btnSuaPhong.Name = "btnSuaPhong";
+            this.btnSuaPhong.Size = new System.Drawing.Size(75, 23);
+            this.btnSuaPhong.TabIndex = 9;
+            this.btnSuaPhong.Text = "Sửa Phòng";
+            this.btnSuaPhong.UseVisualStyleBackColor = true;
+            this.btnSuaPhong.Click += new System.EventHandler(this.btnSuaPhong_Click);
+            // 
+            // btnThemPhong
+            // 
+            this.btnThemPhong.Location = new System.Drawing.Point(25, 88);
+            this.btnThemPhong.Name = "btnThemPhong";
+            this.btnThemPhong.Size = new System.Drawing.Size(91, 23);
+            this.btnThemPhong.TabIndex = 8;
+            this.btnThemPhong.Text = "Thêm Phòng";
+            this.btnThemPhong.UseVisualStyleBackColor = true;
+            this.btnThemPhong.Click += new System.EventHandler(this.btnThemPhong_Click);
+            // 
+            // cbbLoaiPhong
+            // 
+            this.cbbLoaiPhong.FormattingEnabled = true;
+            this.cbbLoaiPhong.Location = new System.Drawing.Point(464, 39);
+            this.cbbLoaiPhong.Name = "cbbLoaiPhong";
+            this.cbbLoaiPhong.Size = new System.Drawing.Size(174, 23);
+            this.cbbLoaiPhong.TabIndex = 7;
+            // 
+            // txtTrangThai
+            // 
+            this.txtTrangThai.Location = new System.Drawing.Point(776, 39);
+            this.txtTrangThai.Name = "txtTrangThai";
+            this.txtTrangThai.Size = new System.Drawing.Size(100, 22);
+            this.txtTrangThai.TabIndex = 6;
+            // 
+            // txtSoPhong
+            // 
+            this.txtSoPhong.Location = new System.Drawing.Point(134, 39);
+            this.txtSoPhong.Name = "txtSoPhong";
+            this.txtSoPhong.Size = new System.Drawing.Size(174, 22);
+            this.txtSoPhong.TabIndex = 5;
+            // 
+            // label26
+            // 
+            this.label26.AutoSize = true;
+            this.label26.Location = new System.Drawing.Point(682, 39);
+            this.label26.Name = "label26";
+            this.label26.Size = new System.Drawing.Size(65, 15);
+            this.label26.TabIndex = 4;
+            this.label26.Text = "Trạng thái:";
+            // 
+            // label25
+            // 
+            this.label25.AutoSize = true;
+            this.label25.Location = new System.Drawing.Point(352, 39);
+            this.label25.Name = "label25";
+            this.label25.Size = new System.Drawing.Size(71, 15);
+            this.label25.TabIndex = 3;
+            this.label25.Text = "Loại phòng:";
+            // 
+            // label24
+            // 
+            this.label24.AutoSize = true;
+            this.label24.Location = new System.Drawing.Point(22, 39);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(62, 15);
+            this.label24.TabIndex = 2;
+            this.label24.Text = "Số phòng:";
+            // 
+            // dtgPhong
+            // 
+            this.dtgPhong.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dtgPhong.Location = new System.Drawing.Point(0, 131);
+            this.dtgPhong.Name = "dtgPhong";
+            this.dtgPhong.Size = new System.Drawing.Size(979, 451);
+            this.dtgPhong.TabIndex = 1;
+            this.dtgPhong.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dtgPhong_CellMouseClick);
             // 
             // tabPageDatPhong
             // 
@@ -818,9 +975,9 @@
             // 
             // 
             // 
-            galleryItemGroup2.Caption = "Phòng";
+            galleryItemGroup8.Caption = "Phòng";
             this.galleryControl_DatPhong.Gallery.Groups.AddRange(new DevExpress.XtraBars.Ribbon.GalleryItemGroup[] {
-            galleryItemGroup2});
+            galleryItemGroup8});
             this.galleryControl_DatPhong.Gallery.HoverImageSize = new System.Drawing.Size(30, 30);
             this.galleryControl_DatPhong.Gallery.ImageSize = new System.Drawing.Size(70, 70);
             this.galleryControl_DatPhong.Gallery.ShowItemText = true;
@@ -845,6 +1002,231 @@
             this.tabPageQLKhach.TabIndex = 2;
             this.tabPageQLKhach.Text = "Quản Lý Khách";
             this.tabPageQLKhach.UseVisualStyleBackColor = true;
+            // 
+            // tabPageDichVu
+            // 
+            this.tabPageDichVu.Controls.Add(this.txtGiaDichVu);
+            this.tabPageDichVu.Controls.Add(this.txtTenDichVu);
+            this.tabPageDichVu.Controls.Add(this.label27);
+            this.tabPageDichVu.Controls.Add(this.label28);
+            this.tabPageDichVu.Controls.Add(this.btnXoaDichVu);
+            this.tabPageDichVu.Controls.Add(this.btnSuaDichVu);
+            this.tabPageDichVu.Controls.Add(this.btnThemDichVu);
+            this.tabPageDichVu.Controls.Add(this.dtgDSDichVu);
+            this.tabPageDichVu.Location = new System.Drawing.Point(4, 24);
+            this.tabPageDichVu.Name = "tabPageDichVu";
+            this.tabPageDichVu.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPageDichVu.Size = new System.Drawing.Size(986, 585);
+            this.tabPageDichVu.TabIndex = 8;
+            this.tabPageDichVu.Text = "Quản lý dịch vụ";
+            this.tabPageDichVu.UseVisualStyleBackColor = true;
+            // 
+            // txtGiaDichVu
+            // 
+            this.txtGiaDichVu.Location = new System.Drawing.Point(405, 61);
+            this.txtGiaDichVu.Name = "txtGiaDichVu";
+            this.txtGiaDichVu.Size = new System.Drawing.Size(154, 22);
+            this.txtGiaDichVu.TabIndex = 16;
+            // 
+            // txtTenDichVu
+            // 
+            this.txtTenDichVu.Location = new System.Drawing.Point(87, 61);
+            this.txtTenDichVu.Name = "txtTenDichVu";
+            this.txtTenDichVu.Size = new System.Drawing.Size(162, 22);
+            this.txtTenDichVu.TabIndex = 15;
+            // 
+            // label27
+            // 
+            this.label27.AutoSize = true;
+            this.label27.Location = new System.Drawing.Point(318, 64);
+            this.label27.Name = "label27";
+            this.label27.Size = new System.Drawing.Size(30, 15);
+            this.label27.TabIndex = 14;
+            this.label27.Text = "Gía :";
+            // 
+            // label28
+            // 
+            this.label28.AutoSize = true;
+            this.label28.Location = new System.Drawing.Point(8, 67);
+            this.label28.Name = "label28";
+            this.label28.Size = new System.Drawing.Size(31, 15);
+            this.label28.TabIndex = 13;
+            this.label28.Text = "Tên:";
+            // 
+            // btnXoaDichVu
+            // 
+            this.btnXoaDichVu.Location = new System.Drawing.Point(149, 105);
+            this.btnXoaDichVu.Name = "btnXoaDichVu";
+            this.btnXoaDichVu.Size = new System.Drawing.Size(75, 23);
+            this.btnXoaDichVu.TabIndex = 6;
+            this.btnXoaDichVu.Text = "Xóa";
+            this.btnXoaDichVu.UseVisualStyleBackColor = true;
+            this.btnXoaDichVu.Click += new System.EventHandler(this.btnXoaDichVu_Click);
+            // 
+            // btnSuaDichVu
+            // 
+            this.btnSuaDichVu.Location = new System.Drawing.Point(76, 105);
+            this.btnSuaDichVu.Name = "btnSuaDichVu";
+            this.btnSuaDichVu.Size = new System.Drawing.Size(75, 23);
+            this.btnSuaDichVu.TabIndex = 5;
+            this.btnSuaDichVu.Text = "Chỉnh sửa";
+            this.btnSuaDichVu.UseVisualStyleBackColor = true;
+            this.btnSuaDichVu.Click += new System.EventHandler(this.btnSuaDichVu_Click);
+            // 
+            // btnThemDichVu
+            // 
+            this.btnThemDichVu.Location = new System.Drawing.Point(3, 105);
+            this.btnThemDichVu.Name = "btnThemDichVu";
+            this.btnThemDichVu.Size = new System.Drawing.Size(75, 23);
+            this.btnThemDichVu.TabIndex = 4;
+            this.btnThemDichVu.Text = "Thêm mới";
+            this.btnThemDichVu.UseVisualStyleBackColor = true;
+            this.btnThemDichVu.Click += new System.EventHandler(this.btnThemDichVu_Click);
+            // 
+            // dtgDSDichVu
+            // 
+            this.dtgDSDichVu.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dtgDSDichVu.Location = new System.Drawing.Point(0, 134);
+            this.dtgDSDichVu.Name = "dtgDSDichVu";
+            this.dtgDSDichVu.Size = new System.Drawing.Size(979, 451);
+            this.dtgDSDichVu.TabIndex = 2;
+            this.dtgDSDichVu.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dtgDSDichVu_CellMouseClick);
+            // 
+            // tabPageSuDungDichVu
+            // 
+            this.tabPageSuDungDichVu.Controls.Add(this.txtTenKhach);
+            this.tabPageSuDungDichVu.Controls.Add(this.label33);
+            this.tabPageSuDungDichVu.Controls.Add(this.cbbKhachMa);
+            this.tabPageSuDungDichVu.Controls.Add(this.cbbSDDichVu);
+            this.tabPageSuDungDichVu.Controls.Add(this.label32);
+            this.tabPageSuDungDichVu.Controls.Add(this.cbbPhongSDDV);
+            this.tabPageSuDungDichVu.Controls.Add(this.label31);
+            this.tabPageSuDungDichVu.Controls.Add(this.txtSoLuongSDDV);
+            this.tabPageSuDungDichVu.Controls.Add(this.label29);
+            this.tabPageSuDungDichVu.Controls.Add(this.label30);
+            this.tabPageSuDungDichVu.Controls.Add(this.btnSuaSDDV);
+            this.tabPageSuDungDichVu.Controls.Add(this.btnThemSDDV);
+            this.tabPageSuDungDichVu.Controls.Add(this.dtgSuDungDichVu);
+            this.tabPageSuDungDichVu.Location = new System.Drawing.Point(4, 24);
+            this.tabPageSuDungDichVu.Name = "tabPageSuDungDichVu";
+            this.tabPageSuDungDichVu.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPageSuDungDichVu.Size = new System.Drawing.Size(986, 585);
+            this.tabPageSuDungDichVu.TabIndex = 9;
+            this.tabPageSuDungDichVu.Text = "Sử dụng dịch vụ";
+            this.tabPageSuDungDichVu.UseVisualStyleBackColor = true;
+            // 
+            // txtTenKhach
+            // 
+            this.txtTenKhach.Location = new System.Drawing.Point(167, 106);
+            this.txtTenKhach.Name = "txtTenKhach";
+            this.txtTenKhach.Size = new System.Drawing.Size(174, 22);
+            this.txtTenKhach.TabIndex = 30;
+            // 
+            // label33
+            // 
+            this.label33.AutoSize = true;
+            this.label33.Location = new System.Drawing.Point(62, 109);
+            this.label33.Name = "label33";
+            this.label33.Size = new System.Drawing.Size(96, 15);
+            this.label33.TabIndex = 29;
+            this.label33.Text = "Tên khách hàng:";
+            // 
+            // cbbKhachMa
+            // 
+            this.cbbKhachMa.FormattingEnabled = true;
+            this.cbbKhachMa.Location = new System.Drawing.Point(167, 57);
+            this.cbbKhachMa.Name = "cbbKhachMa";
+            this.cbbKhachMa.Size = new System.Drawing.Size(174, 23);
+            this.cbbKhachMa.TabIndex = 28;
+            this.cbbKhachMa.SelectedIndexChanged += new System.EventHandler(this.cbbKhachMa_SelectedIndexChanged);
+            // 
+            // cbbSDDichVu
+            // 
+            this.cbbSDDichVu.FormattingEnabled = true;
+            this.cbbSDDichVu.Location = new System.Drawing.Point(680, 13);
+            this.cbbSDDichVu.Name = "cbbSDDichVu";
+            this.cbbSDDichVu.Size = new System.Drawing.Size(174, 23);
+            this.cbbSDDichVu.TabIndex = 27;
+            // 
+            // label32
+            // 
+            this.label32.AutoSize = true;
+            this.label32.Location = new System.Drawing.Point(597, 21);
+            this.label32.Name = "label32";
+            this.label32.Size = new System.Drawing.Size(53, 15);
+            this.label32.TabIndex = 26;
+            this.label32.Text = "Dịch Vụ:";
+            // 
+            // cbbPhongSDDV
+            // 
+            this.cbbPhongSDDV.FormattingEnabled = true;
+            this.cbbPhongSDDV.Location = new System.Drawing.Point(167, 13);
+            this.cbbPhongSDDV.Name = "cbbPhongSDDV";
+            this.cbbPhongSDDV.Size = new System.Drawing.Size(174, 23);
+            this.cbbPhongSDDV.TabIndex = 25;
+            // 
+            // label31
+            // 
+            this.label31.AutoSize = true;
+            this.label31.Location = new System.Drawing.Point(62, 21);
+            this.label31.Name = "label31";
+            this.label31.Size = new System.Drawing.Size(45, 15);
+            this.label31.TabIndex = 24;
+            this.label31.Text = "Phòng:";
+            // 
+            // txtSoLuongSDDV
+            // 
+            this.txtSoLuongSDDV.Location = new System.Drawing.Point(680, 58);
+            this.txtSoLuongSDDV.Name = "txtSoLuongSDDV";
+            this.txtSoLuongSDDV.Size = new System.Drawing.Size(174, 22);
+            this.txtSoLuongSDDV.TabIndex = 23;
+            // 
+            // label29
+            // 
+            this.label29.AutoSize = true;
+            this.label29.Location = new System.Drawing.Point(597, 65);
+            this.label29.Name = "label29";
+            this.label29.Size = new System.Drawing.Size(62, 15);
+            this.label29.TabIndex = 21;
+            this.label29.Text = "Số Lượng:";
+            // 
+            // label30
+            // 
+            this.label30.AutoSize = true;
+            this.label30.Location = new System.Drawing.Point(62, 65);
+            this.label30.Name = "label30";
+            this.label30.Size = new System.Drawing.Size(75, 15);
+            this.label30.TabIndex = 20;
+            this.label30.Text = "Khách hàng:";
+            // 
+            // btnSuaSDDV
+            // 
+            this.btnSuaSDDV.Location = new System.Drawing.Point(83, 145);
+            this.btnSuaSDDV.Name = "btnSuaSDDV";
+            this.btnSuaSDDV.Size = new System.Drawing.Size(75, 23);
+            this.btnSuaSDDV.TabIndex = 18;
+            this.btnSuaSDDV.Text = "Chỉnh sửa";
+            this.btnSuaSDDV.UseVisualStyleBackColor = true;
+            this.btnSuaSDDV.Click += new System.EventHandler(this.btnSuaSDDV_Click);
+            // 
+            // btnThemSDDV
+            // 
+            this.btnThemSDDV.Location = new System.Drawing.Point(10, 145);
+            this.btnThemSDDV.Name = "btnThemSDDV";
+            this.btnThemSDDV.Size = new System.Drawing.Size(75, 23);
+            this.btnThemSDDV.TabIndex = 17;
+            this.btnThemSDDV.Text = "Thêm mới";
+            this.btnThemSDDV.UseVisualStyleBackColor = true;
+            this.btnThemSDDV.Click += new System.EventHandler(this.btnThemSDDV_Click);
+            // 
+            // dtgSuDungDichVu
+            // 
+            this.dtgSuDungDichVu.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dtgSuDungDichVu.Location = new System.Drawing.Point(-4, 174);
+            this.dtgSuDungDichVu.Name = "dtgSuDungDichVu";
+            this.dtgSuDungDichVu.Size = new System.Drawing.Size(979, 411);
+            this.dtgSuDungDichVu.TabIndex = 3;
+            this.dtgSuDungDichVu.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dtgSuDungDichVu_CellMouseClick);
             // 
             // tabPageThongKe
             // 
@@ -1025,6 +1407,42 @@
             // 
             this.errMoTaLoaiPhong.ContainerControl = this;
             // 
+            // errSoPhong
+            // 
+            this.errSoPhong.ContainerControl = this;
+            // 
+            // errLoaiPhong
+            // 
+            this.errLoaiPhong.ContainerControl = this;
+            // 
+            // errTrangThai
+            // 
+            this.errTrangThai.ContainerControl = this;
+            // 
+            // errTenDichVu
+            // 
+            this.errTenDichVu.ContainerControl = this;
+            // 
+            // errGiaDichVu
+            // 
+            this.errGiaDichVu.ContainerControl = this;
+            // 
+            // errPhongSDDV
+            // 
+            this.errPhongSDDV.ContainerControl = this;
+            // 
+            // errKhachHangSDDV
+            // 
+            this.errKhachHangSDDV.ContainerControl = this;
+            // 
+            // errDichVuSD
+            // 
+            this.errDichVuSD.ContainerControl = this;
+            // 
+            // errSoLuongSDDV
+            // 
+            this.errSoLuongSDDV.ContainerControl = this;
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -1047,6 +1465,9 @@
             this.tabPageLoaiPhong.ResumeLayout(false);
             this.tabPageLoaiPhong.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtgLoaiPhong)).EndInit();
+            this.tabPageQLPhong.ResumeLayout(false);
+            this.tabPageQLPhong.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dtgPhong)).EndInit();
             this.tabPageDatPhong.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgv_DatPhong_DanhSach)).EndInit();
             this.grbDatPhong_Phong.ResumeLayout(false);
@@ -1055,6 +1476,12 @@
             this.grbDatPhong_Khach.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.galleryControl_DatPhong)).EndInit();
             this.galleryControl_DatPhong.ResumeLayout(false);
+            this.tabPageDichVu.ResumeLayout(false);
+            this.tabPageDichVu.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dtgDSDichVu)).EndInit();
+            this.tabPageSuDungDichVu.ResumeLayout(false);
+            this.tabPageSuDungDichVu.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dtgSuDungDichVu)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dockManager1)).EndInit();
             this.dockPanel1_Container.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.navBarControl1)).EndInit();
@@ -1064,6 +1491,15 @@
             ((System.ComponentModel.ISupportInitialize)(this.errGiaQuaNgay)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errGiaQuaDem)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errMoTaLoaiPhong)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errSoPhong)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errLoaiPhong)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errTrangThai)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errTenDichVu)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errGiaDichVu)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errPhongSDDV)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errKhachHangSDDV)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errDichVuSD)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errSoLuongSDDV)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1159,5 +1595,47 @@
         private System.Windows.Forms.ErrorProvider errGiaQuaNgay;
         private System.Windows.Forms.ErrorProvider errGiaQuaDem;
         private System.Windows.Forms.ErrorProvider errMoTaLoaiPhong;
+        private System.Windows.Forms.Button btnXoaPhong;
+        private System.Windows.Forms.Button btnSuaPhong;
+        private System.Windows.Forms.Button btnThemPhong;
+        private System.Windows.Forms.ComboBox cbbLoaiPhong;
+        private System.Windows.Forms.TextBox txtTrangThai;
+        private System.Windows.Forms.TextBox txtSoPhong;
+        private System.Windows.Forms.Label label26;
+        private System.Windows.Forms.Label label25;
+        private System.Windows.Forms.Label label24;
+        private System.Windows.Forms.DataGridView dtgPhong;
+        private System.Windows.Forms.ErrorProvider errSoPhong;
+        private System.Windows.Forms.ErrorProvider errLoaiPhong;
+        private System.Windows.Forms.ErrorProvider errTrangThai;
+        private System.Windows.Forms.TabPage tabPageDichVu;
+        private System.Windows.Forms.TextBox txtGiaDichVu;
+        private System.Windows.Forms.TextBox txtTenDichVu;
+        private System.Windows.Forms.Label label27;
+        private System.Windows.Forms.Label label28;
+        private System.Windows.Forms.Button btnXoaDichVu;
+        private System.Windows.Forms.Button btnSuaDichVu;
+        private System.Windows.Forms.Button btnThemDichVu;
+        private System.Windows.Forms.DataGridView dtgDSDichVu;
+        private System.Windows.Forms.ErrorProvider errTenDichVu;
+        private System.Windows.Forms.ErrorProvider errGiaDichVu;
+        private System.Windows.Forms.TabPage tabPageSuDungDichVu;
+        private System.Windows.Forms.ComboBox cbbSDDichVu;
+        private System.Windows.Forms.Label label32;
+        private System.Windows.Forms.ComboBox cbbPhongSDDV;
+        private System.Windows.Forms.Label label31;
+        private System.Windows.Forms.TextBox txtSoLuongSDDV;
+        private System.Windows.Forms.Label label29;
+        private System.Windows.Forms.Label label30;
+        private System.Windows.Forms.Button btnSuaSDDV;
+        private System.Windows.Forms.Button btnThemSDDV;
+        private System.Windows.Forms.DataGridView dtgSuDungDichVu;
+        private System.Windows.Forms.ErrorProvider errPhongSDDV;
+        private System.Windows.Forms.ErrorProvider errKhachHangSDDV;
+        private System.Windows.Forms.ErrorProvider errDichVuSD;
+        private System.Windows.Forms.ErrorProvider errSoLuongSDDV;
+        private System.Windows.Forms.ComboBox cbbKhachMa;
+        private System.Windows.Forms.Label label33;
+        private System.Windows.Forms.TextBox txtTenKhach;
     }
 }

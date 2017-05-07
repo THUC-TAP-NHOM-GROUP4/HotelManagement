@@ -42,6 +42,88 @@ namespace HotelManagement.Controllers
             }
             return list;
         }
+        public List<DichVu> getList_DichVu()
+        {
+            List<DichVu> list = new List<DichVu>();
+            DataTable table = da.Query("select *from DichVu");
+            int n = table.Rows.Count;
+            int i;
+            if (n == 0) return null;
+            for(i=0;i<n;i++)
+            {
+                list.Add(get_DichVu(table.Rows[i]));
+            }
+            return list;
+        }
+        public List<SuDungDichVu> getList_SuDungDichVu()
+        {
+            List<SuDungDichVu> list = new List<SuDungDichVu>();
+            DataTable table = da.Query("select *from SuDungDichVu");
+            int n = table.Rows.Count;
+            int i;
+            if (n == 0) return null;
+            for (i = 0; i < n; i++)
+            {
+                list.Add(get_SuDungDichVu(table.Rows[i]));
+            }
+            return list;
+        }
+        public List<Khach> getList_Khach()
+        {
+            List<Khach> list = new List<Khach>();
+            DataTable table = da.Query("select *from Khach");
+            int n = table.Rows.Count;
+            int i;
+            if (n == 0) return null;
+            for (i = 0; i < n; i++)
+            {
+                list.Add(get_Khach(table.Rows[i]));
+            }
+            return list;
+
+        }
+        public Khach get_Khach(DataRow row)
+        {
+            Khach k = new Khach();
+            k.Ma = row["ma"].ToString().Trim();
+            k.Ten = row["ten"].ToString().Trim();
+            k.NgaySinh = DateTime.Parse(row["ngaysinh"].ToString().Trim());
+            bool gt = true;
+            if (bool.TryParse(row["gioitinh"].ToString().Trim(), out gt))
+                k.GioiTinh = 1;
+            else k.GioiTinh = 0;
+            k.DiaChi = row["diachi"].ToString().Trim();
+            k.QuocTich = row["quoctich"].ToString().Trim();
+            k.ChungMinhThu = row["chungminhthu"].ToString().Trim();
+            k.SoDienThoai = row["sodienthoai"].ToString().Trim();
+            return k;
+            
+        }
+  
+        public SuDungDichVu get_SuDungDichVu(DataRow row)
+        {
+            SuDungDichVu sddv = new SuDungDichVu();
+            sddv.Ma = row["ma"].ToString().Trim();
+            sddv.PhongMa = row["phongma"].ToString().Trim();
+            sddv.KhachMa = row["khachma"].ToString().Trim();
+            sddv.DichVuMa = row["dichvuma"].ToString().Trim();
+            sddv.NgaySuDung = DateTime.Parse(row["ngaysudung"].ToString().Trim());
+            sddv.SoLuong = int.Parse(row["soluong"].ToString().Trim());
+            double thanhtien = 0;
+            double.TryParse(row["thanhtien"].ToString().Trim(), out thanhtien);
+            sddv.ThanhTien = thanhtien;
+            return sddv;
+        }
+        public DichVu get_DichVu(DataRow row)
+        {
+            DichVu dv = new DichVu();
+            dv.Ma = row["ma"].ToString().Trim();
+            dv.Ten = row["ten"].ToString().Trim();
+            double gia = 0;
+            double.TryParse(row["dongia"].ToString().Trim(), out gia);
+            dv.DonGia = gia;
+            return dv;
+        }
         public LoaiPhong get_LoaiPhong(DataRow row)
         {
             LoaiPhong loaiphong = new LoaiPhong();
@@ -75,6 +157,42 @@ namespace HotelManagement.Controllers
             da.Query("procedure_insertLoaiPhong", para);
             return true;
         }
+        public bool addPhong(Phong p)
+        {
+            SqlParameter[] para =
+            {
+                new SqlParameter("sophong",p.SoPhong),
+                new SqlParameter("loaiphong",p.LoaiPhong),
+                new SqlParameter("trangthai",p.TrangThai)
+            };
+            da.Query("procedure_insertPhong", para);
+            return true;
+        }
+        public bool addDichVu(DichVu dv)
+        {
+            SqlParameter[] para =
+         {
+                new SqlParameter("ten",dv.Ten),
+                new SqlParameter("dongia",dv.DonGia)
+              
+            };
+            da.Query("procedure_insertDichVu", para);
+            return true;
+        }
+        public bool addSuDungDichVu(SuDungDichVu sddv)
+        {
+        
+            SqlParameter[] para =
+         {
+                new SqlParameter("phongma",sddv.PhongMa),
+                new SqlParameter("khachma",sddv.KhachMa),
+                new SqlParameter("dichvuma",sddv.DichVuMa),
+                new SqlParameter("soluong",sddv.SoLuong),
+
+            };
+            da.Query("procedure_insertSuDungDichVu", para);
+            return true;
+        }
         public bool updateLP(LoaiPhong lp)
         {
 
@@ -90,10 +208,59 @@ namespace HotelManagement.Controllers
             da.Query("procedure_updateLoaiPhong", para);
             return true;
         }
+        public bool updatePhong(Phong p)
+        {
+
+            SqlParameter[] para =
+            {
+                new SqlParameter("ma",p.Ma),
+                new SqlParameter("sophong",p.SoPhong),
+                new SqlParameter("loaiphong",p.LoaiPhong),
+                new SqlParameter("trangthai",p.TrangThai)
+           
+            };
+            da.Query("procedure_updatePhong", para);
+            return true;
+        }
+        public bool updateDichVu(DichVu dv)
+        {
+
+            SqlParameter[] para =
+            {
+                new SqlParameter("ma",dv.Ma),
+                new SqlParameter("ten",dv.Ten),
+                new SqlParameter("dongia",dv.DonGia)
+            };
+            da.Query("procedure_updateDichVu", para);
+            return true;
+        }
+        public bool updateSuDungDichVu(SuDungDichVu sddv)
+        {
+            SqlParameter[] para =
+      {
+                new SqlParameter("ma",sddv.Ma),
+                new SqlParameter("phongma",sddv.PhongMa),
+                new SqlParameter("khachma",sddv.KhachMa),
+                new SqlParameter("dichvuma",sddv.DichVuMa),
+                new SqlParameter("soluong",sddv.SoLuong),
+
+            };
+            da.Query("procedure_updateSuDungDichVu", para);
+            return true;
+        }
         public void XoaLoaiPhong(string ma)
         {
             da.NonQuery("delete LoaiPhong where ma='" + ma + "'");
         }
+        public void XoaPhong(string ma)
+        {
+            da.NonQuery("delete Phong where ma='" + ma + "'");
+        }
+        public void XoaDichVu(string ma)
+        {
+            da.NonQuery("delete DichVu where ma='" + ma + "'");
+        }
+        
         public String[] getList_Phong_byKey(String key)
         {
             DataTable table = da.Query("select *from phong");
@@ -187,11 +354,10 @@ namespace HotelManagement.Controllers
             int n = table.Rows.Count;
             if (n == 1)
             {
-                return  table.Rows[0][key].ToString().Trim();
+                return table.Rows[0][key].ToString().Trim();
             }
             return "";
         }
-       
         public String getMaKhach(Khach khach)
         {
             DataTable table = da.Query("select ma from khach where ten = N'" + khach.Ten + "' and gioitinh = " + khach.GioiTinh
@@ -200,6 +366,14 @@ namespace HotelManagement.Controllers
             if (table.Rows.Count == 1)
                 return table.Rows[0]["ma"].ToString().Trim();
             return ma;
+        }
+        public string getTenKhach(string ma)
+        {
+            DataTable table = da.Query("select ten from Khach where ma='" + ma + "'");
+            string ten = "";
+            if (table.Rows.Count == 1)
+                return table.Rows[0]["ten"].ToString().Trim();
+            return ten;
         }
         public int getTrangThai(String soPhong)
         {
