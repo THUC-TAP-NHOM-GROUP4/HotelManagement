@@ -45,6 +45,19 @@ namespace HotelManagement
             Load_tabpage_quanlyphong();
             Load_tabpage_quanlyDichVu();
             Load_tabpage_quanlySDDichVu();
+            rtbhuongdan.Text = "\n\n\t\t\t" + "B1: Đăng nhập vào hệ thống" + "\n\t\t\t" +
+                                              "B2: Thao tác với các chức năng sẵn có trên trang chủ" + "\n\t\t\t\t\t\t" +
+                                                  " + Loại phòng: Có các chức năng thêm sửa xóa. Thêm sẽ thêm một bản ghi, sửa sẽ sửa lại một số thông tin, xóa: khi nhấn vào ta sẽ được hỏi có chắc xóa hay không" + "\n\t\t\t\t\t\t" +
+                                                  " +Quản lý phòng: Có các chức năng thêm sửa xóa. Thêm sẽ thêm một bản ghi, sửa sẽ sửa lại một số thông tin, xóa: khi nhấn vào ta sẽ được hỏi có chắc xóa hay không" + "\n\t\t\t\t\t\t" +
+                                                  " +Đặt phòng: Quản lý các thông tin về đặt phòng của khách" + "\n\t\t\t\t\t\t" +
+                                                  " +Quản lý khách: Hiện thị danh sách các khách hàng đã đặt phòng và sử dụng dịch vụ" + "\n\t\t\t\t\t\t" +
+                                                  " +Quản lý dịch vụ: Có các chức năng thêm sửa xóa. Thêm sẽ thêm một bản ghi, sửa sẽ sửa lại một số thông tin, xóa: khi nhấn vào ta sẽ được hỏi có chắc xóa hay không" + "\n\t\t\t\t\t\t" +
+                                                  " +Sử dụng dịch vụ: Có thêm mới và chỉnh sửa các bản ghi" + "\n\t\t\t\t\t\t" +
+                                                  " +Thống kê" + "\n\t\t\t\t\t\t" +
+                                                  " +Hướng dẫn" + "\n\t\t\t" +
+                                               "B3: Để thoát khỏi chương trình bạn có thể nhấn nút thoát hoặc dấu nhân bên phải màn hình để kết thúc" + "\n\n\t\t\t\t" +
+                                                   " Chú thích: Các thanh bên cạnh tên của nó sẽ tương ứng với các chức năng của nó" + "\n\t\t\t\t\t\t\t\t\t" +
+                                                     "CHÚC BẠN THÀNH CÔNG";
         }
         private void Load_()
         {
@@ -798,6 +811,24 @@ namespace HotelManagement
             {
                 dtgSuDungDichVu.DataSource = controller.getList_SuDungDichVu();
             }
+        }
+        DataAccess da;
+        private void btndatphong_Click(object sender, EventArgs e)
+        {
+            da = new DataAccess();
+            dgrdanhsachkhach.DataSource = da.Query("DSKHACHPHONG");
+        }
+
+        private void btndichvu_Click(object sender, EventArgs e)
+        {
+
+            da = new DataAccess();
+            dgrdanhsachkhach.DataSource = da.Query("DSKHACH");
+        }
+
+        private void tabPageHuongDan_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

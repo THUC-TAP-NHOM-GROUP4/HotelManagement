@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            DevExpress.XtraBars.Ribbon.GalleryItemGroup galleryItemGroup7 = new DevExpress.XtraBars.Ribbon.GalleryItemGroup();
-            DevExpress.XtraBars.Ribbon.GalleryItemGroup galleryItemGroup8 = new DevExpress.XtraBars.Ribbon.GalleryItemGroup();
+            DevExpress.XtraBars.Ribbon.GalleryItemGroup galleryItemGroup3 = new DevExpress.XtraBars.Ribbon.GalleryItemGroup();
+            DevExpress.XtraBars.Ribbon.GalleryItemGroup galleryItemGroup4 = new DevExpress.XtraBars.Ribbon.GalleryItemGroup();
             this.tabControlMain = new System.Windows.Forms.TabControl();
             this.tabPageTrangChu = new System.Windows.Forms.TabPage();
             this.galleryControl_TrangChu = new DevExpress.XtraBars.Ribbon.GalleryControl();
@@ -163,6 +163,11 @@
             this.errKhachHangSDDV = new System.Windows.Forms.ErrorProvider(this.components);
             this.errDichVuSD = new System.Windows.Forms.ErrorProvider(this.components);
             this.errSoLuongSDDV = new System.Windows.Forms.ErrorProvider(this.components);
+            this.dgrdanhsachkhach = new System.Windows.Forms.DataGridView();
+            this.label34 = new System.Windows.Forms.Label();
+            this.btndatphong = new System.Windows.Forms.Button();
+            this.btndichvu = new System.Windows.Forms.Button();
+            this.rtbhuongdan = new System.Windows.Forms.RichTextBox();
             this.tabControlMain.SuspendLayout();
             this.tabPageTrangChu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.galleryControl_TrangChu)).BeginInit();
@@ -177,10 +182,12 @@
             this.grbDatPhong_Khach.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.galleryControl_DatPhong)).BeginInit();
             this.galleryControl_DatPhong.SuspendLayout();
+            this.tabPageQLKhach.SuspendLayout();
             this.tabPageDichVu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtgDSDichVu)).BeginInit();
             this.tabPageSuDungDichVu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtgSuDungDichVu)).BeginInit();
+            this.tabPageHuongDan.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dockManager1)).BeginInit();
             this.dockPanel1_Container.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.navBarControl1)).BeginInit();
@@ -199,6 +206,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.errKhachHangSDDV)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errDichVuSD)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errSoLuongSDDV)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgrdanhsachkhach)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControlMain
@@ -240,9 +248,9 @@
             // 
             this.galleryControl_TrangChu.Gallery.AllowHoverImages = true;
             this.galleryControl_TrangChu.Gallery.BackColor = System.Drawing.Color.White;
-            galleryItemGroup7.Caption = "Danh sách phòng";
+            galleryItemGroup3.Caption = "Danh sách phòng";
             this.galleryControl_TrangChu.Gallery.Groups.AddRange(new DevExpress.XtraBars.Ribbon.GalleryItemGroup[] {
-            galleryItemGroup7});
+            galleryItemGroup3});
             this.galleryControl_TrangChu.Gallery.HoverImageSize = new System.Drawing.Size(60, 60);
             this.galleryControl_TrangChu.Gallery.ImageSize = new System.Drawing.Size(100, 100);
             this.galleryControl_TrangChu.Gallery.ShowItemText = true;
@@ -975,9 +983,9 @@
             // 
             // 
             // 
-            galleryItemGroup8.Caption = "Phòng";
+            galleryItemGroup4.Caption = "Phòng";
             this.galleryControl_DatPhong.Gallery.Groups.AddRange(new DevExpress.XtraBars.Ribbon.GalleryItemGroup[] {
-            galleryItemGroup8});
+            galleryItemGroup4});
             this.galleryControl_DatPhong.Gallery.HoverImageSize = new System.Drawing.Size(30, 30);
             this.galleryControl_DatPhong.Gallery.ImageSize = new System.Drawing.Size(70, 70);
             this.galleryControl_DatPhong.Gallery.ShowItemText = true;
@@ -996,6 +1004,10 @@
             // 
             // tabPageQLKhach
             // 
+            this.tabPageQLKhach.Controls.Add(this.btndichvu);
+            this.tabPageQLKhach.Controls.Add(this.btndatphong);
+            this.tabPageQLKhach.Controls.Add(this.label34);
+            this.tabPageQLKhach.Controls.Add(this.dgrdanhsachkhach);
             this.tabPageQLKhach.Location = new System.Drawing.Point(4, 24);
             this.tabPageQLKhach.Name = "tabPageQLKhach";
             this.tabPageQLKhach.Size = new System.Drawing.Size(986, 585);
@@ -1239,6 +1251,7 @@
             // 
             // tabPageHuongDan
             // 
+            this.tabPageHuongDan.Controls.Add(this.rtbhuongdan);
             this.tabPageHuongDan.Location = new System.Drawing.Point(4, 24);
             this.tabPageHuongDan.Name = "tabPageHuongDan";
             this.tabPageHuongDan.Padding = new System.Windows.Forms.Padding(3);
@@ -1246,6 +1259,7 @@
             this.tabPageHuongDan.TabIndex = 6;
             this.tabPageHuongDan.Text = "Hướng dẫn";
             this.tabPageHuongDan.UseVisualStyleBackColor = true;
+            this.tabPageHuongDan.Click += new System.EventHandler(this.tabPageHuongDan_Click);
             // 
             // dockManager1
             // 
@@ -1443,6 +1457,53 @@
             // 
             this.errSoLuongSDDV.ContainerControl = this;
             // 
+            // dgrdanhsachkhach
+            // 
+            this.dgrdanhsachkhach.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgrdanhsachkhach.Dock = System.Windows.Forms.DockStyle.Top;
+            this.dgrdanhsachkhach.Location = new System.Drawing.Point(0, 0);
+            this.dgrdanhsachkhach.Name = "dgrdanhsachkhach";
+            this.dgrdanhsachkhach.Size = new System.Drawing.Size(986, 452);
+            this.dgrdanhsachkhach.TabIndex = 0;
+            // 
+            // label34
+            // 
+            this.label34.AutoSize = true;
+            this.label34.Location = new System.Drawing.Point(385, 476);
+            this.label34.Name = "label34";
+            this.label34.Size = new System.Drawing.Size(129, 15);
+            this.label34.TabIndex = 1;
+            this.label34.Text = "Danh sách khách hàng";
+            // 
+            // btndatphong
+            // 
+            this.btndatphong.Location = new System.Drawing.Point(90, 533);
+            this.btndatphong.Name = "btndatphong";
+            this.btndatphong.Size = new System.Drawing.Size(261, 23);
+            this.btndatphong.TabIndex = 2;
+            this.btndatphong.Text = "Danh sách khách đã đặt phòng";
+            this.btndatphong.UseVisualStyleBackColor = true;
+            this.btndatphong.Click += new System.EventHandler(this.btndatphong_Click);
+            // 
+            // btndichvu
+            // 
+            this.btndichvu.Location = new System.Drawing.Point(503, 533);
+            this.btndichvu.Name = "btndichvu";
+            this.btndichvu.Size = new System.Drawing.Size(225, 23);
+            this.btndichvu.TabIndex = 3;
+            this.btndichvu.Text = "Danh sách khách sử dụng dịch vụ";
+            this.btndichvu.UseVisualStyleBackColor = true;
+            this.btndichvu.Click += new System.EventHandler(this.btndichvu_Click);
+            // 
+            // rtbhuongdan
+            // 
+            this.rtbhuongdan.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.rtbhuongdan.Location = new System.Drawing.Point(3, 3);
+            this.rtbhuongdan.Name = "rtbhuongdan";
+            this.rtbhuongdan.Size = new System.Drawing.Size(980, 579);
+            this.rtbhuongdan.TabIndex = 0;
+            this.rtbhuongdan.Text = "";
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -1476,12 +1537,15 @@
             this.grbDatPhong_Khach.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.galleryControl_DatPhong)).EndInit();
             this.galleryControl_DatPhong.ResumeLayout(false);
+            this.tabPageQLKhach.ResumeLayout(false);
+            this.tabPageQLKhach.PerformLayout();
             this.tabPageDichVu.ResumeLayout(false);
             this.tabPageDichVu.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtgDSDichVu)).EndInit();
             this.tabPageSuDungDichVu.ResumeLayout(false);
             this.tabPageSuDungDichVu.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtgSuDungDichVu)).EndInit();
+            this.tabPageHuongDan.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dockManager1)).EndInit();
             this.dockPanel1_Container.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.navBarControl1)).EndInit();
@@ -1500,6 +1564,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.errKhachHangSDDV)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errDichVuSD)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errSoLuongSDDV)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgrdanhsachkhach)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1637,5 +1702,10 @@
         private System.Windows.Forms.ComboBox cbbKhachMa;
         private System.Windows.Forms.Label label33;
         private System.Windows.Forms.TextBox txtTenKhach;
+        private System.Windows.Forms.Button btndichvu;
+        private System.Windows.Forms.Button btndatphong;
+        private System.Windows.Forms.Label label34;
+        private System.Windows.Forms.DataGridView dgrdanhsachkhach;
+        private System.Windows.Forms.RichTextBox rtbhuongdan;
     }
 }
