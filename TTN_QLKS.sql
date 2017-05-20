@@ -379,3 +379,19 @@ set sophong=@sophong,loaiphongma=@loaiphong,trangthai=@trangthai
 where ma=@ma
 end
 
+
+create proc [dbo].[proc_insertKhach](@ten nvarchar(50), @ngaysinh date, @gioitinh int, @diachi nvarchar(50),
+ @quoctich nvarchar(30), @chungminhthu varchar(20), @sodienthoai varchar(12))
+as
+begin
+	if(@ten = '' or @ngaysinh = '' or @ngaysinh = '' or @diachi = '' or @quoctich = '' or @chungminhthu = '' 
+	or @sodienthoai = '')
+		print ''
+		--rollback tran
+	else if not exists (select ma from khach where ten= @ten and ngaysinh = @ngaysinh  and chungminhthu = @chungminhthu)
+	begin
+		insert into Khach(ma, ten, ngaysinh, gioitinh, diachi, quoctich, chungminhthu, sodienthoai)
+		values (dbo.auto_ma_Khach(), @ten, @ngaysinh, @gioitinh, @diachi, @quoctich, @chungminhthu, @sodienthoai)
+	end
+	
+end
