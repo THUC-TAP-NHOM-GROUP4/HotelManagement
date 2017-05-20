@@ -116,6 +116,9 @@
     <None Include="Views\App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Images\icon_correct.png" />
+    <Content Include="Images\icon_deny.png" />
+    <Content Include="Images\icon_no.png" />
     <Content Include="Images\no.png" />
     <Content Include="Images\none.jpg" />
     <Content Include="Images\yes.png" />

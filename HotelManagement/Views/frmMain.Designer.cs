@@ -29,8 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            DevExpress.XtraBars.Ribbon.GalleryItemGroup galleryItemGroup3 = new DevExpress.XtraBars.Ribbon.GalleryItemGroup();
-            DevExpress.XtraBars.Ribbon.GalleryItemGroup galleryItemGroup4 = new DevExpress.XtraBars.Ribbon.GalleryItemGroup();
+            DevExpress.XtraBars.Ribbon.GalleryItemGroup galleryItemGroup2 = new DevExpress.XtraBars.Ribbon.GalleryItemGroup();
             this.tabControlMain = new System.Windows.Forms.TabControl();
             this.tabPageTrangChu = new System.Windows.Forms.TabPage();
             this.galleryControl_TrangChu = new DevExpress.XtraBars.Ribbon.GalleryControl();
@@ -106,9 +105,11 @@
             this.label2 = new System.Windows.Forms.Label();
             this.tbDatPhong_HoTen = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.galleryControl_DatPhong = new DevExpress.XtraBars.Ribbon.GalleryControl();
-            this.galleryControlClient2 = new DevExpress.XtraBars.Ribbon.GalleryControlClient();
             this.tabPageQLKhach = new System.Windows.Forms.TabPage();
+            this.btndichvu = new System.Windows.Forms.Button();
+            this.btndatphong = new System.Windows.Forms.Button();
+            this.label34 = new System.Windows.Forms.Label();
+            this.dgrdanhsachkhach = new System.Windows.Forms.DataGridView();
             this.tabPageDichVu = new System.Windows.Forms.TabPage();
             this.txtGiaDichVu = new System.Windows.Forms.TextBox();
             this.txtTenDichVu = new System.Windows.Forms.TextBox();
@@ -134,6 +135,7 @@
             this.dtgSuDungDichVu = new System.Windows.Forms.DataGridView();
             this.tabPageThongKe = new System.Windows.Forms.TabPage();
             this.tabPageHuongDan = new System.Windows.Forms.TabPage();
+            this.rtbhuongdan = new System.Windows.Forms.RichTextBox();
             this.dockManager1 = new DevExpress.XtraBars.Docking.DockManager(this.components);
             this.nbgMain_TrangChu = new DevExpress.XtraNavBar.NavBarGroup();
             this.nbiMain_TrangChu = new DevExpress.XtraNavBar.NavBarItem();
@@ -163,11 +165,8 @@
             this.errKhachHangSDDV = new System.Windows.Forms.ErrorProvider(this.components);
             this.errDichVuSD = new System.Windows.Forms.ErrorProvider(this.components);
             this.errSoLuongSDDV = new System.Windows.Forms.ErrorProvider(this.components);
-            this.dgrdanhsachkhach = new System.Windows.Forms.DataGridView();
-            this.label34 = new System.Windows.Forms.Label();
-            this.btndatphong = new System.Windows.Forms.Button();
-            this.btndichvu = new System.Windows.Forms.Button();
-            this.rtbhuongdan = new System.Windows.Forms.RichTextBox();
+            this.erpSoPhong = new System.Windows.Forms.ErrorProvider(this.components);
+            this.erpTinhTrang = new System.Windows.Forms.ErrorProvider(this.components);
             this.tabControlMain.SuspendLayout();
             this.tabPageTrangChu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.galleryControl_TrangChu)).BeginInit();
@@ -180,9 +179,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgv_DatPhong_DanhSach)).BeginInit();
             this.grbDatPhong_Phong.SuspendLayout();
             this.grbDatPhong_Khach.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.galleryControl_DatPhong)).BeginInit();
-            this.galleryControl_DatPhong.SuspendLayout();
             this.tabPageQLKhach.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgrdanhsachkhach)).BeginInit();
             this.tabPageDichVu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtgDSDichVu)).BeginInit();
             this.tabPageSuDungDichVu.SuspendLayout();
@@ -206,7 +204,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.errKhachHangSDDV)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errDichVuSD)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errSoLuongSDDV)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgrdanhsachkhach)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.erpSoPhong)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.erpTinhTrang)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControlMain
@@ -246,15 +245,15 @@
             // 
             // 
             // 
-            this.galleryControl_TrangChu.Gallery.AllowHoverImages = true;
-            this.galleryControl_TrangChu.Gallery.BackColor = System.Drawing.Color.White;
-            galleryItemGroup3.Caption = "Danh sách phòng";
+            this.galleryControl_TrangChu.Gallery.BackColor = System.Drawing.Color.Transparent;
+            this.galleryControl_TrangChu.Gallery.DistanceBetweenItems = 35;
+            galleryItemGroup2.Caption = "Danh sách phòng";
             this.galleryControl_TrangChu.Gallery.Groups.AddRange(new DevExpress.XtraBars.Ribbon.GalleryItemGroup[] {
-            galleryItemGroup3});
-            this.galleryControl_TrangChu.Gallery.HoverImageSize = new System.Drawing.Size(60, 60);
+            galleryItemGroup2});
             this.galleryControl_TrangChu.Gallery.ImageSize = new System.Drawing.Size(100, 100);
             this.galleryControl_TrangChu.Gallery.ShowItemText = true;
             this.galleryControl_TrangChu.Gallery.ItemDoubleClick += new DevExpress.XtraBars.Ribbon.GalleryItemClickEventHandler(this.galleryControl1_Gallery_ItemDoubleClick);
+            this.galleryControl_TrangChu.Gallery.GalleryItemHover += new DevExpress.XtraBars.Ribbon.GalleryItemEventHandler(this.galleryControl_TrangChu_Gallery_GalleryItemHover);
             this.galleryControl_TrangChu.Location = new System.Drawing.Point(3, 3);
             this.galleryControl_TrangChu.Name = "galleryControl_TrangChu";
             this.galleryControl_TrangChu.Size = new System.Drawing.Size(980, 579);
@@ -529,7 +528,6 @@
             this.tabPageDatPhong.Controls.Add(this.btnDatPhong_Thoat);
             this.tabPageDatPhong.Controls.Add(this.grbDatPhong_Phong);
             this.tabPageDatPhong.Controls.Add(this.grbDatPhong_Khach);
-            this.tabPageDatPhong.Controls.Add(this.galleryControl_DatPhong);
             this.tabPageDatPhong.Location = new System.Drawing.Point(4, 24);
             this.tabPageDatPhong.Name = "tabPageDatPhong";
             this.tabPageDatPhong.Size = new System.Drawing.Size(986, 585);
@@ -545,10 +543,10 @@
             this.dgv_DatPhong_DanhSach.AllowUserToResizeRows = false;
             this.dgv_DatPhong_DanhSach.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
             this.dgv_DatPhong_DanhSach.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgv_DatPhong_DanhSach.Location = new System.Drawing.Point(113, 491);
+            this.dgv_DatPhong_DanhSach.Location = new System.Drawing.Point(0, 491);
             this.dgv_DatPhong_DanhSach.Name = "dgv_DatPhong_DanhSach";
             this.dgv_DatPhong_DanhSach.ReadOnly = true;
-            this.dgv_DatPhong_DanhSach.Size = new System.Drawing.Size(877, 31);
+            this.dgv_DatPhong_DanhSach.Size = new System.Drawing.Size(990, 31);
             this.dgv_DatPhong_DanhSach.TabIndex = 6;
             this.dgv_DatPhong_DanhSach.Visible = false;
             // 
@@ -566,7 +564,7 @@
             // 
             // btnDatPhong_DatPhong
             // 
-            this.btnDatPhong_DatPhong.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.btnDatPhong_DatPhong.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.btnDatPhong_DatPhong.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDatPhong_DatPhong.Location = new System.Drawing.Point(565, 536);
             this.btnDatPhong_DatPhong.Name = "btnDatPhong_DatPhong";
@@ -578,7 +576,7 @@
             // 
             // btnDatPhong_Huy
             // 
-            this.btnDatPhong_Huy.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
+            this.btnDatPhong_Huy.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.btnDatPhong_Huy.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDatPhong_Huy.Location = new System.Drawing.Point(713, 536);
             this.btnDatPhong_Huy.Name = "btnDatPhong_Huy";
@@ -590,7 +588,7 @@
             // 
             // btnDatPhong_Thoat
             // 
-            this.btnDatPhong_Thoat.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnDatPhong_Thoat.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.btnDatPhong_Thoat.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDatPhong_Thoat.Location = new System.Drawing.Point(856, 536);
             this.btnDatPhong_Thoat.Name = "btnDatPhong_Thoat";
@@ -624,9 +622,9 @@
             this.grbDatPhong_Phong.Controls.Add(this.tbDatPhong_GioDi);
             this.grbDatPhong_Phong.Controls.Add(this.tbDatPhong_TrangThai);
             this.grbDatPhong_Phong.Font = new System.Drawing.Font("Times New Roman", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.grbDatPhong_Phong.Location = new System.Drawing.Point(113, 219);
+            this.grbDatPhong_Phong.Location = new System.Drawing.Point(-4, 219);
             this.grbDatPhong_Phong.Name = "grbDatPhong_Phong";
-            this.grbDatPhong_Phong.Size = new System.Drawing.Size(877, 266);
+            this.grbDatPhong_Phong.Size = new System.Drawing.Size(994, 266);
             this.grbDatPhong_Phong.TabIndex = 1;
             this.grbDatPhong_Phong.TabStop = false;
             this.grbDatPhong_Phong.Text = "Thông tin phòng";
@@ -819,9 +817,9 @@
             this.grbDatPhong_Khach.Controls.Add(this.tbDatPhong_HoTen);
             this.grbDatPhong_Khach.Controls.Add(this.label1);
             this.grbDatPhong_Khach.Font = new System.Drawing.Font("Times New Roman", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.grbDatPhong_Khach.Location = new System.Drawing.Point(116, 0);
+            this.grbDatPhong_Khach.Location = new System.Drawing.Point(0, 0);
             this.grbDatPhong_Khach.Name = "grbDatPhong_Khach";
-            this.grbDatPhong_Khach.Size = new System.Drawing.Size(874, 213);
+            this.grbDatPhong_Khach.Size = new System.Drawing.Size(994, 213);
             this.grbDatPhong_Khach.TabIndex = 0;
             this.grbDatPhong_Khach.TabStop = false;
             this.grbDatPhong_Khach.Text = "Thông tin khách hàng";
@@ -975,33 +973,6 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Họ tên:";
             // 
-            // galleryControl_DatPhong
-            // 
-            this.galleryControl_DatPhong.Controls.Add(this.galleryControlClient2);
-            this.galleryControl_DatPhong.DesignGalleryGroupIndex = 0;
-            this.galleryControl_DatPhong.DesignGalleryItemIndex = 0;
-            // 
-            // 
-            // 
-            galleryItemGroup4.Caption = "Phòng";
-            this.galleryControl_DatPhong.Gallery.Groups.AddRange(new DevExpress.XtraBars.Ribbon.GalleryItemGroup[] {
-            galleryItemGroup4});
-            this.galleryControl_DatPhong.Gallery.HoverImageSize = new System.Drawing.Size(30, 30);
-            this.galleryControl_DatPhong.Gallery.ImageSize = new System.Drawing.Size(70, 70);
-            this.galleryControl_DatPhong.Gallery.ShowItemText = true;
-            this.galleryControl_DatPhong.Gallery.ItemClick += new DevExpress.XtraBars.Ribbon.GalleryItemClickEventHandler(this.galleryControl1_Gallery_ItemClick);
-            this.galleryControl_DatPhong.Location = new System.Drawing.Point(4, 4);
-            this.galleryControl_DatPhong.Name = "galleryControl_DatPhong";
-            this.galleryControl_DatPhong.Size = new System.Drawing.Size(111, 581);
-            this.galleryControl_DatPhong.TabIndex = 0;
-            this.galleryControl_DatPhong.Text = "galleryControl_DatPhong";
-            // 
-            // galleryControlClient2
-            // 
-            this.galleryControlClient2.GalleryControl = this.galleryControl_DatPhong;
-            this.galleryControlClient2.Location = new System.Drawing.Point(2, 2);
-            this.galleryControlClient2.Size = new System.Drawing.Size(90, 577);
-            // 
             // tabPageQLKhach
             // 
             this.tabPageQLKhach.Controls.Add(this.btndichvu);
@@ -1014,6 +985,44 @@
             this.tabPageQLKhach.TabIndex = 2;
             this.tabPageQLKhach.Text = "Quản Lý Khách";
             this.tabPageQLKhach.UseVisualStyleBackColor = true;
+            // 
+            // btndichvu
+            // 
+            this.btndichvu.Location = new System.Drawing.Point(503, 533);
+            this.btndichvu.Name = "btndichvu";
+            this.btndichvu.Size = new System.Drawing.Size(225, 23);
+            this.btndichvu.TabIndex = 3;
+            this.btndichvu.Text = "Danh sách khách sử dụng dịch vụ";
+            this.btndichvu.UseVisualStyleBackColor = true;
+            this.btndichvu.Click += new System.EventHandler(this.btndichvu_Click);
+            // 
+            // btndatphong
+            // 
+            this.btndatphong.Location = new System.Drawing.Point(90, 533);
+            this.btndatphong.Name = "btndatphong";
+            this.btndatphong.Size = new System.Drawing.Size(261, 23);
+            this.btndatphong.TabIndex = 2;
+            this.btndatphong.Text = "Danh sách khách đã đặt phòng";
+            this.btndatphong.UseVisualStyleBackColor = true;
+            this.btndatphong.Click += new System.EventHandler(this.btndatphong_Click);
+            // 
+            // label34
+            // 
+            this.label34.AutoSize = true;
+            this.label34.Location = new System.Drawing.Point(385, 476);
+            this.label34.Name = "label34";
+            this.label34.Size = new System.Drawing.Size(129, 15);
+            this.label34.TabIndex = 1;
+            this.label34.Text = "Danh sách khách hàng";
+            // 
+            // dgrdanhsachkhach
+            // 
+            this.dgrdanhsachkhach.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgrdanhsachkhach.Dock = System.Windows.Forms.DockStyle.Top;
+            this.dgrdanhsachkhach.Location = new System.Drawing.Point(0, 0);
+            this.dgrdanhsachkhach.Name = "dgrdanhsachkhach";
+            this.dgrdanhsachkhach.Size = new System.Drawing.Size(986, 452);
+            this.dgrdanhsachkhach.TabIndex = 0;
             // 
             // tabPageDichVu
             // 
@@ -1261,6 +1270,15 @@
             this.tabPageHuongDan.UseVisualStyleBackColor = true;
             this.tabPageHuongDan.Click += new System.EventHandler(this.tabPageHuongDan_Click);
             // 
+            // rtbhuongdan
+            // 
+            this.rtbhuongdan.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.rtbhuongdan.Location = new System.Drawing.Point(3, 3);
+            this.rtbhuongdan.Name = "rtbhuongdan";
+            this.rtbhuongdan.Size = new System.Drawing.Size(980, 579);
+            this.rtbhuongdan.TabIndex = 0;
+            this.rtbhuongdan.Text = "";
+            // 
             // dockManager1
             // 
             this.dockManager1.Form = this;
@@ -1457,52 +1475,13 @@
             // 
             this.errSoLuongSDDV.ContainerControl = this;
             // 
-            // dgrdanhsachkhach
+            // erpSoPhong
             // 
-            this.dgrdanhsachkhach.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgrdanhsachkhach.Dock = System.Windows.Forms.DockStyle.Top;
-            this.dgrdanhsachkhach.Location = new System.Drawing.Point(0, 0);
-            this.dgrdanhsachkhach.Name = "dgrdanhsachkhach";
-            this.dgrdanhsachkhach.Size = new System.Drawing.Size(986, 452);
-            this.dgrdanhsachkhach.TabIndex = 0;
+            this.erpSoPhong.ContainerControl = this;
             // 
-            // label34
+            // erpTinhTrang
             // 
-            this.label34.AutoSize = true;
-            this.label34.Location = new System.Drawing.Point(385, 476);
-            this.label34.Name = "label34";
-            this.label34.Size = new System.Drawing.Size(129, 15);
-            this.label34.TabIndex = 1;
-            this.label34.Text = "Danh sách khách hàng";
-            // 
-            // btndatphong
-            // 
-            this.btndatphong.Location = new System.Drawing.Point(90, 533);
-            this.btndatphong.Name = "btndatphong";
-            this.btndatphong.Size = new System.Drawing.Size(261, 23);
-            this.btndatphong.TabIndex = 2;
-            this.btndatphong.Text = "Danh sách khách đã đặt phòng";
-            this.btndatphong.UseVisualStyleBackColor = true;
-            this.btndatphong.Click += new System.EventHandler(this.btndatphong_Click);
-            // 
-            // btndichvu
-            // 
-            this.btndichvu.Location = new System.Drawing.Point(503, 533);
-            this.btndichvu.Name = "btndichvu";
-            this.btndichvu.Size = new System.Drawing.Size(225, 23);
-            this.btndichvu.TabIndex = 3;
-            this.btndichvu.Text = "Danh sách khách sử dụng dịch vụ";
-            this.btndichvu.UseVisualStyleBackColor = true;
-            this.btndichvu.Click += new System.EventHandler(this.btndichvu_Click);
-            // 
-            // rtbhuongdan
-            // 
-            this.rtbhuongdan.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.rtbhuongdan.Location = new System.Drawing.Point(3, 3);
-            this.rtbhuongdan.Name = "rtbhuongdan";
-            this.rtbhuongdan.Size = new System.Drawing.Size(980, 579);
-            this.rtbhuongdan.TabIndex = 0;
-            this.rtbhuongdan.Text = "";
+            this.erpTinhTrang.ContainerControl = this;
             // 
             // frmMain
             // 
@@ -1535,10 +1514,9 @@
             this.grbDatPhong_Phong.PerformLayout();
             this.grbDatPhong_Khach.ResumeLayout(false);
             this.grbDatPhong_Khach.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.galleryControl_DatPhong)).EndInit();
-            this.galleryControl_DatPhong.ResumeLayout(false);
             this.tabPageQLKhach.ResumeLayout(false);
             this.tabPageQLKhach.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgrdanhsachkhach)).EndInit();
             this.tabPageDichVu.ResumeLayout(false);
             this.tabPageDichVu.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtgDSDichVu)).EndInit();
@@ -1564,7 +1542,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.errKhachHangSDDV)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errDichVuSD)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errSoLuongSDDV)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgrdanhsachkhach)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.erpSoPhong)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.erpTinhTrang)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1586,8 +1565,6 @@
         private DevExpress.XtraNavBar.NavBarItem nbiMain_PhongTrong;
         private DevExpress.XtraNavBar.NavBarItem nbiMain_PhongCoKhach;
         private DevExpress.XtraNavBar.NavBarItem nbiMain_PhongKhac;
-        private DevExpress.XtraBars.Ribbon.GalleryControl galleryControl_DatPhong;
-        private DevExpress.XtraBars.Ribbon.GalleryControlClient galleryControlClient2;
         private DevExpress.XtraNavBar.NavBarItem nbiMain_TrangChu;
         private DevExpress.XtraNavBar.NavBarItem nbiMain_QLPhong;
         private DevExpress.XtraNavBar.NavBarItem nbiMain_DatPhong;
@@ -1707,5 +1684,7 @@
         private System.Windows.Forms.Label label34;
         private System.Windows.Forms.DataGridView dgrdanhsachkhach;
         private System.Windows.Forms.RichTextBox rtbhuongdan;
+        private System.Windows.Forms.ErrorProvider erpSoPhong;
+        private System.Windows.Forms.ErrorProvider erpTinhTrang;
     }
 }

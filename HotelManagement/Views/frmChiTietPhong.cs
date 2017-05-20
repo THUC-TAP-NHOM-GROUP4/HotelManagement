@@ -51,6 +51,7 @@ namespace HotelManagement.Views
             lblTang.Text = phong.SoPhong.Substring(0, 1);
 
             cbbTrangThietBi.DataSource = controller.getList_TrangThietBi(phong.SoPhong);
+            //controller.getList_TrangThietBi("");
             lblSoLuong.Text = "0";
 
         }

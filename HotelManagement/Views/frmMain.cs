@@ -80,20 +80,20 @@ namespace HotelManagement
 
             foreach (Phong phong in ls_phong_sort)
             {
-                src_image = "E:\\HOC_KY_6\\ThucTapNhom\\PROJECT\\HotelManagement\\HotelManagement\\Images\\";
+                src_image = @"E:\HOC_KY_6\ThucTapNhom\PRO\ksan\HotelManagement\HotelManagement\Images\";
                 if (phong.TrangThai == 0)
                 {
                     trangthai = "Phòng trống";
-                    src_image += "no.png";
+                    src_image += "icon_correct.png";
                 }
                 else if (phong.TrangThai == 1)
                 {
-                    src_image += "yes.png";
+                    src_image += "icon_deny.png";
                     trangthai = "Có khách";
                 }
-                else
+                else if (phong.TrangThai == 2)
                 {
-                    src_image += "none.jpg";
+                    src_image += "icon_no.png";
                     trangthai = "khác";
                 }
                 galleryControl_TrangChu.Gallery.Groups[0].Items.Add(
@@ -109,40 +109,38 @@ namespace HotelManagement
         {
             int i;
             Phong[] lsPhong = controller.getList_Phong();
-            String src_image = "";
-            String trangthai = "";
             IEnumerable<Phong> ls_phong_sort = from phong in lsPhong
                                                orderby phong.SoPhong.Substring(0, 1)
                                                select phong;
             dgv_DatPhong_DanhSach.Visible = false;
             i = 0;
-            galleryControl_DatPhong.Gallery.Groups[0].Items.Clear();
-            foreach (Phong phong in ls_phong_sort)
-            {
-                src_image = "E:\\HOC_KY_6\\ThucTapNhom\\PROJECT\\HotelManagement\\HotelManagement\\Images\\";
-                if (phong.TrangThai == 0)
-                {
-                    trangthai = "Phòng trống";
-                    src_image += "no.png";
-                }
-                else if (phong.TrangThai == 1)
-                {
-                    src_image += "yes.png";
-                    trangthai = "Có khách";
-                }
-                else
-                {
-                    src_image += "none.jpg";
-                    trangthai = "khác";
-                }
-                galleryControl_DatPhong.Gallery.Groups[0].Items.Add(
-                    new DevExpress.XtraBars.Ribbon.GalleryItem(
-                        new Bitmap(src_image), phong.SoPhong, trangthai));
+            //galleryControl_DatPhong.Gallery.Groups[0].Items.Clear();
+            //foreach (Phong phong in ls_phong_sort)
+            //{
+            //    src_image = @"E:\HOC_KY_6\ThucTapNhom\PRO\ksan\HotelManagement\HotelManagement\Images\";
+            //    if (phong.TrangThai == 0)
+            //    {
+            //        trangthai = "Phòng trống";
+            //        src_image += "icon_correct.png";
+            //    }
+            //    else if (phong.TrangThai == 1)
+            //    {
+            //        src_image += "icon_deny.png";
+            //        trangthai = "Có khách";
+            //    }
+            //    else
+            //    {
+            //        src_image += "icon_no.png";
+            //        trangthai = "khác";
+            //    }
+            //    galleryControl_DatPhong.Gallery.Groups[0].Items.Add(
+            //        new DevExpress.XtraBars.Ribbon.GalleryItem(
+            //            new Bitmap(src_image), phong.SoPhong, trangthai));
 
-                galleryControl_DatPhong.Gallery.Groups[0].Items[i].HoverImage =
-                    galleryControl_DatPhong.Gallery.Groups[0].Items[i].Image;
-                i++;
-            }
+            //    galleryControl_DatPhong.Gallery.Groups[0].Items[i].HoverImage =
+            //        galleryControl_DatPhong.Gallery.Groups[0].Items[i].Image;
+            //    i++;
+            //}
 
             tbDatPhong_HoTen.Text = "";
             dtpDatPhong_NgaySinh.Text = DateTime.Now.ToShortDateString().ToString();
@@ -156,9 +154,11 @@ namespace HotelManagement
             cbbDatPhong_SoPhong.DataSource = controller.getList_Phong_byKey("sophong");
             cbbDatPhong_SoPhong.Text = "";
             cbbDatPhong_LoaiPhong.Text = "";
-            cbbDatPhong_LoaiPhong.DataSource = controller.getList_Phong_byKey("loaiphong");
+            cbbDatPhong_LoaiPhong.DataSource = controller.getList_LoaiPhong_byKey("loaiphong");
             cbbDatPhong_DonGia.Text = "";
+            
             cbbDatPhong_DonGia.DataSource = controller.getList_Phong_byKey("dongia");
+            tbDatPhong_TrangThai.Enabled = false;
             tbDatPhong_TrangThai.Text = "";
             cbbDatPhong_TrangThietBi.Text = "";
             cbbDatPhong_TrangThietBi.DataSource = controller.getList_TrangThietBi("");
@@ -174,15 +174,19 @@ namespace HotelManagement
         {
             dgv_DatPhong_DanhSach.DataSource = controller.getList_DangKy();
             dgv_DatPhong_DanhSach.Columns["Ma"].HeaderText = "Mã";
+            dgv_DatPhong_DanhSach.Columns["Ma"].Width = 60;
             dgv_DatPhong_DanhSach.Columns["NgayDangKy"].HeaderText = "Ngày đăng ký";
             dgv_DatPhong_DanhSach.Columns["KhachMa"].HeaderText = "Khách hàng";
             dgv_DatPhong_DanhSach.Columns["NgayDen"].HeaderText = "Ngày đến";
             dgv_DatPhong_DanhSach.Columns["GioDen"].HeaderText = "Giờ đến";
+            dgv_DatPhong_DanhSach.Columns["GioDen"].Width = 80;
             dgv_DatPhong_DanhSach.Columns["NgayDi"].HeaderText = "Ngày đi";
             dgv_DatPhong_DanhSach.Columns["GioDi"].HeaderText = "Giờ đi";
+            dgv_DatPhong_DanhSach.Columns["GioDi"].Width = 70;
             dgv_DatPhong_DanhSach.Columns["PhongMa"].HeaderText = "Số phòng";
             dgv_DatPhong_DanhSach.Columns["TienDatCoc"].HeaderText = "Tiền đặt cọc";
             dgv_DatPhong_DanhSach.Columns["NhanVienMa"].HeaderText = "Nhân viên";
+            dgv_DatPhong_DanhSach.Columns["NhanVienMa"].Width = 150;
         }
         private void Load_tabpage_loaiphong()
         {
@@ -359,8 +363,20 @@ namespace HotelManagement
             khach.SoDienThoai = tbDatPhong_SoDienThoai.Text;
             khach.ChungMinhThu = tbDatPhong_CMND.Text;
 
-            if (khach.Ten == "") return;
+            if (khach.Ten == "")
+            {
+               
+                return;
+            }
 
+            if(tbDatPhong_TrangThai.Text != "Phòng trống")
+            {
+                erpTinhTrang.SetError(tbDatPhong_TrangThai, "Không đặt phòng này!");
+                erpSoPhong.SetError(cbbDatPhong_SoPhong, "Không đặt phòng này!");
+                return;
+            }
+            erpSoPhong.Clear();
+            erpTinhTrang.Clear();
             controller.ThemKhachHang(khach);
 
             khach.Ma = controller.getMaKhach(khach);
@@ -411,6 +427,7 @@ namespace HotelManagement
         private void cbbDatPhong_SoPhong_SelectedValueChanged(object sender, EventArgs e)
         {
             String sophong = cbbDatPhong_SoPhong.SelectedValue.ToString().Trim();
+            Phong phong = controller.get_Phong(sophong);
             int trangthai = controller.getTrangThai(sophong);
             if (trangthai == 0) tbDatPhong_TrangThai.Text = "Phòng trống";
             else if (trangthai == 1)
@@ -418,7 +435,7 @@ namespace HotelManagement
             else tbDatPhong_TrangThai.Text = "Khác";
 
             cbbDatPhong_TrangThietBi.DataSource = controller.getList_TrangThietBi(sophong);
-            cbbDatPhong_LoaiPhong.Text = controller.get_Phong(sophong, "loaiphong");
+            cbbDatPhong_LoaiPhong.SelectedValue=controller.getList_Phong_byKey(sophong);
         }
 
         private void nbiMain_Thoat_LinkClicked(object sender, DevExpress.XtraNavBar.NavBarLinkEventArgs e)
@@ -436,9 +453,13 @@ namespace HotelManagement
             Load_tabpage_datphong();
             dgv_DatPhong_DanhSach.Visible = true;
 
-            dgv_DatPhong_DanhSach.Location = new Point(113, 0);
-            dgv_DatPhong_DanhSach.Size = new System.Drawing.Size(877, 522);
+            dgv_DatPhong_DanhSach.Location = new Point(0, 0);
+            dgv_DatPhong_DanhSach.Size = new System.Drawing.Size(994, 522);//877
             dgv_DatPhong_DanhSach.DataSource = controller.getList_DangKy();
+
+            btnDatPhong_DatPhong.BackColor= Color.FromArgb(128, 255, 128);
+            //224, 224, 224 ko dc ấn
+            //(128, 255, 128 dc ấn
 
         }
 
@@ -829,6 +850,11 @@ namespace HotelManagement
         private void tabPageHuongDan_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void galleryControl_TrangChu_Gallery_GalleryItemHover(object sender, DevExpress.XtraBars.Ribbon.GalleryItemEventArgs e)
+        {
+            
         }
     }
 }
