@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            DevExpress.XtraBars.Ribbon.GalleryItemGroup galleryItemGroup2 = new DevExpress.XtraBars.Ribbon.GalleryItemGroup();
+            DevExpress.XtraBars.Ribbon.GalleryItemGroup galleryItemGroup1 = new DevExpress.XtraBars.Ribbon.GalleryItemGroup();
             this.tabControlMain = new System.Windows.Forms.TabControl();
             this.tabPageTrangChu = new System.Windows.Forms.TabPage();
             this.galleryControl_TrangChu = new DevExpress.XtraBars.Ribbon.GalleryControl();
@@ -247,9 +247,9 @@
             // 
             this.galleryControl_TrangChu.Gallery.BackColor = System.Drawing.Color.Transparent;
             this.galleryControl_TrangChu.Gallery.DistanceBetweenItems = 35;
-            galleryItemGroup2.Caption = "Danh sách phòng";
+            galleryItemGroup1.Caption = "Danh sách phòng";
             this.galleryControl_TrangChu.Gallery.Groups.AddRange(new DevExpress.XtraBars.Ribbon.GalleryItemGroup[] {
-            galleryItemGroup2});
+            galleryItemGroup1});
             this.galleryControl_TrangChu.Gallery.ImageSize = new System.Drawing.Size(100, 100);
             this.galleryControl_TrangChu.Gallery.ShowItemText = true;
             this.galleryControl_TrangChu.Gallery.ItemDoubleClick += new DevExpress.XtraBars.Ribbon.GalleryItemClickEventHandler(this.galleryControl1_Gallery_ItemDoubleClick);

@@ -151,17 +151,17 @@ namespace HotelManagement
             tbDatPhong_QuocTich.Text = "Việt Nam";
             tbDatPhong_SoDienThoai.Text = "";
             tbDatPhong_SoLuong.Text = "";
-            cbbDatPhong_SoPhong.DataSource = controller.getList_Phong_byKey("sophong");
+            cbbDatPhong_SoPhong.DataSource = controller.getList_Phong_byKey("sophong").Distinct().ToArray();
             cbbDatPhong_SoPhong.Text = "";
             cbbDatPhong_LoaiPhong.Text = "";
-            cbbDatPhong_LoaiPhong.DataSource = controller.getList_LoaiPhong_byKey("loaiphong");
+            cbbDatPhong_LoaiPhong.DataSource = controller.getList_LoaiPhong_byKey("loaiphong").Distinct().ToArray();
             cbbDatPhong_DonGia.Text = "";
             
-            cbbDatPhong_DonGia.DataSource = controller.getList_Phong_byKey("dongia");
+            cbbDatPhong_DonGia.DataSource = controller.getList_Phong_byKey("dongia").Distinct().ToArray();
             tbDatPhong_TrangThai.Enabled = false;
             tbDatPhong_TrangThai.Text = "";
             cbbDatPhong_TrangThietBi.Text = "";
-            cbbDatPhong_TrangThietBi.DataSource = controller.getList_TrangThietBi("");
+            cbbDatPhong_TrangThietBi.DataSource = controller.getList_TrangThietBi("").Distinct().ToArray();
             dtpDatPhong_NgayDen.Text = DateTime.Now.ToShortDateString().ToString();
             dtpDatPhong_NgayDi.Text = DateTime.Now.ToShortDateString().ToString();
             tbDatPhong_GioDen.Text = "";
@@ -365,9 +365,10 @@ namespace HotelManagement
 
             if (khach.Ten == "")
             {
-               
+                erpSoPhong.SetError(tbDatPhong_HoTen, "phải nhập họ tên khách hàng");
                 return;
             }
+            erpSoPhong.Clear();
 
             if(tbDatPhong_TrangThai.Text != "Phòng trống")
             {
@@ -394,10 +395,10 @@ namespace HotelManagement
             //ma- ngaydangky- khachma- ngayden- gioden- ngaydi- giodi- phongma - tiendatcoc- nhanvienma
             if (tbDatPhong_TrangThai.Text == "Có khách" || tbDatPhong_TrangThai.Text == "Khác")
             {
-                MessageBox.Show("Không đặt phòng này");
-
+                erpSoPhong.SetError(tbDatPhong_TrangThai, "Không đặt phòng này!");
                 return;
             }
+            erpSoPhong.Clear();
             controller.DatPhong(dangky);
             MessageBox.Show("Đặt phòng thành công", "Đặt phòng");
             tabControlMain.SelectTab(tabPageTrangChu);
@@ -434,8 +435,13 @@ namespace HotelManagement
                 tbDatPhong_TrangThai.Text = "Phòng có khách";
             else tbDatPhong_TrangThai.Text = "Khác";
 
-            cbbDatPhong_TrangThietBi.DataSource = controller.getList_TrangThietBi(sophong);
-            cbbDatPhong_LoaiPhong.SelectedValue=controller.getList_Phong_byKey(sophong);
+            cbbDatPhong_TrangThietBi.DataSource = controller.getList_TrangThietBi(sophong).Distinct().ToArray() ;
+            cbbDatPhong_DonGia.DataSource = controller.getList_Phong_byKey("dongia").Distinct().ToArray();
+            cbbDatPhong_DonGia.Text = phong.DonGia + "";
+            cbbDatPhong_LoaiPhong.DataSource = controller.getList_LoaiPhong_byKey(phong.LoaiPhong).Distinct().ToArray() ;
+            if(controller.getList_LoaiPhong_byKey(phong.LoaiPhong)[0] != null)
+                cbbDatPhong_LoaiPhong.Text= controller.getList_LoaiPhong_byKey(phong.LoaiPhong)[0];
+            //SelectedValue =controller.getList_Phong_byKey(sophong);
         }
 
         private void nbiMain_Thoat_LinkClicked(object sender, DevExpress.XtraNavBar.NavBarLinkEventArgs e)

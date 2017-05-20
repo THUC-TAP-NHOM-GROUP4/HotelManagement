@@ -263,8 +263,8 @@ namespace HotelManagement.Controllers
 
         public String[] getList_Phong_byKey(String key)
         {
-            DataTable table = da.Query("select phong.ma, phong.sophong, phong.dongia, loaiphong.ten as loaiphongma from phong inner join LoaiPhong "
-                + " on phong.loaiphongma = LoaiPhong.ma group by phong.ma, phong.sophong, phong.dongia, loaiphong.ten");
+            DataTable table = da.Query("select distinct phong.ma, phong.sophong, phong.trangthai, phong.dongia, loaiphong.ten as loaiphongma from phong inner join LoaiPhong "
+                + " on phong.loaiphongma = LoaiPhong.ma group by phong.ma, phong.sophong,phong.trangthai, phong.dongia, loaiphong.ten");
             int n = table.Rows.Count;
             int i;
             if (n == 0) return null;
@@ -293,18 +293,18 @@ namespace HotelManagement.Controllers
         {
             DataTable table = da.Query("select * from loaiphong ");
             int n = table.Rows.Count;
-            int i;
+            int i, count = 0 ;
             if (n == 0) return null;
             String[] list = new String[n];
             for (i = 0; i < n; i++)
             {
                 if (loaiphongma == "loaiphong")
                 {
-                    list[i] = table.Rows[i]["ten"].ToString().Trim();
+                    list[count++] = table.Rows[i]["ten"].ToString().Trim();
                    // break;
                 }
                 else if (table.Rows[i]["ma"].ToString().Trim() == loaiphongma)
-                        list[i] = table.Rows[i]["ten"].ToString().Trim();
+                        list[count++] = table.Rows[i]["ten"].ToString().Trim();
             }
             return list;
         }
