@@ -96,13 +96,13 @@ namespace HotelManagement
                     src_image += "icon_no.png";
                     trangthai = "khác";
                 }
-                galleryControl_TrangChu.Gallery.Groups[0].Items.Add(
-                    new DevExpress.XtraBars.Ribbon.GalleryItem(
-                        new Bitmap(src_image), phong.SoPhong, trangthai));
+                //galleryControl_TrangChu.Gallery.Groups[0].Items.Add(
+                //    new DevExpress.XtraBars.Ribbon.GalleryItem(
+                //        new Bitmap(src_image), phong.SoPhong, trangthai));
 
-                galleryControl_TrangChu.Gallery.Groups[0].Items[i].HoverImage =
-                    galleryControl_TrangChu.Gallery.Groups[0].Items[i].Image;
-                i++;
+                //galleryControl_TrangChu.Gallery.Groups[0].Items[i].HoverImage =
+                //    galleryControl_TrangChu.Gallery.Groups[0].Items[i].Image;
+                //i++;
             }
         }
         private void Load_tabpage_datphong()
@@ -435,7 +435,7 @@ namespace HotelManagement
                 tbDatPhong_TrangThai.Text = "Phòng có khách";
             else tbDatPhong_TrangThai.Text = "Khác";
 
-            cbbDatPhong_TrangThietBi.DataSource = controller.getList_TrangThietBi(sophong).Distinct().ToArray() ;
+            //cbbDatPhong_TrangThietBi.DataSource = controller.getList_TrangThietBi(sophong).Distinct().ToArray() ;
             cbbDatPhong_DonGia.DataSource = controller.getList_Phong_byKey("dongia").Distinct().ToArray();
             cbbDatPhong_DonGia.Text = phong.DonGia + "";
             cbbDatPhong_LoaiPhong.DataSource = controller.getList_LoaiPhong_byKey(phong.LoaiPhong).Distinct().ToArray() ;
