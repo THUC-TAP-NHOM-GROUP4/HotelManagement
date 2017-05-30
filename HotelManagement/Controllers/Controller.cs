@@ -263,8 +263,9 @@ namespace HotelManagement.Controllers
 
         public String[] getList_Phong_byKey(String key)
         {
+            //chỉ hiển thị danh sách phòng trống
             DataTable table = da.Query("select distinct phong.ma, phong.sophong, phong.trangthai, phong.dongia, loaiphong.ten as loaiphongma from phong inner join LoaiPhong "
-                + " on phong.loaiphongma = LoaiPhong.ma group by phong.ma, phong.sophong,phong.trangthai, phong.dongia, loaiphong.ten");
+                + " on phong.loaiphongma = LoaiPhong.ma where phong.trangthai = 0 group by phong.ma, phong.sophong,phong.trangthai, phong.dongia, loaiphong.ten");
             int n = table.Rows.Count;
             int i;
             if (n == 0) return null;
