@@ -350,7 +350,6 @@ namespace HotelManagement.Controllers
             Phong phong = new Phong();
             DataTable table = da.Query("select *from Phong where phong.sophong = N'" + sophong + "'");
             int n = table.Rows.Count;
-            int i;
             if (n == 1)
             {
                 phong.Ma = table.Rows[0]["ma"].ToString().Trim();
@@ -401,7 +400,6 @@ namespace HotelManagement.Controllers
             String maphong = get_Phong(soPhong, "ma");
             DataTable table = da.Query("select trangthai from Phong where phong.ma = N'" + maphong + "'");
             int n = table.Rows.Count;
-            int i;
             if (n == 1)
             {
                 return int.Parse(table.Rows[0]["trangthai"].ToString().Trim());
@@ -460,7 +458,6 @@ namespace HotelManagement.Controllers
             NhanVien nv = new NhanVien();
             DataTable table = da.Query("select *from NhanVien where NhanVien.taikhoan  = '" + username + "' and NhanVien.matkhau = '" + password + "'");
             int n = table.Rows.Count;
-            int i;
             if (n == 1)
             {
                 nv.Ma = table.Rows[0]["ma"].ToString().Trim();
@@ -487,7 +484,6 @@ namespace HotelManagement.Controllers
             if (n == 0) return null;
             DangKy[] list = new DangKy[n];
             DangKy dk = new DangKy();
-            int soluong = 0;
             DateTime date = DateTime.Now;
             for (i = 0; i < n; i++)
             {

@@ -107,13 +107,12 @@ namespace HotelManagement
         }
         private void Load_tabpage_datphong()
         {
-            int i;
             Phong[] lsPhong = controller.getList_Phong();
             IEnumerable<Phong> ls_phong_sort = from phong in lsPhong
                                                orderby phong.SoPhong.Substring(0, 1)
                                                select phong;
             dgv_DatPhong_DanhSach.Visible = false;
-            i = 0;
+            int i = 0;
            
             tbDatPhong_HoTen.Text = "";
             dtpDatPhong_NgaySinh.Text = DateTime.Now.ToShortDateString().ToString();
@@ -243,11 +242,6 @@ namespace HotelManagement
             tabControlMain.SelectTab(tabPageQLPhong);
         }
 
-        private void btnThongKe_Click(object sender, EventArgs e)
-        {
-            tabControlMain.SelectTab(tabPageThongKe);
-        }
-
         private void btnQLKhach_Click(object sender, EventArgs e)
         {
             tabControlMain.SelectTab(tabPageQLKhach);
@@ -309,11 +303,6 @@ namespace HotelManagement
         private void nbiMain_QLKhach_LinkPressed(object sender, DevExpress.XtraNavBar.NavBarLinkEventArgs e)
         {
             tabControlMain.SelectTab(tabPageQLKhach);
-        }
-
-        private void nbiMain_ThongKe_LinkPressed(object sender, DevExpress.XtraNavBar.NavBarLinkEventArgs e)
-        {
-            tabControlMain.SelectTab(tabPageThongKe);
         }
 
         private void nbiMain_Thoat_LinkPressed(object sender, DevExpress.XtraNavBar.NavBarLinkEventArgs e)
