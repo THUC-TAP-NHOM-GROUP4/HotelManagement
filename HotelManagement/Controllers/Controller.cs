@@ -103,15 +103,15 @@ namespace HotelManagement.Controllers
         public SuDungDichVu get_SuDungDichVu(DataRow row)
         {
             SuDungDichVu sddv = new SuDungDichVu();
-            sddv.Ma = row["ma"].ToString().Trim();
-            sddv.PhongMa = row["phongma"].ToString().Trim();
-            sddv.KhachMa = row["khachma"].ToString().Trim();
-            sddv.DichVuMa = row["dichvuma"].ToString().Trim();
-            sddv.NgaySuDung = DateTime.Parse(row["ngaysudung"].ToString().Trim());
-            sddv.SoLuong = int.Parse(row["soluong"].ToString().Trim());
-            double thanhtien = 0;
-            double.TryParse(row["thanhtien"].ToString().Trim(), out thanhtien);
-            sddv.ThanhTien = thanhtien;
+            //sddv.Ma = row["ma"].ToString().Trim();
+            //sddv.PhongMa = row["phongma"].ToString().Trim();
+            //sddv.KhachMa = row["khachma"].ToString().Trim();
+            //sddv.DichVuMa = row["dichvuma"].ToString().Trim();
+            //sddv.NgaySuDung = DateTime.Parse(row["ngaysudung"].ToString().Trim());
+            //sddv.SoLuong = int.Parse(row["soluong"].ToString().Trim());
+            //double thanhtien = 0;
+            //double.TryParse(row["thanhtien"].ToString().Trim(), out thanhtien);
+            //sddv.ThanhTien = thanhtien;
             return sddv;
         }
         public DichVu get_DichVu(DataRow row)
@@ -127,20 +127,20 @@ namespace HotelManagement.Controllers
         public LoaiPhong get_LoaiPhong(DataRow row)
         {
             LoaiPhong loaiphong = new LoaiPhong();
-            loaiphong.Ma = row["ma"].ToString().Trim();
-            loaiphong.Ten = row["ten"].ToString().Trim();
-            loaiphong.MoTa = row["mota"].ToString().Trim();
-            loaiphong.SoLuong = int.Parse(row["soluong"].ToString().Trim());
-            double giaquangay = 0;
-            if (double.TryParse(row["giaquangay"].ToString().Trim(), out giaquangay))
-            {
-                loaiphong.GiaQuaNgay = giaquangay;
-            }
-            double giaquadem = 0;
-            if (double.TryParse(row["giaquadem"].ToString().Trim(), out giaquadem))
-            {
-                loaiphong.GiaQuaDem = giaquadem;
-            }
+            //loaiphong.Ma = row["ma"].ToString().Trim();
+            //loaiphong.Ten = row["ten"].ToString().Trim();
+            //loaiphong.MoTa = row["mota"].ToString().Trim();
+            //loaiphong.SoLuong = int.Parse(row["soluong"].ToString().Trim());
+            //double giaquangay = 0;
+            //if (double.TryParse(row["giaquangay"].ToString().Trim(), out giaquangay))
+            //{
+            //    loaiphong.GiaQuaNgay = giaquangay;
+            //}
+            //double giaquadem = 0;
+            //if (double.TryParse(row["giaquadem"].ToString().Trim(), out giaquadem))
+            //{
+            //    loaiphong.GiaQuaDem = giaquadem;
+            //}
             return loaiphong;
         }
 
