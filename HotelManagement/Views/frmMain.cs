@@ -107,41 +107,13 @@ namespace HotelManagement
         }
         private void Load_tabpage_datphong()
         {
-            int i;
             Phong[] lsPhong = controller.getList_Phong();
             IEnumerable<Phong> ls_phong_sort = from phong in lsPhong
                                                orderby phong.SoPhong.Substring(0, 1)
                                                select phong;
             dgv_DatPhong_DanhSach.Visible = false;
-            i = 0;
-            //galleryControl_DatPhong.Gallery.Groups[0].Items.Clear();
-            //foreach (Phong phong in ls_phong_sort)
-            //{
-            //    src_image = @"E:\HOC_KY_6\ThucTapNhom\PRO\ksan\HotelManagement\HotelManagement\Images\";
-            //    if (phong.TrangThai == 0)
-            //    {
-            //        trangthai = "Phòng trống";
-            //        src_image += "icon_correct.png";
-            //    }
-            //    else if (phong.TrangThai == 1)
-            //    {
-            //        src_image += "icon_deny.png";
-            //        trangthai = "Có khách";
-            //    }
-            //    else
-            //    {
-            //        src_image += "icon_no.png";
-            //        trangthai = "khác";
-            //    }
-            //    galleryControl_DatPhong.Gallery.Groups[0].Items.Add(
-            //        new DevExpress.XtraBars.Ribbon.GalleryItem(
-            //            new Bitmap(src_image), phong.SoPhong, trangthai));
-
-            //    galleryControl_DatPhong.Gallery.Groups[0].Items[i].HoverImage =
-            //        galleryControl_DatPhong.Gallery.Groups[0].Items[i].Image;
-            //    i++;
-            //}
-
+            int i = 0;
+           
             tbDatPhong_HoTen.Text = "";
             dtpDatPhong_NgaySinh.Text = DateTime.Now.ToShortDateString().ToString();
             cbDatPhong_Nam.Checked = true;
@@ -270,11 +242,6 @@ namespace HotelManagement
             tabControlMain.SelectTab(tabPageQLPhong);
         }
 
-        private void btnThongKe_Click(object sender, EventArgs e)
-        {
-            tabControlMain.SelectTab(tabPageThongKe);
-        }
-
         private void btnQLKhach_Click(object sender, EventArgs e)
         {
             tabControlMain.SelectTab(tabPageQLKhach);
@@ -336,11 +303,6 @@ namespace HotelManagement
         private void nbiMain_QLKhach_LinkPressed(object sender, DevExpress.XtraNavBar.NavBarLinkEventArgs e)
         {
             tabControlMain.SelectTab(tabPageQLKhach);
-        }
-
-        private void nbiMain_ThongKe_LinkPressed(object sender, DevExpress.XtraNavBar.NavBarLinkEventArgs e)
-        {
-            tabControlMain.SelectTab(tabPageThongKe);
         }
 
         private void nbiMain_Thoat_LinkPressed(object sender, DevExpress.XtraNavBar.NavBarLinkEventArgs e)
@@ -435,7 +397,7 @@ namespace HotelManagement
                 tbDatPhong_TrangThai.Text = "Phòng có khách";
             else tbDatPhong_TrangThai.Text = "Khác";
 
-            cbbDatPhong_TrangThietBi.DataSource = controller.getList_TrangThietBi(sophong).Distinct().ToArray() ;
+            //cbbDatPhong_TrangThietBi.DataSource = controller.getList_TrangThietBi(sophong).Distinct().ToArray() ;
             cbbDatPhong_DonGia.DataSource = controller.getList_Phong_byKey("dongia").Distinct().ToArray();
             cbbDatPhong_DonGia.Text = phong.DonGia + "";
             cbbDatPhong_LoaiPhong.DataSource = controller.getList_LoaiPhong_byKey(phong.LoaiPhong).Distinct().ToArray() ;

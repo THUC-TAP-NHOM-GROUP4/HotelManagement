@@ -133,7 +133,6 @@
             this.btnSuaSDDV = new System.Windows.Forms.Button();
             this.btnThemSDDV = new System.Windows.Forms.Button();
             this.dtgSuDungDichVu = new System.Windows.Forms.DataGridView();
-            this.tabPageThongKe = new System.Windows.Forms.TabPage();
             this.tabPageHuongDan = new System.Windows.Forms.TabPage();
             this.rtbhuongdan = new System.Windows.Forms.RichTextBox();
             this.dockManager1 = new DevExpress.XtraBars.Docking.DockManager(this.components);
@@ -217,7 +216,6 @@
             this.tabControlMain.Controls.Add(this.tabPageQLKhach);
             this.tabControlMain.Controls.Add(this.tabPageDichVu);
             this.tabControlMain.Controls.Add(this.tabPageSuDungDichVu);
-            this.tabControlMain.Controls.Add(this.tabPageThongKe);
             this.tabControlMain.Controls.Add(this.tabPageHuongDan);
             this.tabControlMain.Location = new System.Drawing.Point(190, 1);
             this.tabControlMain.Name = "tabControlMain";
@@ -1249,15 +1247,6 @@
             this.dtgSuDungDichVu.TabIndex = 3;
             this.dtgSuDungDichVu.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dtgSuDungDichVu_CellMouseClick);
             // 
-            // tabPageThongKe
-            // 
-            this.tabPageThongKe.Location = new System.Drawing.Point(4, 24);
-            this.tabPageThongKe.Name = "tabPageThongKe";
-            this.tabPageThongKe.Size = new System.Drawing.Size(986, 585);
-            this.tabPageThongKe.TabIndex = 5;
-            this.tabPageThongKe.Text = "Thống kê";
-            this.tabPageThongKe.UseVisualStyleBackColor = true;
-            // 
             // tabPageHuongDan
             // 
             this.tabPageHuongDan.Controls.Add(this.rtbhuongdan);
@@ -1336,13 +1325,6 @@
             this.nbiMain_QLKhach.ImageUri.Uri = "Edit";
             this.nbiMain_QLKhach.Name = "nbiMain_QLKhach";
             this.nbiMain_QLKhach.LinkPressed += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.nbiMain_QLKhach_LinkPressed);
-            // 
-            // nbiMain_ThongKe
-            // 
-            this.nbiMain_ThongKe.Caption = "Thống kê";
-            this.nbiMain_ThongKe.ImageUri.Uri = "Chart";
-            this.nbiMain_ThongKe.Name = "nbiMain_ThongKe";
-            this.nbiMain_ThongKe.LinkPressed += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.nbiMain_ThongKe_LinkPressed);
             // 
             // nbiMain_HuongDan
             // 
@@ -1554,7 +1536,6 @@
         private System.Windows.Forms.TabPage tabPageQLKhach;
         private System.Windows.Forms.TabPage tabPageDatPhong;
         private System.Windows.Forms.TabPage tabPageQLPhong;
-        private System.Windows.Forms.TabPage tabPageThongKe;
         private DevExpress.XtraBars.Ribbon.GalleryControl galleryControl_TrangChu;
         private DevExpress.XtraBars.Ribbon.GalleryControlClient galleryControlClient1;
         private DevExpress.XtraBars.Docking.DockManager dockManager1;
