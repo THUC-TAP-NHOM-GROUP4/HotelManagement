@@ -96,13 +96,13 @@ namespace HotelManagement
                     src_image += "icon_no.png";
                     trangthai = "khác";
                 }
-                //galleryControl_TrangChu.Gallery.Groups[0].Items.Add(
-                //    new DevExpress.XtraBars.Ribbon.GalleryItem(
-                //        new Bitmap(src_image), phong.SoPhong, trangthai));
+                galleryControl_TrangChu.Gallery.Groups[0].Items.Add(
+                    new DevExpress.XtraBars.Ribbon.GalleryItem(
+                        new Bitmap(src_image), phong.SoPhong, trangthai));
 
-                //galleryControl_TrangChu.Gallery.Groups[0].Items[i].HoverImage =
-                //    galleryControl_TrangChu.Gallery.Groups[0].Items[i].Image;
-                //i++;
+                galleryControl_TrangChu.Gallery.Groups[0].Items[i].HoverImage =
+                    galleryControl_TrangChu.Gallery.Groups[0].Items[i].Image;
+                i++;
             }
         }
         private void Load_tabpage_datphong()
