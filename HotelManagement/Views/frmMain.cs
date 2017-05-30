@@ -114,34 +114,7 @@ namespace HotelManagement
                                                select phong;
             dgv_DatPhong_DanhSach.Visible = false;
             i = 0;
-            //galleryControl_DatPhong.Gallery.Groups[0].Items.Clear();
-            //foreach (Phong phong in ls_phong_sort)
-            //{
-            //    src_image = @"E:\HOC_KY_6\ThucTapNhom\PRO\ksan\HotelManagement\HotelManagement\Images\";
-            //    if (phong.TrangThai == 0)
-            //    {
-            //        trangthai = "Phòng trống";
-            //        src_image += "icon_correct.png";
-            //    }
-            //    else if (phong.TrangThai == 1)
-            //    {
-            //        src_image += "icon_deny.png";
-            //        trangthai = "Có khách";
-            //    }
-            //    else
-            //    {
-            //        src_image += "icon_no.png";
-            //        trangthai = "khác";
-            //    }
-            //    galleryControl_DatPhong.Gallery.Groups[0].Items.Add(
-            //        new DevExpress.XtraBars.Ribbon.GalleryItem(
-            //            new Bitmap(src_image), phong.SoPhong, trangthai));
-
-            //    galleryControl_DatPhong.Gallery.Groups[0].Items[i].HoverImage =
-            //        galleryControl_DatPhong.Gallery.Groups[0].Items[i].Image;
-            //    i++;
-            //}
-
+           
             tbDatPhong_HoTen.Text = "";
             dtpDatPhong_NgaySinh.Text = DateTime.Now.ToShortDateString().ToString();
             cbDatPhong_Nam.Checked = true;
