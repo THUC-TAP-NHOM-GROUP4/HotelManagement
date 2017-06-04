@@ -103,15 +103,15 @@ namespace HotelManagement.Controllers
         public SuDungDichVu get_SuDungDichVu(DataRow row)
         {
             SuDungDichVu sddv = new SuDungDichVu();
-            //sddv.Ma = row["ma"].ToString().Trim();
-            //sddv.PhongMa = row["phongma"].ToString().Trim();
-            //sddv.KhachMa = row["khachma"].ToString().Trim();
-            //sddv.DichVuMa = row["dichvuma"].ToString().Trim();
-            //sddv.NgaySuDung = DateTime.Parse(row["ngaysudung"].ToString().Trim());
-            //sddv.SoLuong = int.Parse(row["soluong"].ToString().Trim());
-            //double thanhtien = 0;
-            //double.TryParse(row["thanhtien"].ToString().Trim(), out thanhtien);
-            //sddv.ThanhTien = thanhtien;
+            sddv.Ma = row["ma"].ToString().Trim();
+            sddv.PhongMa = row["phongma"].ToString().Trim();
+            sddv.KhachMa = row["khachma"].ToString().Trim();
+            sddv.DichVuMa = row["dichvuma"].ToString().Trim();
+            sddv.NgaySuDung = DateTime.Parse(row["ngaysudung"].ToString().Trim());
+            sddv.SoLuong = int.Parse(row["soluong"].ToString().Trim());
+            double thanhtien = 0;
+            double.TryParse(row["thanhtien"].ToString().Trim(), out thanhtien);
+            sddv.ThanhTien = thanhtien;
             return sddv;
         }
         public DichVu get_DichVu(DataRow row)
@@ -127,20 +127,20 @@ namespace HotelManagement.Controllers
         public LoaiPhong get_LoaiPhong(DataRow row)
         {
             LoaiPhong loaiphong = new LoaiPhong();
-            //loaiphong.Ma = row["ma"].ToString().Trim();
-            //loaiphong.Ten = row["ten"].ToString().Trim();
-            //loaiphong.MoTa = row["mota"].ToString().Trim();
-            //loaiphong.SoLuong = int.Parse(row["soluong"].ToString().Trim());
-            //double giaquangay = 0;
-            //if (double.TryParse(row["giaquangay"].ToString().Trim(), out giaquangay))
-            //{
-            //    loaiphong.GiaQuaNgay = giaquangay;
-            //}
-            //double giaquadem = 0;
-            //if (double.TryParse(row["giaquadem"].ToString().Trim(), out giaquadem))
-            //{
-            //    loaiphong.GiaQuaDem = giaquadem;
-            //}
+            loaiphong.Ma = row["ma"].ToString().Trim();
+            loaiphong.Ten = row["ten"].ToString().Trim();
+            loaiphong.MoTa = row["mota"].ToString().Trim();
+            loaiphong.SoLuong = int.Parse(row["soluong"].ToString().Trim());
+            double giaquangay = 0;
+            if (double.TryParse(row["giaquangay"].ToString().Trim(), out giaquangay))
+            {
+                loaiphong.GiaQuaNgay = giaquangay;
+            }
+            double giaquadem = 0;
+            if (double.TryParse(row["giaquadem"].ToString().Trim(), out giaquadem))
+            {
+                loaiphong.GiaQuaDem = giaquadem;
+            }
             return loaiphong;
         }
 
@@ -264,7 +264,7 @@ namespace HotelManagement.Controllers
         public String[] getList_Phong_byKey(String key)
         {
             //chỉ hiển thị danh sách phòng trống
-            DataTable table = da.Query("select distinct phong.ma, phong.sophong, phong.trangthai, phong.dongia, loaiphong.ten as loaiphongma from phong inner join LoaiPhong "
+            DataTable table = da.Query("select distinct phong.ma, phong.sophong, phong.trangthai, phong.dongia, loaiphong.ten as loaiphongma from Phong inner join LoaiPhong "
                 + " on phong.loaiphongma = LoaiPhong.ma where phong.trangthai = 0 group by phong.ma, phong.sophong,phong.trangthai, phong.dongia, loaiphong.ten");
             int n = table.Rows.Count;
             int i;
@@ -501,6 +501,7 @@ namespace HotelManagement.Controllers
                 }
                 date = DateTime.Now;
                 dk.GioDen = int.Parse(table.Rows[i]["gioden"].ToString().Trim());
+                
                 if (DateTime.TryParse(table.Rows[i]["ngaydi"].ToString().Trim(), out date))
                 {
                     dk.NgayDi = date;
