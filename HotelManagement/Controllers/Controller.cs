@@ -264,7 +264,7 @@ namespace HotelManagement.Controllers
         public String[] getList_Phong_byKey(String key)
         {
             //chỉ hiển thị danh sách phòng trống
-            DataTable table = da.Query("select distinct phong.ma, phong.sophong, phong.trangthai, phong.dongia, loaiphong.ten as loaiphongma from phong inner join LoaiPhong "
+            DataTable table = da.Query("select distinct phong.ma, phong.sophong, phong.trangthai, phong.dongia, loaiphong.ten as loaiphongma from Phong inner join LoaiPhong "
                 + " on phong.loaiphongma = LoaiPhong.ma where phong.trangthai = 0 group by phong.ma, phong.sophong,phong.trangthai, phong.dongia, loaiphong.ten");
             int n = table.Rows.Count;
             int i;
@@ -501,6 +501,7 @@ namespace HotelManagement.Controllers
                 }
                 date = DateTime.Now;
                 dk.GioDen = int.Parse(table.Rows[i]["gioden"].ToString().Trim());
+                
                 if (DateTime.TryParse(table.Rows[i]["ngaydi"].ToString().Trim(), out date))
                 {
                     dk.NgayDi = date;

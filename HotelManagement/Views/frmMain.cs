@@ -1,6 +1,7 @@
 ﻿using HotelManagement.Controllers;
 using HotelManagement.Models;
 using HotelManagement.Views;
+using QuanLyKho.Controller;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -37,6 +38,26 @@ namespace HotelManagement
         }
         private void frmMain_Load(object sender, EventArgs e)
         {
+            da = new DataAccess();
+            dgrdanhsachkhach.DataSource = da.Query("DanhSachKhachHang");
+            cbbquoctich.Items.Add("Việt Nam");
+            cbbquoctich.Items.Add("Thái Lan");
+            cbbquoctich.Items.Add("Phi líp pin");
+            cbbquoctich.Items.Add("Nga");
+            cbbquoctich.Items.Add("Hoa Kỳ");
+            cbbquoctich.Items.Add("Đức");
+            cbbquoctich.Items.Add("Anh");
+            cbbquoctich.Items.Add("Pháp");
+            cbbquoctich.Items.Add("Hàn Quốc");
+            cbbquoctich.Items.Add("Nhật Bản");
+            cbbquoctich.Items.Add("Trung Quốc");
+            cbbquoctich.Items.Add("Lào");
+            cbbquoctich.Items.Add("Cam pu chia");
+            cbbquoctich.Items.Add("Áo");
+            cbbquoctich.Items.Add("Thụy Điển");
+            cbbquoctich.Items.Add("Phần Lan");
+            cbbquoctich.Items.Add("Úc");
+            cbbquoctich.Items.Add("Ý");
             //loaded tabpage Trang chu
             Load_tabpage_trangchu();
             //loaded tabpage DatPhong
@@ -80,7 +101,7 @@ namespace HotelManagement
 
             foreach (Phong phong in ls_phong_sort)
             {
-                src_image = @"E:\HOC_KY_6\ThucTapNhom\PRO\ksan\HotelManagement\HotelManagement\Images\";
+                src_image = @"E:\STUDY\MTA\3_Third_Year\TheSecond\Thực tập nhóm\Tuan 5\4_6\HotelManagement\Images\";
                 if (phong.TrangThai == 0)
                 {
                     trangthai = "Phòng trống";
@@ -113,7 +134,7 @@ namespace HotelManagement
                                                select phong;
             dgv_DatPhong_DanhSach.Visible = false;
             int i = 0;
-           
+
             tbDatPhong_HoTen.Text = "";
             dtpDatPhong_NgaySinh.Text = DateTime.Now.ToShortDateString().ToString();
             cbDatPhong_Nam.Checked = true;
@@ -128,7 +149,7 @@ namespace HotelManagement
             cbbDatPhong_LoaiPhong.Text = "";
             cbbDatPhong_LoaiPhong.DataSource = controller.getList_LoaiPhong_byKey("loaiphong").Distinct().ToArray();
             cbbDatPhong_DonGia.Text = "";
-            
+
             cbbDatPhong_DonGia.DataSource = controller.getList_Phong_byKey("dongia").Distinct().ToArray();
             tbDatPhong_TrangThai.Enabled = false;
             tbDatPhong_TrangThai.Text = "";
@@ -823,6 +844,90 @@ namespace HotelManagement
         private void galleryControl_TrangChu_Gallery_GalleryItemHover(object sender, DevExpress.XtraBars.Ribbon.GalleryItemEventArgs e)
         {
             
+        }
+
+        private void groupBox1_Enter(object sender, EventArgs e)
+        {
+
+        }
+        Hepl hl = new Hepl();
+        private void btnthemkhach_Click(object sender, EventArgs e)
+        {
+            string[] str = { txtenkhach1.Text, txtdiachi.Text, cbbquoctich.Text, txtcmnd.Text, txtsdt.Text };
+            if (hl.Dieukhien(str) != 0)
+            {
+                da = new DataAccess();
+                Khach k = new Khach();
+                k.Ten = txtenkhach1.Text;
+                k.NgaySinh = DateTime.Parse(dtpngaysinh.Text);
+                if (rdbnam.Checked) k.GioiTinh = 1;
+                else k.GioiTinh = 0;
+                k.DiaChi = txtdiachi.Text;
+                k.QuocTich = cbbquoctich.Text;
+                k.ChungMinhThu = txtcmnd.Text;
+                k.SoDienThoai = txtsdt.Text;
+                k.ThemKhachHang(k.Ten, k.NgaySinh, k.GioiTinh, k.DiaChi, k.QuocTich, k.ChungMinhThu, k.SoDienThoai);
+                MessageBox.Show("Thành công");
+                dgrdanhsachkhach.DataSource = da.Query("DanhSachKhachHang");
+            }
+            else
+                MessageBox.Show("Vui lòng nhập đầy đủ thông tin đối tượng");
+        }
+
+        private void btnsuakhach_Click(object sender, EventArgs e)
+        {
+            string[] str = { txtenkhach1.Text, txtdiachi.Text, cbbquoctich.Text, txtcmnd.Text, txtsdt.Text };
+            if (hl.Dieukhien(str) != 0)
+            {
+                da = new DataAccess();
+                Khach k = new Khach();
+                k.Ma = dgrdanhsachkhach.Rows[dgrdanhsachkhach.CurrentRow.Index].Cells[0].Value.ToString();
+                k.Ten = txtenkhach1.Text;
+                k.NgaySinh = DateTime.Parse(dtpngaysinh.Text);
+                if (rdbnam.Checked) k.GioiTinh = 1;
+                else k.GioiTinh = 0;
+                k.DiaChi = txtdiachi.Text;
+                k.QuocTich = cbbquoctich.Text;
+                k.ChungMinhThu = txtcmnd.Text;
+                k.SoDienThoai = txtsdt.Text;
+                k.SuaThongTinKhachHang(k.Ma,k.Ten, k.NgaySinh, k.GioiTinh, k.DiaChi, k.QuocTich, k.ChungMinhThu, k.SoDienThoai);
+                MessageBox.Show("Thành công");
+                dgrdanhsachkhach.DataSource = da.Query("DanhSachKhachHang");
+            }
+            else
+                MessageBox.Show("Vui lòng chọn đối tượng");
+        }
+
+        private void btnxoakhach_Click(object sender, EventArgs e)
+        {
+            Khach k = new Khach();
+            k.Ma= dgrdanhsachkhach.Rows[dgrdanhsachkhach.CurrentRow.Index].Cells[0].Value.ToString();
+            if (hl.Dieukhien(k.Ma) != 0)
+            {
+                DialogResult traloi = new DialogResult();
+                traloi = MessageBox.Show("Bạn có chắn chắc muốn xóa " + k.Ma + "", "Thông báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+                if(traloi==DialogResult.OK)
+                {
+                    k.XoaKhachHang(k.Ma);
+                    MessageBox.Show("Xóa thành công");
+                    dgrdanhsachkhach.DataSource = da.Query("DanhSachKhachHang");
+                }
+            }
+            else
+                MessageBox.Show("Vui lòng chọn đối tượng");
+        }
+
+        private void dgrdanhsachkhach_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            txtenkhach1.Text = dgrdanhsachkhach.Rows[dgrdanhsachkhach.CurrentRow.Index].Cells[1].Value.ToString();
+            string str = dgrdanhsachkhach.Rows[dgrdanhsachkhach.CurrentRow.Index].Cells[3].Value.ToString();
+            if (str.Equals("true"))
+                rdbnam.Checked = true;
+            else rdbnu.Checked = true;
+            txtdiachi.Text = dgrdanhsachkhach.Rows[dgrdanhsachkhach.CurrentRow.Index].Cells[4].Value.ToString();
+            cbbquoctich.Text = dgrdanhsachkhach.Rows[dgrdanhsachkhach.CurrentRow.Index].Cells[5].Value.ToString();
+            txtcmnd.Text = dgrdanhsachkhach.Rows[dgrdanhsachkhach.CurrentRow.Index].Cells[6].Value.ToString();
+            txtsdt.Text = dgrdanhsachkhach.Rows[dgrdanhsachkhach.CurrentRow.Index].Cells[7].Value.ToString();
         }
     }
 }
