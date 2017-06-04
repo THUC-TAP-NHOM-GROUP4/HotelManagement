@@ -101,7 +101,7 @@ namespace HotelManagement
 
             foreach (Phong phong in ls_phong_sort)
             {
-                src_image = @"E:\HOC_KY_6\ThucTapNhom\PRO\ksan\HotelManagement\HotelManagement\Images\";
+                src_image = @"E:\document class\kỳ 2 năm 3\thực tập nhóm\Thực tập nhóm_TH13\Test\HotelManagement\HotelManagement\Images\";
                 if (phong.TrangThai == 0)
                 {
                     trangthai = "Phòng trống";
