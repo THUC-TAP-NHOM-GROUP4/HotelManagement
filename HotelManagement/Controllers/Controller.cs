@@ -29,6 +29,23 @@ namespace HotelManagement.Controllers
             }
             return list;
         }
+
+
+        public ThietBiPhong[] getList_ThietBiPhong()
+        {
+            DataTable table = da.Query("select *from ThietBiPhong");
+            int n = table.Rows.Count;
+            int i;
+            if (n == 0) return null;
+            ThietBiPhong[] list = new ThietBiPhong[n];
+            for (i = 0; i < n; i++)
+            {
+                list[i] = get_ThietBiPhong(table.Rows[i]);
+            }
+            return list;
+        }
+
+
         public List<LoaiPhong> getList_LoaiPhong()
         {
             List<LoaiPhong> list = new List<LoaiPhong>();
@@ -193,6 +210,21 @@ namespace HotelManagement.Controllers
             da.Query("procedure_insertSuDungDichVu", para);
             return true;
         }
+
+
+        public bool addThietBi(ThietBiPhong tb)
+        {
+            SqlParameter[] para =
+            {
+            //    new SqlParameter("ma",tb.Ma),
+                new SqlParameter("tenphong",tb.ten),
+            //    new SqlParameter("maphong",tb.phongma),
+                new SqlParameter("soluong", tb.soluong)
+            };
+            da.Query("prc_insertThietBi", para);
+            return true;
+        }
+
         public bool updateLP(LoaiPhong lp)
         {
 
@@ -222,6 +254,23 @@ namespace HotelManagement.Controllers
             da.Query("procedure_updatePhong", para);
             return true;
         }
+
+
+        public bool updateTBPhong(ThietBiPhong tbp)
+        {
+
+            SqlParameter[] para =
+            {
+                new SqlParameter("ma",tbp.Ma),
+                new SqlParameter("tenphong",tbp.ten),
+                new SqlParameter("maphong",tbp.phongma),
+                new SqlParameter("soluong", tbp.soluong)
+
+            };
+            da.Query("procedure_updatePhong", para);
+            return true;
+        }
+
         public bool updateDichVu(DichVu dv)
         {
 
@@ -247,6 +296,12 @@ namespace HotelManagement.Controllers
             };
             da.Query("procedure_updateSuDungDichVu", para);
             return true;
+        }
+
+
+        public void XoaThietBiPhong(string ma)
+        {
+            da.NonQuery("delete ThietBiPhong where ma='" + ma + "'");
         }
         public void XoaLoaiPhong(string ma)
         {
@@ -329,6 +384,24 @@ namespace HotelManagement.Controllers
             }
             return list;
         }
+
+
+        private ThietBiPhong get_ThietBiPhong(DataRow row)
+        {
+            ThietBiPhong TBphong = new ThietBiPhong();
+            TBphong.Ma = row["ma"].ToString().Trim();
+            TBphong.ten = row["ten"].ToString().Trim();
+            TBphong.phongma = row["maphong"].ToString().Trim();
+            int soluong = 0;
+            if (int.TryParse(row["soluong"].ToString().Trim(), out soluong))
+            {
+                TBphong.soluong = soluong;
+            }
+
+            return TBphong;
+        }
+
+
         private Phong get_Phong(DataRow row)
         {
             Phong phong = new Phong();

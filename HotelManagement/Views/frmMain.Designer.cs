@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            DevExpress.XtraBars.Ribbon.GalleryItemGroup galleryItemGroup1 = new DevExpress.XtraBars.Ribbon.GalleryItemGroup();
+            DevExpress.XtraBars.Ribbon.GalleryItemGroup galleryItemGroup4 = new DevExpress.XtraBars.Ribbon.GalleryItemGroup();
             this.tabControlMain = new System.Windows.Forms.TabControl();
             this.tabPageTrangChu = new System.Windows.Forms.TabPage();
             this.galleryControl_TrangChu = new DevExpress.XtraBars.Ribbon.GalleryControl();
@@ -135,6 +135,19 @@
             this.dtgSuDungDichVu = new System.Windows.Forms.DataGridView();
             this.tabPageHuongDan = new System.Windows.Forms.TabPage();
             this.rtbhuongdan = new System.Windows.Forms.RichTextBox();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.dgvThietBi = new System.Windows.Forms.DataGridView();
+            this.btnXoaTB = new System.Windows.Forms.Button();
+            this.btnSuaTB = new System.Windows.Forms.Button();
+            this.btnThemTB = new System.Windows.Forms.Button();
+            this.label38 = new System.Windows.Forms.Label();
+            this.label37 = new System.Windows.Forms.Label();
+            this.label36 = new System.Windows.Forms.Label();
+            this.label35 = new System.Windows.Forms.Label();
+            this.txtSoLuongTB = new System.Windows.Forms.TextBox();
+            this.txtMaPhong = new System.Windows.Forms.TextBox();
+            this.txtTenThietBi = new System.Windows.Forms.TextBox();
+            this.txtmathietbi = new System.Windows.Forms.TextBox();
             this.dockManager1 = new DevExpress.XtraBars.Docking.DockManager(this.components);
             this.nbgMain_TrangChu = new DevExpress.XtraNavBar.NavBarGroup();
             this.nbiMain_TrangChu = new DevExpress.XtraNavBar.NavBarItem();
@@ -166,6 +179,10 @@
             this.errSoLuongSDDV = new System.Windows.Forms.ErrorProvider(this.components);
             this.erpSoPhong = new System.Windows.Forms.ErrorProvider(this.components);
             this.erpTinhTrang = new System.Windows.Forms.ErrorProvider(this.components);
+            this.errMaThietBi = new System.Windows.Forms.ErrorProvider(this.components);
+            this.errTenThietBi = new System.Windows.Forms.ErrorProvider(this.components);
+            this.errMaPhong = new System.Windows.Forms.ErrorProvider(this.components);
+            this.errSoLuong = new System.Windows.Forms.ErrorProvider(this.components);
             this.tabControlMain.SuspendLayout();
             this.tabPageTrangChu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.galleryControl_TrangChu)).BeginInit();
@@ -185,6 +202,8 @@
             this.tabPageSuDungDichVu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtgSuDungDichVu)).BeginInit();
             this.tabPageHuongDan.SuspendLayout();
+            this.tabPage1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvThietBi)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dockManager1)).BeginInit();
             this.dockPanel1_Container.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.navBarControl1)).BeginInit();
@@ -205,6 +224,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.errSoLuongSDDV)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.erpSoPhong)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.erpTinhTrang)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errMaThietBi)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errTenThietBi)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errMaPhong)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errSoLuong)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControlMain
@@ -217,6 +240,7 @@
             this.tabControlMain.Controls.Add(this.tabPageDichVu);
             this.tabControlMain.Controls.Add(this.tabPageSuDungDichVu);
             this.tabControlMain.Controls.Add(this.tabPageHuongDan);
+            this.tabControlMain.Controls.Add(this.tabPage1);
             this.tabControlMain.Location = new System.Drawing.Point(190, 1);
             this.tabControlMain.Name = "tabControlMain";
             this.tabControlMain.SelectedIndex = 0;
@@ -245,9 +269,9 @@
             // 
             this.galleryControl_TrangChu.Gallery.BackColor = System.Drawing.Color.Transparent;
             this.galleryControl_TrangChu.Gallery.DistanceBetweenItems = 35;
-            galleryItemGroup1.Caption = "Danh sách phòng";
+            galleryItemGroup4.Caption = "Danh sách phòng";
             this.galleryControl_TrangChu.Gallery.Groups.AddRange(new DevExpress.XtraBars.Ribbon.GalleryItemGroup[] {
-            galleryItemGroup1});
+            galleryItemGroup4});
             this.galleryControl_TrangChu.Gallery.ImageSize = new System.Drawing.Size(100, 100);
             this.galleryControl_TrangChu.Gallery.ShowItemText = true;
             this.galleryControl_TrangChu.Gallery.ItemDoubleClick += new DevExpress.XtraBars.Ribbon.GalleryItemClickEventHandler(this.galleryControl1_Gallery_ItemDoubleClick);
@@ -1268,6 +1292,131 @@
             this.rtbhuongdan.TabIndex = 0;
             this.rtbhuongdan.Text = "";
             // 
+            // tabPage1
+            // 
+            this.tabPage1.Controls.Add(this.dgvThietBi);
+            this.tabPage1.Controls.Add(this.btnXoaTB);
+            this.tabPage1.Controls.Add(this.btnSuaTB);
+            this.tabPage1.Controls.Add(this.btnThemTB);
+            this.tabPage1.Controls.Add(this.label38);
+            this.tabPage1.Controls.Add(this.label37);
+            this.tabPage1.Controls.Add(this.label36);
+            this.tabPage1.Controls.Add(this.label35);
+            this.tabPage1.Controls.Add(this.txtSoLuongTB);
+            this.tabPage1.Controls.Add(this.txtMaPhong);
+            this.tabPage1.Controls.Add(this.txtTenThietBi);
+            this.tabPage1.Controls.Add(this.txtmathietbi);
+            this.tabPage1.Location = new System.Drawing.Point(4, 24);
+            this.tabPage1.Name = "tabPage1";
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage1.Size = new System.Drawing.Size(986, 585);
+            this.tabPage1.TabIndex = 10;
+            this.tabPage1.Text = "Quản Lí Thiết Bị";
+            this.tabPage1.UseVisualStyleBackColor = true;
+            this.tabPage1.Click += new System.EventHandler(this.tabPage1_Click);
+            // 
+            // dgvThietBi
+            // 
+            this.dgvThietBi.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvThietBi.Location = new System.Drawing.Point(0, 186);
+            this.dgvThietBi.Name = "dgvThietBi";
+            this.dgvThietBi.Size = new System.Drawing.Size(986, 399);
+            this.dgvThietBi.TabIndex = 11;
+            // 
+            // btnXoaTB
+            // 
+            this.btnXoaTB.Location = new System.Drawing.Point(328, 104);
+            this.btnXoaTB.Name = "btnXoaTB";
+            this.btnXoaTB.Size = new System.Drawing.Size(75, 23);
+            this.btnXoaTB.TabIndex = 10;
+            this.btnXoaTB.Text = "Xóa";
+            this.btnXoaTB.UseVisualStyleBackColor = true;
+            this.btnXoaTB.Click += new System.EventHandler(this.btnXoaTB_Click);
+            // 
+            // btnSuaTB
+            // 
+            this.btnSuaTB.Location = new System.Drawing.Point(202, 102);
+            this.btnSuaTB.Name = "btnSuaTB";
+            this.btnSuaTB.Size = new System.Drawing.Size(75, 23);
+            this.btnSuaTB.TabIndex = 9;
+            this.btnSuaTB.Text = "Sửa";
+            this.btnSuaTB.UseVisualStyleBackColor = true;
+            this.btnSuaTB.Click += new System.EventHandler(this.btnSuaTB_Click);
+            // 
+            // btnThemTB
+            // 
+            this.btnThemTB.Location = new System.Drawing.Point(66, 102);
+            this.btnThemTB.Name = "btnThemTB";
+            this.btnThemTB.Size = new System.Drawing.Size(75, 23);
+            this.btnThemTB.TabIndex = 8;
+            this.btnThemTB.Text = "Thêm";
+            this.btnThemTB.UseVisualStyleBackColor = true;
+            this.btnThemTB.Click += new System.EventHandler(this.btnThemTB_Click);
+            // 
+            // label38
+            // 
+            this.label38.AutoSize = true;
+            this.label38.Location = new System.Drawing.Point(753, 42);
+            this.label38.Name = "label38";
+            this.label38.Size = new System.Drawing.Size(59, 15);
+            this.label38.TabIndex = 7;
+            this.label38.Text = "Số Lượng";
+            // 
+            // label37
+            // 
+            this.label37.AutoSize = true;
+            this.label37.Location = new System.Drawing.Point(552, 42);
+            this.label37.Name = "label37";
+            this.label37.Size = new System.Drawing.Size(63, 15);
+            this.label37.TabIndex = 6;
+            this.label37.Text = "Mã Phòng";
+            // 
+            // label36
+            // 
+            this.label36.AutoSize = true;
+            this.label36.Location = new System.Drawing.Point(288, 42);
+            this.label36.Name = "label36";
+            this.label36.Size = new System.Drawing.Size(73, 15);
+            this.label36.TabIndex = 5;
+            this.label36.Text = "Tên Thiết Bị";
+            // 
+            // label35
+            // 
+            this.label35.AutoSize = true;
+            this.label35.Location = new System.Drawing.Point(34, 42);
+            this.label35.Name = "label35";
+            this.label35.Size = new System.Drawing.Size(70, 15);
+            this.label35.TabIndex = 4;
+            this.label35.Text = "Mã Thiết Bị";
+            // 
+            // txtSoLuongTB
+            // 
+            this.txtSoLuongTB.Location = new System.Drawing.Point(845, 39);
+            this.txtSoLuongTB.Name = "txtSoLuongTB";
+            this.txtSoLuongTB.Size = new System.Drawing.Size(100, 22);
+            this.txtSoLuongTB.TabIndex = 3;
+            // 
+            // txtMaPhong
+            // 
+            this.txtMaPhong.Location = new System.Drawing.Point(619, 35);
+            this.txtMaPhong.Name = "txtMaPhong";
+            this.txtMaPhong.Size = new System.Drawing.Size(100, 22);
+            this.txtMaPhong.TabIndex = 2;
+            // 
+            // txtTenThietBi
+            // 
+            this.txtTenThietBi.Location = new System.Drawing.Point(379, 39);
+            this.txtTenThietBi.Name = "txtTenThietBi";
+            this.txtTenThietBi.Size = new System.Drawing.Size(100, 22);
+            this.txtTenThietBi.TabIndex = 1;
+            // 
+            // txtmathietbi
+            // 
+            this.txtmathietbi.Location = new System.Drawing.Point(133, 35);
+            this.txtmathietbi.Name = "txtmathietbi";
+            this.txtmathietbi.Size = new System.Drawing.Size(100, 22);
+            this.txtmathietbi.TabIndex = 0;
+            // 
             // dockManager1
             // 
             this.dockManager1.Form = this;
@@ -1325,6 +1474,10 @@
             this.nbiMain_QLKhach.ImageUri.Uri = "Edit";
             this.nbiMain_QLKhach.Name = "nbiMain_QLKhach";
             this.nbiMain_QLKhach.LinkPressed += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.nbiMain_QLKhach_LinkPressed);
+            // 
+            // nbiMain_ThongKe
+            // 
+            this.nbiMain_ThongKe.Name = "nbiMain_ThongKe";
             // 
             // nbiMain_HuongDan
             // 
@@ -1465,11 +1618,27 @@
             // 
             this.erpTinhTrang.ContainerControl = this;
             // 
+            // errMaThietBi
+            // 
+            this.errMaThietBi.ContainerControl = this;
+            // 
+            // errTenThietBi
+            // 
+            this.errTenThietBi.ContainerControl = this;
+            // 
+            // errMaPhong
+            // 
+            this.errMaPhong.ContainerControl = this;
+            // 
+            // errSoLuong
+            // 
+            this.errSoLuong.ContainerControl = this;
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1184, 611);
+            this.ClientSize = new System.Drawing.Size(1184, 612);
             this.Controls.Add(this.tabControlMain);
             this.Controls.Add(this.dockPanel1);
             this.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -1506,6 +1675,9 @@
             this.tabPageSuDungDichVu.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtgSuDungDichVu)).EndInit();
             this.tabPageHuongDan.ResumeLayout(false);
+            this.tabPage1.ResumeLayout(false);
+            this.tabPage1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvThietBi)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dockManager1)).EndInit();
             this.dockPanel1_Container.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.navBarControl1)).EndInit();
@@ -1526,6 +1698,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.errSoLuongSDDV)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.erpSoPhong)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.erpTinhTrang)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errMaThietBi)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errTenThietBi)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errMaPhong)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errSoLuong)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1667,5 +1843,22 @@
         private System.Windows.Forms.RichTextBox rtbhuongdan;
         private System.Windows.Forms.ErrorProvider erpSoPhong;
         private System.Windows.Forms.ErrorProvider erpTinhTrang;
+        private System.Windows.Forms.TabPage tabPage1;
+        private System.Windows.Forms.Label label38;
+        private System.Windows.Forms.Label label37;
+        private System.Windows.Forms.Label label36;
+        private System.Windows.Forms.Label label35;
+        private System.Windows.Forms.TextBox txtSoLuongTB;
+        private System.Windows.Forms.TextBox txtMaPhong;
+        private System.Windows.Forms.TextBox txtTenThietBi;
+        private System.Windows.Forms.TextBox txtmathietbi;
+        private System.Windows.Forms.Button btnSuaTB;
+        private System.Windows.Forms.Button btnThemTB;
+        private System.Windows.Forms.DataGridView dgvThietBi;
+        private System.Windows.Forms.Button btnXoaTB;
+        private System.Windows.Forms.ErrorProvider errMaThietBi;
+        private System.Windows.Forms.ErrorProvider errTenThietBi;
+        private System.Windows.Forms.ErrorProvider errMaPhong;
+        private System.Windows.Forms.ErrorProvider errSoLuong;
     }
 }

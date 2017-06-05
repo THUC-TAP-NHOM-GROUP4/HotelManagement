@@ -60,6 +60,7 @@
     <Compile Include="Models\NhanVien.cs" />
     <Compile Include="Models\Phong.cs" />
     <Compile Include="Models\SuDungDichVu.cs" />
+    <Compile Include="Models\ThietBiPhong.cs" />
     <Compile Include="Models\VatDung.cs" />
     <Compile Include="Views\frmChiTietPhong.cs">
       <SubType>Form</SubType>

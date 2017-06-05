@@ -80,7 +80,7 @@ namespace HotelManagement
 
             foreach (Phong phong in ls_phong_sort)
             {
-                src_image = @"E:\HOC_KY_6\ThucTapNhom\PRO\ksan\HotelManagement\HotelManagement\Images\";
+                src_image = @"D:\GITHUB\HotelManagement\HotelManagement\Images\";
                 if (phong.TrangThai == 0)
                 {
                     trangthai = "Phòng trống";
@@ -823,6 +823,94 @@ namespace HotelManagement
         private void galleryControl_TrangChu_Gallery_GalleryItemHover(object sender, DevExpress.XtraBars.Ribbon.GalleryItemEventArgs e)
         {
             
+        }
+
+        private void tabPage1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private bool checkTBPhong()
+        {
+            if (txtmathietbi.Text.ToString().Trim().Equals(""))
+            {
+                errMaThietBi.SetError(txtmathietbi, "Nhap ma thiet bi");
+                return false;
+            }
+            errMaThietBi.Clear();
+
+            if (txtTenThietBi.Text.ToString().Trim().Equals(""))
+            {
+                errTenThietBi.SetError(txtTenThietBi, "Nhap ten thiet bi");
+                return false;
+            }
+            errTenThietBi.Clear();
+
+            if (txtMaPhong.Text.ToString().Trim().Equals(""))
+            {
+                errMaPhong.SetError(txtMaPhong, "Nhap ma phong");
+                return false;
+            }
+            errMaPhong.Clear();
+
+            if (txtSoLuong.Text.ToString().Trim().Equals(""))
+            {
+                errSoLuong.SetError(txtSoLuong, "Nhap ma phong");
+                return false;
+            }
+            errSoLuong.Clear();
+
+            return true;
+        }
+
+
+        private void btnThemTB_Click(object sender, EventArgs e)
+        {
+
+            if (checkTBPhong())
+            {
+                ThietBiPhong tb = new ThietBiPhong();
+                tb.Ma = txtmathietbi.Text.ToString().Trim();
+                tb.ten = txtTenThietBi.Text.ToString().Trim();
+                tb.phongma = txtMaPhong.Text.ToString().Trim();
+                tb.soluong = int.Parse(txtSoLuong.Text.ToString().Trim());
+
+                if (controller.addThietBi(tb))
+                {
+                    dgvThietBi.DataSource = controller.getList_ThietBiPhong();
+                }
+            }
+
+        }
+
+        private void btnSuaTB_Click(object sender, EventArgs e)
+        {
+            ThietBiPhong tbp = new ThietBiPhong();
+            tbp.Ma = dgvThietBi.Rows[dgvThietBi.CurrentRow.Index].Cells[0].Value.ToString();
+            tbp.ten = txtTen.Text.ToString().Trim();
+            tbp.phongma = txtMaPhong.Text.ToString().Trim();
+            tbp.soluong = int.Parse(txtSoLuong.Text.ToString().Trim());
+            if (controller.updateTBPhong(tbp))
+            {
+                dgvThietBi.DataSource = controller.getList_ThietBiPhong();
+
+            }
+        }
+
+        private void btnXoaTB_Click(object sender, EventArgs e)
+        {
+            if (this.dgvThietBi.SelectedRows.Count > 0)
+            {
+
+                int selectedIndex = dgvThietBi.SelectedRows[0].Index;
+                string rowID = dgvThietBi[0, selectedIndex].Value.ToString();
+                if (MessageBox.Show("Chắc chắn xóa thiết bị mã " + rowID + "?", "Xoá loại phòng", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                {
+
+                    controller.XoaThietBiPhong(rowID);
+                    dgvThietBi.DataSource = controller.getList_ThietBiPhong();
+                }
+            }
         }
     }
 }
